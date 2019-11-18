@@ -1,4 +1,4 @@
-package negocio.entidades;
+package dados;
 
 public class Agenda {
     

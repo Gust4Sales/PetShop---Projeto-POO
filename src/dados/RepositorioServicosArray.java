@@ -19,24 +19,11 @@ public class RepositorioServicosArray implements IRepositorioServicos {
 
     @Override
     public void removerServico(String id) {
-        for (Servico s: this.servicos){
-            if (s.getId().equals(id)){
-                this.servicos.remove(s);
-                break;
-            }
-        }
+
     }
 
     @Override
     public Servico getServico(String id) {
-        int index;
-
-        for (Servico s : this.servicos) {
-            if (s.getId().equals(id)) {
-                index = this.servicos.indexOf(s);
-                return this.servicos.get(index);
-            }
-        }
         return null;
     }
 

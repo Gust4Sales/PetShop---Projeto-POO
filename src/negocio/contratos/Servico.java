@@ -1,25 +1,20 @@
 package negocio.contratos;
 
+import negocio.entidades.Cliente;
+import negocio.entidades.PetCliente;
+
 public abstract class Servico {
-    protected String descricao, id;
     protected double preco;
     protected String horaAgendada, data;  // Criar classe Banho? Tosa?
     // Tempo associado ao serviço
-    // Pet associado, Cliente
+    protected Cliente cliente;
+    protected PetCliente pet;
+    protected boolean concluido;
 
-    public Servico(String descricao, String id, double preco, String horaAgendada){
-        this.descricao = descricao;
-        this.id = id;
-        this.preco = preco;
+    public Servico(String horaAgendada, Cliente cliente, PetCliente pet){
         this.horaAgendada = horaAgendada;
-    }
-
-    public String getDescricao(){
-        return this.descricao;
-    }
-
-    public String getId() {
-        return this.id;
+        this.cliente = cliente;
+        this.pet = pet;
     }
 
     public double getPreco() {
@@ -30,14 +25,23 @@ public abstract class Servico {
         return this.horaAgendada;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public String getData() {
+        return this.data;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public boolean isConcluido() {
+        return this.concluido;
     }
+
+    public Cliente getCliente() {
+        return this.cliente;
+    }
+
+    public PetCliente getPet() {
+        return this.pet;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
 
     public void setPreco(double preco) {
         this.preco = preco;
@@ -46,4 +50,17 @@ public abstract class Servico {
     public void setHoraAgendada(String horaAgendada) {
         this.horaAgendada = horaAgendada;
     }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public void setConcluido(boolean concluido) {
+        this.concluido = concluido;
+    }
+
 }

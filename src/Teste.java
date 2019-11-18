@@ -1,6 +1,10 @@
+import negocio.contratos.Servico;
+import negocio.entidades.Cliente;
+import negocio.entidades.PetCliente;
 import negocio.entidades.Produto;
 import dados.contratos.IRepositorioProdutos;
 import dados.RepositorioProdutosArray;
+import negocio.entidades.ServicoCompleto;
 
 public class Teste {
     public static void main(String[] args){
@@ -8,6 +12,9 @@ public class Teste {
         Produto p1 = new Produto("Whiskas Sache", "Whiskas", 12.5, "15", 10);
         Produto p2 = new Produto("Shampoo AntiPulgas", "Jhonsons", 2.5, "09", 12);
         Produto p;
+        Cliente c = new Cliente("Joao", "702.504");
+        PetCliente pet = new PetCliente("Hulk", "cachorro", "macho");
+        Servico s = new ServicoCompleto("7:30", c, pet);
 
         repositorioProdutos.adicionarProduto(p1);
         repositorioProdutos.adicionarProduto(p2);
@@ -17,6 +24,9 @@ public class Teste {
         repositorioProdutos.removerProduto("09");
         p = repositorioProdutos.getProduto("09");
         System.out.println(p);
+
+        s.setPreco(5.4);
+        System.out.printf("%f %s",s.getPreco(), s.getCliente().getNome() );
 
     }
 }
