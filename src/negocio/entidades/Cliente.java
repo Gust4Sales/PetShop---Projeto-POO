@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Cliente {
     private String cpf;
     private String nome;
+    private String telefone;
     private ArrayList<PetCliente> pets;
 
-    public Cliente(String nome, String cpf) {
+    public Cliente(String nome, String cpf, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
+        this.telefone = telefone;
         pets = new ArrayList<PetCliente>();
     }
 
@@ -22,13 +24,12 @@ public class Cliente {
         return this.cpf;
     }
 
-    //--------------------------SETTERS-----------------------------
-    public void setNome(String nome){
-        this.nome = nome;
-    }
+    public String getTelefone() { return this.telefone; }
 
-    public void setCpf(String Cpf){
-        this.cpf = cpf;
+    //--------------------------SETTERS-----------------------------
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     // --------

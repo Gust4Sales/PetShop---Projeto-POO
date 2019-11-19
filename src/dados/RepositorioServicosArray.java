@@ -19,17 +19,16 @@ public class RepositorioServicosArray implements IRepositorioServicos {
 
     @Override
     public void removerServico(String id) {
-
     }
 
     @Override
-    public Servico getServico(String id) {
+    public Servico getServicosConcluidos(String cpf) {
         return null;
     }
 
     @Override
-    public ArrayList<Servico> getListaServicosOfertados() {
-        return this.servicos;
+    public Servico getServicosEmAndamentos(String cpf) {
+        return null;
     }
 
 }

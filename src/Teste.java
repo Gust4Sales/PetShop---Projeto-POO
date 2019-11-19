@@ -12,7 +12,7 @@ public class Teste {
         Produto p1 = new Produto("Whiskas Sache", "Whiskas", 12.5, "15", 10);
         Produto p2 = new Produto("Shampoo AntiPulgas", "Jhonsons", 2.5, "09", 12);
         Produto p;
-        Cliente c = new Cliente("Joao", "702.504");
+        Cliente c = new Cliente("Joao", "702.504", "81994907920");
         PetCliente pet = new PetCliente("Hulk", "cachorro", "macho");
         Servico s = new ServicoCompleto("7:30", c, pet);
 

@@ -7,6 +7,6 @@ import java.util.ArrayList;
 public interface IRepositorioServicos {
     void adicionarServico(Servico servico);
     void removerServico(String id);
-    Servico getServico(String id);
-    ArrayList<Servico> getListaServicosOfertados();
+    Servico getServicosConcluidos(String cpf);
+    Servico getServicosEmAndamentos(String cpf);
 }

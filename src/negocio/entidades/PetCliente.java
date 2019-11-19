@@ -15,11 +15,11 @@ public class PetCliente {
         return this.nome;
     }
 
-    public String getespecie(){
+    public String getEspecie(){
         return this.especie;
     }
 
-    public String getsexo(){
+    public String getSexo(){
         return this.sexo;
     }
 //        -----------------------SETTERS----------------------
