@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="painel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.MenuInicialController">
+   <children>
+      <Label layoutX="208.0" layoutY="14.0" text="MENU INICIAL">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnVenda" layoutX="86.0" layoutY="62.0" mnemonicParsing="false" onAction="#VendaBtnHandler" text="Venda" />
+      <Button fx:id="btnAgenda" layoutX="86.0" layoutY="96.0" mnemonicParsing="false" onAction="#AgendaBtnHandler" text="Agendamento de Serviços" />
+      <Button fx:id="btnCadastro" layoutX="86.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastroBtnHandler" text="Cadastro" />
+      <Button fx:id="btnAlterar" layoutX="86.0" layoutY="162.0" mnemonicParsing="false" onAction="#alterarBtnHandler" text="Alterar " />
+      <Button fx:id="btnListar" layoutX="86.0" layoutY="197.0" mnemonicParsing="false" onAction="#ListarBtnHandler" text="Listar Estoque" />
+      <Button fx:id="btnSair" layoutX="86.0" layoutY="233.0" mnemonicParsing="false" onAction="#SairBtnHandler" text="Sair" />
+   </children>
+</Pane>

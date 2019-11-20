@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="painelV" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaVendaController">
+   <children>
+      <Label layoutX="264.0" layoutY="14.0" text="Venda">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnVendaPets" layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#vendaPetsHandler" text="Venda de Pets" />
+      <Button fx:id="btnVendaProdutos" layoutX="3.0" layoutY="94.0" mnemonicParsing="false" onAction="#vendaProdutosHandler" text="Venda de Produtos" />
+      <Button fx:id="btnVoltar" layoutX="14.0" layoutY="126.0" mnemonicParsing="false" onAction="#voltarHandler" text="Voltar" />
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+   </children>
+</Pane>
