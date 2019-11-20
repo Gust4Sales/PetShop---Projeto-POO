@@ -1,25 +1,29 @@
 package negocio.entidades;
 
 public class PetPetshop{
-    private String idade;
+    private String dataNascimento;
+    private String id;
     private double peso;
     private double tamanho;
     private double preco;
     private String especie;
     private String sexo;
 
-    public PetPetshop(String especie, String sexo, String idade, double peso, double tamanho, double preco){
+    public PetPetshop(String especie, String id, String sexo, String dataNascimento, double peso, double tamanho, double preco){
         this.especie = especie;
+        this.id = id;
         this.sexo = sexo;
-        this.idade = idade;
+        this.dataNascimento = dataNascimento;
         this.peso = peso;
         this.tamanho = tamanho;
         this.preco = preco;
     }
 
     //--------------------------GETTERS--------------------------
-    public String getIdade(){
-        return this.idade;
+
+
+    public String getDataNascimento() {
+        return this.dataNascimento;
     }
 
     public double getPeso(){
@@ -42,10 +46,15 @@ public class PetPetshop{
         return this.sexo;
     }
 
-//---------------------------SETTERS--------------------------
+    public String getId() {
+        return this.id;
+    }
 
-    public void setIdade(String idade){
-        this.idade = idade;
+    //---------------------------SETTERS--------------------------
+
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public void setPeso(double peso){
@@ -68,10 +77,14 @@ public class PetPetshop{
         this.sexo = sexo;
     }
 
-//-----------------------------------------------------------
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    //-----------------------------------------------------------
 
     @Override
     public String toString(){
-        return" idade:"+this.idade+"."+"Peso:"+this.peso+"."+"Tamanho:"+this.tamanho+"."+"Preco:"+this.preco+"."+"Especie:"+this.especie+"."+"Sexo"+this.sexo+".";
+        return" idade:"+this.dataNascimento+"."+"Peso:"+this.peso+"."+"Tamanho:"+this.tamanho+"."+"Preco:"+this.preco+"."+"Especie:"+this.especie+"."+"Sexo"+this.sexo+".";
     }
 }

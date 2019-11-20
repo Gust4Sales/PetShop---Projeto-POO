@@ -57,7 +57,7 @@ public class TelaAlterarController implements Initializable {
     }
 
     @FXML
-    private void VoltarBtnHandler(ActionEvent event) {
+    private void voltarBtnHandler(ActionEvent event) {
         Pane menuInicial;
         try {
             menuInicial = FXMLLoader.load(getClass().getResource("../views/MenuInicial.fxml"));

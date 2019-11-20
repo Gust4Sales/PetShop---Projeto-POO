@@ -1,20 +1,20 @@
 package dados;
 
 import dados.contratos.IRepositorioServicos;
-import negocio.contratos.Servico;
+import negocio.contratos.ServicoAbstrato;
 
 import java.util.ArrayList;
 
 public class RepositorioServicosArray implements IRepositorioServicos {
-    private ArrayList<Servico> servicos;
+    private ArrayList<ServicoAbstrato> servicoAbstratoes;
 
     public RepositorioServicosArray(){
-        this.servicos = new ArrayList<>();
+        this.servicoAbstratoes = new ArrayList<>();
     }
 
     @Override
-    public void adicionarServico(Servico servico){
-        this.servicos.add(servico);
+    public void adicionarServico(ServicoAbstrato servicoAbstrato){
+        this.servicoAbstratoes.add(servicoAbstrato);
     }
 
     @Override
@@ -22,12 +22,12 @@ public class RepositorioServicosArray implements IRepositorioServicos {
     }
 
     @Override
-    public Servico getServicosConcluidos(String cpf) {
+    public ServicoAbstrato getServicosConcluidos(String cpf) {
         return null;
     }
 
     @Override
-    public Servico getServicosEmAndamentos(String cpf) {
+    public ServicoAbstrato getServicosEmAndamentos(String cpf) {
         return null;
     }
 

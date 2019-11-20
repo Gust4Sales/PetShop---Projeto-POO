@@ -3,7 +3,7 @@ package negocio.contratos;
 import negocio.entidades.Cliente;
 import negocio.entidades.PetCliente;
 
-public abstract class Servico {
+public abstract class ServicoAbstrato {
     protected double preco;
     protected String horaAgendada, data;  // Criar classe Banho? Tosa?
     // Tempo associado ao serviço
@@ -11,7 +11,7 @@ public abstract class Servico {
     protected PetCliente pet;
     protected boolean concluido;
 
-    public Servico(String horaAgendada, Cliente cliente, PetCliente pet){
+    public ServicoAbstrato(String horaAgendada, Cliente cliente, PetCliente pet){
         this.horaAgendada = horaAgendada;
         this.cliente = cliente;
         this.pet = pet;

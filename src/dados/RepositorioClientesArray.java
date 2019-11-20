@@ -22,7 +22,7 @@ public class RepositorioClientesArray implements IRepositorioClientes {
     }
 
     @Override
-    public boolean isClienteCadastrado(String cpf) {
+    public boolean buscarCliente(String cpf) {
         return false;
     }
 

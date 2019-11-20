@@ -1,8 +1,9 @@
-package gui.controllers;/*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -10,7 +11,6 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import gui.controllers.MenuInicialController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,16 +23,18 @@ import javafx.scene.layout.Pane;
  *
  * @author tarci
  */
-public class TelaVendaController implements Initializable {
+public class TelaListarController implements Initializable {
 
     @FXML
-    private Button btnVendaPets;
+    private Button btnListarEstoquePets;
     @FXML
-    private Button btnVendaProdutos;
+    private Button btnListarEstoqueProdutos;
+    @FXML
+    private Button btnListarHistorico;
     @FXML
     private Button btnVoltar;
     @FXML
-    private Pane painel;
+    private Pane painelListar;
 
     /**
      * Initializes the controller class.
@@ -40,45 +42,30 @@ public class TelaVendaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void vendaProdutosHandler(ActionEvent event) {
-        Pane vendaPet;
-        System.out.println("p");
-        try {
-            vendaPet = FXMLLoader.load(getClass().getResource("../views/TesteHora.fxml"));
-            painel.getChildren().setAll(vendaPet);
-
-        } catch (IOException ex) {
-            System.out.println("qualquer coisa");
-
-        }
-
-    }
-    @FXML
-    private void vendaPetsHandler(ActionEvent event) {
-        Pane vendaPet;
-        try {
-            vendaPet = FXMLLoader.load(getClass().getResource("../views/TelaVendaPets.fxml"));
-            painel.getChildren().setAll(vendaPet);
-
-        } catch (IOException ex) {
-            System.out.println("qualquer coisa");
-
-        }
     }
 
     @FXML
-    private void voltarHandler(ActionEvent event) {
+    private void listarEstoquePetsBtnHandler(ActionEvent event) {
+    }
+
+    @FXML
+    private void listarEstoqueProdutosBtnHandler(ActionEvent event) {
+    }
+
+    @FXML
+    private void listarHistoricoBtnHandler(ActionEvent event) {
+    }
+
+    @FXML
+    private void voltarBtnHandler(ActionEvent event) {
         Pane menuInicial;
         try {
             menuInicial = FXMLLoader.load(getClass().getResource("../views/MenuInicial.fxml"));
-            painel.getChildren().setAll(menuInicial);
-           
+            painelListar.getChildren().setAll(menuInicial);
+
         } catch (IOException ex) {
             Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

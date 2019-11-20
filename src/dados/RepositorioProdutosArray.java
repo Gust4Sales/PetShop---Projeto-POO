@@ -43,4 +43,9 @@ public class RepositorioProdutosArray implements IRepositorioProdutos {
     public ArrayList<Produto> getListaProdutos(){
         return this.produtos;
     }
+
+    @Override
+    public boolean buscarProduto(String id) {
+        return false;
+    }
 }

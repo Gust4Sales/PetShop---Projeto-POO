@@ -9,5 +9,5 @@ public interface IRepositorioProdutos {
     void removerProduto(String id);
     Produto getProduto(String id);
     ArrayList<Produto> getListaProdutos();
-
+    boolean buscarProduto(String id);
 }

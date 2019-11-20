@@ -1,12 +1,10 @@
 package dados.contratos;
 
-import negocio.contratos.Servico;
-
-import java.util.ArrayList;
+import negocio.contratos.ServicoAbstrato;
 
 public interface IRepositorioServicos {
-    void adicionarServico(Servico servico);
+    void adicionarServico(ServicoAbstrato servicoAbstrato);
     void removerServico(String id);
-    Servico getServicosConcluidos(String cpf);
-    Servico getServicosEmAndamentos(String cpf);
+    ServicoAbstrato getServicosConcluidos(String cpf);
+    ServicoAbstrato getServicosEmAndamentos(String cpf);
 }

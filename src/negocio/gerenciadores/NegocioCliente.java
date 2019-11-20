@@ -10,9 +10,9 @@ public class NegocioCliente {
         this.repositorioClientes = repo;
     }
 
-    public void adicionarCliente(Cliente cliente){
+    public void cadastrarCliente(Cliente cliente){
         // CLiente ja cadastrado EXcpe (CPF)
-        boolean existe = repositorioClientes.isClienteCadastrado(cliente.getCpf());
+        boolean existe = repositorioClientes.buscarCliente(cliente.getCpf());
 
         if (existe){
             // excecao
@@ -22,7 +22,7 @@ public class NegocioCliente {
     }
 
     public void removerCliente(Cliente cliente){
-        boolean existe = repositorioClientes.isClienteCadastrado(cliente.getCpf());
+        boolean existe = repositorioClientes.buscarCliente(cliente.getCpf());
 
         if (existe){
             this.repositorioClientes.removerCliente(cliente.getCpf());
@@ -32,7 +32,7 @@ public class NegocioCliente {
     }
 
     public void alterarTelCliente(Cliente cliente, String telefone){
-        boolean existe = repositorioClientes.isClienteCadastrado(cliente.getCpf());
+        boolean existe = repositorioClientes.buscarCliente(cliente.getCpf());
 
         if (existe){
             cliente.setTelefone(telefone);
@@ -40,4 +40,6 @@ public class NegocioCliente {
             //excecao
         }
     }
+
+
 }

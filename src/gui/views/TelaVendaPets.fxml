@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="painelVendaPets" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaVendaPetsController">
+    <children>
+        <Label layoutX="213.0" layoutY="14.0" text="Venda de Pets">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+        <TextField fx:id="inputId" layoutX="201.0" layoutY="104.0" />
+        <Label layoutX="249.0" layoutY="79.0" text="Insira o Id" />
+        <TableView fx:id="tbView" layoutX="92.0" layoutY="175.0" prefHeight="63.0" prefWidth="394.0">
+            <columns>
+                <TableColumn fx:id="tbEspecie" prefWidth="56.0" text="Especie" />
+                <TableColumn fx:id="tbSexo" prefWidth="38.0" text="Sexo" />
+                <TableColumn fx:id="tbDataDeNascimento" prefWidth="123.0" text="Data de Nascimento" />
+                <TableColumn fx:id="tbPeso" prefWidth="54.0" text="Peso" />
+                <TableColumn fx:id="tbTamanho" prefWidth="68.0" text="Tamanho" />
+                <TableColumn fx:id="tbPreco" prefWidth="54.0" text="Preço" />
+            </columns>
+        </TableView>
+        <Button fx:id="btnConfirmar" disable="true" layoutX="231.0" layoutY="317.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
+        <Button fx:id="btnCancelar" layoutX="305.0" layoutY="317.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
+        <Button fx:id="btnBuscar" layoutX="361.0" layoutY="104.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
+    </children>
+</Pane>

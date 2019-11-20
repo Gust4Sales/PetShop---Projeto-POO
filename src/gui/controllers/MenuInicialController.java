@@ -43,7 +43,7 @@ public class MenuInicialController implements Initializable {
     }    
 
     @FXML
-    private void VendaBtnHandler(ActionEvent event) {
+    private void vendaBtnHandler(ActionEvent event) {
         Pane telaVenda;
         try {
             telaVenda = FXMLLoader.load(getClass().getResource("../views/TelaVenda.fxml"));
@@ -56,7 +56,7 @@ public class MenuInicialController implements Initializable {
     }
 
     @FXML
-    private void AgendaBtnHandler(ActionEvent event) {
+    private void agendaBtnHandler(ActionEvent event) {
          Pane telaAgendamento;
         try {
             telaAgendamento = FXMLLoader.load(getClass().getResource("../views/TelaAgendamento.fxml"));
@@ -92,20 +92,20 @@ public class MenuInicialController implements Initializable {
     }
 
     @FXML
-    private void ListarBtnHandler(ActionEvent event) {
-//        Pane telaListar;
-//        try {
-//            telaListar = FXMLLoader.load(getClass().getResource("telaListar.fxml"));
-//            painel.getChildren().setAll(telaListar);
-//
-//        } catch (IOException ex) {
-//            Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+    private void listarBtnHandler(ActionEvent event) {
+        Pane telaListar;
+        try {
+            telaListar = FXMLLoader.load(getClass().getResource("../views/TelaListar.fxml"));
+            painel.getChildren().setAll(telaListar);
+
+        } catch (IOException ex) {
+            Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
-    private void SairBtnHandler(ActionEvent event) {
-        
+    private void sairBtnHandler(ActionEvent event) {
+        System.exit(0);
     }
     
 }
