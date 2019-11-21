@@ -16,6 +16,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 /**
@@ -23,24 +27,30 @@ import javafx.scene.layout.Pane;
  *
  * @author tarci
  */
-public class TelaListarController implements Initializable {
+public class TelaServicoController implements Initializable {
 
     @FXML
-    private Button btnListarEstoquePets;
+    private Pane painelServico;
     @FXML
-    private Button btnListarEstoqueProdutos;
+    private Label lblServico;
     @FXML
-    private Button btnListarHistorico;
+    private TextField inputBuscarCpf;
     @FXML
-    private Button btnVoltar;
+    private Button btnBuscar;
     @FXML
-    private Pane painelListar;
+    private TableView<?> tbView;
     @FXML
-    private Button btnListaVendaPets;
+    private TableColumn<?, ?> nomePet;
     @FXML
-    private Button btnListaVendaProdutos;
+    private TableColumn<?, ?> nomeSexo;
     @FXML
-    private Button btnListaClientes;
+    private TableColumn<?, ?> nomeEspecie;
+    @FXML
+    private Label lblvalorTotal;
+    @FXML
+    private Button btnConfirmar;
+    @FXML
+    private Button btnCancelar;
 
     /**
      * Initializes the controller class.
@@ -51,39 +61,23 @@ public class TelaListarController implements Initializable {
     }
 
     @FXML
-    private void listarEstoquePetsBtnHandler(ActionEvent event) {
+    private void buscarBtnHandler(ActionEvent event) {
     }
 
     @FXML
-    private void listarEstoqueProdutosBtnHandler(ActionEvent event) {
+    private void confirmarBtnHandler(ActionEvent event) {
     }
 
     @FXML
-    private void listarHistoricoBtnHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void voltarBtnHandler(ActionEvent event) {
+    private void cancelarBtnHandler(ActionEvent event) {
         Pane menuInicial;
         try {
             menuInicial = FXMLLoader.load(getClass().getResource("../views/MenuInicial.fxml"));
-            painelListar.getChildren().setAll(menuInicial);
+            painelServico.getChildren().setAll(menuInicial);
 
         } catch (IOException ex) {
             Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @FXML
-    private void listaVendaPetsBtnHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void listaVendaProdutosBtnHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void listaClientesBtnHandler(ActionEvent event) {
     }
 
 }

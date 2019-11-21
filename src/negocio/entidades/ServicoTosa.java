@@ -2,13 +2,11 @@ package negocio.entidades;
 
 import negocio.contratos.ServicoAbstrato;
 
-public class ServicoAbstratoBanho extends ServicoAbstrato {
+public class ServicoTosa extends ServicoAbstrato {
 
-    public ServicoAbstratoBanho(String horaAgendada, Cliente cliente, PetCliente pet) {
+    public ServicoTosa(String horaAgendada, Cliente cliente, PetCliente pet) {
         super(horaAgendada, cliente, pet);
         this.preco = 25.50;
         this.concluido = false;
     }
-
-
 }

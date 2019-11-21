@@ -9,13 +9,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import negocio.PetShopFachada;
 
 /**
  *
  * @author tarci
  */
 public class ProjetoPoo extends Application {
-    
+    public static PetShopFachada petShop;
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("views/MenuInicial.fxml"));
@@ -30,6 +32,7 @@ public class ProjetoPoo extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        petShop = new PetShopFachada();
         launch(args);
     }
     

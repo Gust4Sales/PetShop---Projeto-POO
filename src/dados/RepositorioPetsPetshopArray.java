@@ -7,32 +7,30 @@ import java.util.ArrayList;
 
 public class RepositorioPetsPetshopArray implements IRepositorioPetsPetshop {
     private ArrayList<PetPetshop> petsDisponiveis;
-    private ArrayList<PetPetshop> petsIndisponiveis;
 
     public RepositorioPetsPetshopArray(){
-        this.petsDisponiveis = new ArrayList();
-        this.petsIndisponiveis = new ArrayList();
+        this.petsDisponiveis = new ArrayList<>();
     }
 
     @Override
-    public void adicionarPetDisponivel(PetPetshop pet) {
+    public void adicionarPet(PetPetshop pet) {
         this.petsDisponiveis.add(pet);
     }
 
     @Override
-    public void adicionarPetVendido(PetPetshop pet) {
-        this.petsIndisponiveis.add(pet);
-    }
-
-    @Override
-    public void removerPet(String id) {
-        PetPetshop pet = this.getPetDisponivel(id);
-
+    public void removerPet(PetPetshop pet) {
         this.petsDisponiveis.remove(pet);
     }
 
     @Override
-    public PetPetshop getPetDisponivel(String id) {
+    public void atualizarPet(PetPetshop pet){
+        int index = this.petsDisponiveis.indexOf(pet);
+        this.petsDisponiveis.set(index, pet);
+
+    }
+
+    @Override
+    public PetPetshop getPet(String id) {
         int index;
 
         for (PetPetshop p : this.petsDisponiveis) {
@@ -45,7 +43,13 @@ public class RepositorioPetsPetshopArray implements IRepositorioPetsPetshop {
     }
 
     @Override
-    public boolean buscarPetDisponivel(String id) {
+    public boolean verificarPet(String id) {
+        for (PetPetshop p : this.petsDisponiveis) {
+            if (id.equals(p.getId())) {
+                return true;
+            }
+        }
         return false;
     }
+
 }

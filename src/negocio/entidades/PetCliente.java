@@ -22,18 +22,6 @@ public class PetCliente {
     public String getSexo(){
         return this.sexo;
     }
-//        -----------------------SETTERS----------------------
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-
-    public void setEspecie(String especie){
-        this.especie = especie;
-    }
-
-    public void setSexo(String sexo){
-        this.sexo = sexo;
-    }
 
 //        -----------------------------------------------------
 @Override

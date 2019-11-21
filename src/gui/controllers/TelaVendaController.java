@@ -45,13 +45,13 @@ public class TelaVendaController implements Initializable {
     @FXML
     private void vendaProdutosHandler(ActionEvent event) {
         Pane vendaPet;
-        System.out.println("p");
+
         try {
-            vendaPet = FXMLLoader.load(getClass().getResource("../views/TesteHora.fxml"));
+            vendaPet = FXMLLoader.load(getClass().getResource("../views/TelaVendaProdutos.fxml"));
             painel.getChildren().setAll(vendaPet);
 
         } catch (IOException ex) {
-            System.out.println("qualquer coisa");
+            ex.printStackTrace();
 
         }
 

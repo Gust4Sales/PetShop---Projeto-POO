@@ -30,6 +30,8 @@ public class TelaCadastroController implements Initializable {
     @FXML
     private Button btnCadastraProd;
     @FXML
+    private Button btnCadastrarCliente;
+    @FXML
     private Button btnVoltar;
     @FXML
     private Pane painelCadastro;
@@ -44,10 +46,40 @@ public class TelaCadastroController implements Initializable {
 
     @FXML
     private void cadastraPetBtnHandler(ActionEvent event) {
+        Pane cadastroPet;
+        try {
+            cadastroPet = FXMLLoader.load(getClass().getResource("../views/TelaCadastroPets.fxml"));
+            painelCadastro.getChildren().setAll(cadastroPet);
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+
+        }
     }
 
     @FXML
     private void cadastraProdutoBtnHandler(ActionEvent event) {
+        Pane cadastroProduto;
+        try {
+            cadastroProduto = FXMLLoader.load(getClass().getResource("../views/TelaCadastroProduto.fxml"));
+            painelCadastro.getChildren().setAll(cadastroProduto);
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+
+        }
+    }
+    @FXML
+    private void cadastrarClienteBtnHandler(ActionEvent event){
+        Pane cadastroPet;
+        try {
+            cadastroPet = FXMLLoader.load(getClass().getResource("../views/TelaCadastroClientes.fxml"));
+            painelCadastro.getChildren().setAll(cadastroPet);
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+
+        }
     }
 
     @FXML

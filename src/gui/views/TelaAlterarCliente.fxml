@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="painelAlterar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaAlterarClientesController">
+    <children>
+        <Button fx:id="btnBuscar" layoutX="378.0" layoutY="65.0" mnemonicParsing="false" onAction="#buscarCpfBtnHandler" text="Buscar" />
+        <TextField fx:id="inputAlteraCpf" layoutX="226.0" layoutY="65.0" onAction="#alteraCpfInputHandler" />
+        <Label layoutX="206.0" text="Alterar Clientes">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+        <Label layoutX="265.0" layoutY="45.0" text="Insira seu cpf" />
+        <TextField fx:id="inputAlteraTell" layoutX="93.0" layoutY="150.0" onAction="#alteraTellInputHandler" />
+        <Separator layoutY="95.0" prefHeight="1.0" prefWidth="600.0" />
+        <Label fx:id="alterarInformacoes" layoutX="242.0" layoutY="98.0" text="Alterar Informações">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="6.0" layoutY="152.0" text="Telefone atual:" />
+        <Button fx:id="btnTrocarTell" layoutX="250.0" layoutY="150.0" mnemonicParsing="false" onAction="#trocarTellBtnHandler" text="Trocar" />
+        <TableView fx:id="tbView" layoutX="231.0" layoutY="204.0" prefHeight="135.0" prefWidth="366.0">
+            <columns>
+                <TableColumn fx:id="tbNome" prefWidth="155.0" text="Nome" />
+                <TableColumn fx:id="tbEspecie" prefWidth="120.0" text="Espécie" />
+                <TableColumn fx:id="tbSexo" prefWidth="90.0" text="Sexo" />
+            </columns>
+        </TableView>
+        <TextField fx:id="inputNomePet" layoutX="45.0" layoutY="218.0" onAction="#nomePetInputHandler" />
+        <TextField fx:id="inputEspecie" layoutX="45.0" layoutY="267.0" onAction="#EspecieInputHandler" />
+        <TextField fx:id="inputSexo" layoutX="44.0" layoutY="311.0" onAction="#SexoInputHandler" />
+        <Label layoutX="62.0" layoutY="200.0" text="Digite o nome do pet" />
+        <Label layoutX="58.0" layoutY="248.0" text="Digite a espécie do pet" />
+        <Label layoutX="65.0" layoutY="293.0" text="Digite o sexo do pet" />
+        <Label layoutX="264.0" layoutY="181.0" text="Pets Cadastrados (Selecione um para remover)">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnConfirmarPet" disable="true" layoutX="60.0" layoutY="342.0" mnemonicParsing="false" onAction="#cadastrarNovoPetBtnHandler" text="Cadastrar novo pet" />
+        <Button fx:id="btnRemover" disable="true" layoutX="429.0" layoutY="353.0" mnemonicParsing="false" onAction="#removerBtnHandler" text="Remover pet" />
+        <Button fx:id="btnVoltar" layoutX="523.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
+    </children>
+</Pane>

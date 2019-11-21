@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="painelAlterarPets" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaAlterarPetsController">
+    <children>
+        <Label layoutX="124.0" layoutY="14.0" text="Alterar informações dos Pets">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+        <Label layoutX="256.0" layoutY="52.0" text="Insira o id" />
+        <TextField fx:id="inputId" layoutX="208.0" layoutY="69.0" onAction="#idInputHandler" />
+        <Button fx:id="btnBuscar" layoutX="367.0" layoutY="68.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
+        <Separator layoutY="102.0" prefHeight="0.0" prefWidth="600.0" />
+        <Label layoutX="196.0" layoutY="105.0" text="Informações do Pet">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <TableView fx:id="tbView" layoutX="97.0" layoutY="135.0" prefHeight="56.0" prefWidth="389.0">
+            <columns>
+                <TableColumn fx:id="tbId" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="tbEspecie" prefWidth="75.0" text="Espécie" />
+                <TableColumn fx:id="tbSexo" prefWidth="49.0" text="Sexo" />
+                <TableColumn fx:id="tbPeso" prefWidth="49.0" text="Peso" />
+                <TableColumn fx:id="tbTamanho" prefWidth="73.0" text="Tamanho" />
+                <TableColumn fx:id="tbPreco" prefWidth="67.0" text="Preço" />
+            </columns>
+        </TableView>
+        <Label layoutX="78.0" layoutY="251.0" text="Inserir novo peso" />
+        <TextField fx:id="inputPeso" layoutX="50.0" layoutY="279.0" onAction="#pesoInputHandler" />
+        <TextField fx:id="inputTamanho" layoutX="226.0" layoutY="279.0" onAction="#tamanhoInputHandler" />
+        <TextField fx:id="inputPreco" layoutX="402.0" layoutY="279.0" onAction="#PrecoInputHandler" />
+        <Label layoutX="243.0" layoutY="251.0" text="Inserir novo tamanho" />
+        <Label layoutX="428.0" layoutY="251.0" text="Inserir novo preço" />
+        <Button fx:id="btnRemoverPet" disable="true" layoutX="240.0" layoutY="200.0" mnemonicParsing="false" onAction="#removerPetBtnHandler" text="Remover Pet" />
+        <Button fx:id="btnConfirmar" disable="true" layoutX="206.0" layoutY="349.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
+        <Button fx:id="btnCancelar" layoutX="325.0" layoutY="349.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
+    </children>
+</Pane>

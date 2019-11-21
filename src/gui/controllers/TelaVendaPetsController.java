@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import gui.ProjetoPoo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.Pane;
 import negocio.entidades.PetPetshop;
+import negocio.exececoes.PetPetshopInexistenteException;
+
+import javax.swing.*;
 
 /**
  * FXML Controller class
@@ -64,10 +68,26 @@ public class TelaVendaPetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
+        ProjetoPoo.petShop.cadastrarPetPetshop("Cachorro", "PE1", "fêmea", "05/11/2010", 2.5, 50, 200.10);
     }
 
     @FXML
-    private void confirmarBtnHandler(ActionEvent event) {
+    private void confirmarBtnHandler(ActionEvent event) throws PetPetshopInexistenteException {
+        try{
+            PetPetshop pet = ProjetoPoo.petShop.consultarPetPetshop(inputId.getText());
+
+            ProjetoPoo.petShop.venderPetPetshop(pet);
+
+            // Setando componentes graficos
+            JOptionPane.showMessageDialog(null, "Pet vendido com sucesso!");
+            btnConfirmar.setDisable(true);
+            tbView.setItems(null);
+
+        } catch (PetPetshopInexistenteException e){
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        inputId.setText("");
     }
 
     @FXML
@@ -78,22 +98,31 @@ public class TelaVendaPetsController implements Initializable {
             painelVendaPets.getChildren().setAll(venda);
 
         } catch (IOException ex) {
-            System.out.println("qualquer coisa");
+            System.out.println(ex);
 
         }
     }
 
     @FXML
-    private void buscarBtnHandler(ActionEvent event) {
+    private void buscarBtnHandler(ActionEvent event) throws PetPetshopInexistenteException{
         if (inputId.getText().length() > 0){
-            System.out.println(inputId.getText());
-            preencherTabela();
+            try{
+                PetPetshop pet = ProjetoPoo.petShop.consultarPetPetshop(inputId.getText());
+
+                preencherTabela(pet);
+            } catch (PetPetshopInexistenteException e){
+                JOptionPane.showMessageDialog(null,e.getMessage());
+                tbView.setItems(null);
+                btnConfirmar.setDisable(true);
+            }
+
+
         } else {
             tbView.setItems(null);
         }
     }
 
-    private void preencherTabela () {
+    private void preencherTabela(PetPetshop pet) {
         tbEspecie.setCellValueFactory(
                 new PropertyValueFactory<>("Especie"));
         tbDataDeNascimento.setCellValueFactory(
@@ -107,12 +136,12 @@ public class TelaVendaPetsController implements Initializable {
         tbPreco.setCellValueFactory(
                 new PropertyValueFactory<>("Preco"));
 
-        tbView.setItems(petInfo());
+        tbView.setItems(petInfo(pet));
+
+        btnConfirmar.setDisable(false);
     }
 
-    private ObservableList<PetPetshop> petInfo() {
-        // Classe pet apenas para teste
-        PetPetshop pet = new PetPetshop("cachorro", "44", "macho", "15/11", 15, 1.5, 200.00);
+    private ObservableList<PetPetshop> petInfo(PetPetshop pet) {
         return FXCollections.observableArrayList(pet);
     }
 

@@ -6,8 +6,9 @@ import java.util.ArrayList;
 
 public interface IRepositorioProdutos {
     void adicionarProduto(Produto produto);
-    void removerProduto(String id);
+    void removerProduto(Produto produto);
     Produto getProduto(String id);
+    void atualizarProduto(Produto produto);
     ArrayList<Produto> getListaProdutos();
-    boolean buscarProduto(String id);
+    boolean verificarProduto(String id);
 }

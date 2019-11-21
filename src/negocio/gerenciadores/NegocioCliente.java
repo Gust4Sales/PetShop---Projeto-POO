@@ -2,6 +2,7 @@ package negocio.gerenciadores;
 
 import dados.contratos.IRepositorioClientes;
 import negocio.entidades.Cliente;
+import negocio.entidades.PetCliente;
 
 public class NegocioCliente {
     private IRepositorioClientes repositorioClientes;
@@ -41,5 +42,15 @@ public class NegocioCliente {
         }
     }
 
+    public void adicionarPet(PetCliente pet){
 
+    }
+
+    public void removerPet(PetCliente pet){
+
+    }
+
+    public void alterarDivida(double divida){
+
+    }
 }

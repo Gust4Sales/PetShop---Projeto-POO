@@ -3,6 +3,10 @@ import negocio.entidades.Produto;
 import dados.contratos.IRepositorioProdutos;
 import dados.RepositorioProdutosArray;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Teste {
     // Classe apenas de teste. A classe para executar o UI(ProjetoPoo) esta na gui por enquanto.
     public static void main(String[] args){
@@ -19,9 +23,11 @@ public class Teste {
 
         p = repositorioProdutos.getProduto("09");
         System.out.println(p);
-        repositorioProdutos.removerProduto("09");
+        repositorioProdutos.removerProduto(p);
         p = repositorioProdutos.getProduto("09");
         System.out.println(p);
+
+
 
       //  s.setPreco(5.4);
        // System.out.printf("%f %s",s.getPreco(), s.getCliente().getNome() );

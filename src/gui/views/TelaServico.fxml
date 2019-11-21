@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:id="painelServico" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaServicoController">
+    <children>
+        <Label fx:id="lblServico" layoutX="252.0" text="Serviço ">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+        <TextField fx:id="inputBuscarCpf" layoutX="225.0" layoutY="67.0" />
+        <Label layoutX="148.0" layoutY="71.0" text="Insira seu cpf" />
+        <Button fx:id="btnBuscar" layoutX="380.0" layoutY="67.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
+        <TableView fx:id="tbView" layoutX="179.0" layoutY="129.0" prefHeight="184.0" prefWidth="241.0">
+            <columns>
+                <TableColumn fx:id="nomePet" prefWidth="101.0" text="Nome do pet" />
+                <TableColumn fx:id="nomeSexo" prefWidth="71.0" text="Sexo" />
+                <TableColumn fx:id="nomeEspecie" prefWidth="69.0" text="Espécie" />
+            </columns>
+        </TableView>
+        <Label fx:id="lblvalorTotal" layoutX="451.0" layoutY="192.0" text="Valor Total: R$ " />
+        <Button fx:id="btnConfirmar" disable="true" layoutX="439.0" layoutY="255.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
+        <Button fx:id="btnCancelar" layoutX="517.0" layoutY="255.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
+    </children>
+</Pane>

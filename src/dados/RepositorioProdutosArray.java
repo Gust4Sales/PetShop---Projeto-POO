@@ -17,13 +17,8 @@ public class RepositorioProdutosArray implements IRepositorioProdutos {
     }
 
     @Override
-    public void removerProduto(String id){
-        for (Produto p: this.produtos){
-            if (p.getId().equals(id)){
-                this.produtos.remove(p);
-                break;
-            }
-        }
+    public void removerProduto(Produto produto){
+        this.produtos.remove(produto);
     }
 
     @Override
@@ -40,12 +35,22 @@ public class RepositorioProdutosArray implements IRepositorioProdutos {
     }
 
     @Override
+    public void atualizarProduto(Produto produto){
+
+    }
+
+    @Override
     public ArrayList<Produto> getListaProdutos(){
         return this.produtos;
     }
 
     @Override
-    public boolean buscarProduto(String id) {
+    public boolean verificarProduto(String id) {
+        for (Produto p : this.produtos) {
+            if (id.equals(p.getId())) {
+                return true;
+            }
+        }
         return false;
     }
 }

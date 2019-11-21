@@ -85,6 +85,6 @@ public class PetPetshop{
 
     @Override
     public String toString(){
-        return" idade:"+this.dataNascimento+"."+"Peso:"+this.peso+"."+"Tamanho:"+this.tamanho+"."+"Preco:"+this.preco+"."+"Especie:"+this.especie+"."+"Sexo"+this.sexo+".";
+        return" data:"+this.dataNascimento+"."+"Peso:"+this.peso+"."+"Tamanho:"+this.tamanho+"."+"Preco:"+this.preco+"."+"Especie:"+this.especie+"."+"Sexo"+this.sexo+".";
     }
 }

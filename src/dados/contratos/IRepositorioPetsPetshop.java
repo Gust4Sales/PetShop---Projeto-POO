@@ -3,9 +3,9 @@ package dados.contratos;
 import negocio.entidades.PetPetshop;
 
 public interface IRepositorioPetsPetshop {
-    void adicionarPetDisponivel(PetPetshop pet);
-    void adicionarPetVendido(PetPetshop pet);
-    void removerPet(String id);
-    PetPetshop getPetDisponivel(String id);
-    boolean buscarPetDisponivel(String id);
+    void adicionarPet(PetPetshop pet);
+    void removerPet(PetPetshop pet);
+    boolean verificarPet(String id);
+    PetPetshop getPet(String id);
+    void atualizarPet(PetPetshop pet);
 }

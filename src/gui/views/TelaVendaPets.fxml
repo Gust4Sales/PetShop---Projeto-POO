@@ -16,18 +16,18 @@
         </Label>
         <TextField fx:id="inputId" layoutX="201.0" layoutY="104.0" />
         <Label layoutX="249.0" layoutY="79.0" text="Insira o Id" />
-        <TableView fx:id="tbView" layoutX="92.0" layoutY="175.0" prefHeight="63.0" prefWidth="394.0">
+        <TableView fx:id="tbView" layoutX="93.0" layoutY="169.0" prefHeight="66.0" prefWidth="421.0">
             <columns>
-                <TableColumn fx:id="tbEspecie" prefWidth="56.0" text="Especie" />
-                <TableColumn fx:id="tbSexo" prefWidth="38.0" text="Sexo" />
-                <TableColumn fx:id="tbDataDeNascimento" prefWidth="123.0" text="Data de Nascimento" />
-                <TableColumn fx:id="tbPeso" prefWidth="54.0" text="Peso" />
-                <TableColumn fx:id="tbTamanho" prefWidth="68.0" text="Tamanho" />
-                <TableColumn fx:id="tbPreco" prefWidth="54.0" text="Preço" />
+                <TableColumn fx:id="tbEspecie" prefWidth="63.0" text="Especie" />
+                <TableColumn fx:id="tbSexo" prefWidth="63.0" text="Sexo" />
+                <TableColumn fx:id="tbDataDeNascimento" prefWidth="124.0" text="Data de Nascimento" />
+                <TableColumn fx:id="tbPeso" prefWidth="47.0" text="Peso" />
+                <TableColumn fx:id="tbTamanho" prefWidth="64.0" text="Tamanho" />
+                <TableColumn fx:id="tbPreco" prefWidth="59.0" text="Preço" />
             </columns>
         </TableView>
-        <Button fx:id="btnConfirmar" disable="true" layoutX="231.0" layoutY="317.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
-        <Button fx:id="btnCancelar" layoutX="305.0" layoutY="317.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
+        <Button fx:id="btnConfirmar" disable="true" layoutX="223.0" layoutY="259.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
+        <Button fx:id="btnCancelar" layoutX="304.0" layoutY="259.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
         <Button fx:id="btnBuscar" layoutX="361.0" layoutY="104.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
     </children>
 </Pane>
