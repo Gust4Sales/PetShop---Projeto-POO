@@ -5,7 +5,6 @@
  */
 package gui.controllers;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -13,17 +12,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import gui.ProjetoPoo;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-
-import javax.swing.*;
+import negocio.excecoes.PetPetshopJaCadastradoException;
 
 /**
  * FXML Controller class
@@ -31,6 +28,7 @@ import javax.swing.*;
  * @author tarci
  */
 public class TelaCadastroPetsController implements Initializable {
+    ObservableList<String> choicesList = FXCollections.observableArrayList("Macho", "Fêmea");
 
     @FXML
     private Pane painelCadastroPets;
@@ -52,6 +50,8 @@ public class TelaCadastroPetsController implements Initializable {
     private Button btnCancelar;
     @FXML
     private DatePicker dataNascimento;
+    @FXML
+    private ChoiceBox choiceSexo;
 
     /**
      * Initializes the controller class.
@@ -59,6 +59,9 @@ public class TelaCadastroPetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        choiceSexo.setValue("");
+        choiceSexo.setItems(choicesList);
+
         LocalDate maxDate = LocalDate.now();
         dataNascimento.setDayCellFactory(d ->
                 new DateCell() {
@@ -87,17 +90,17 @@ public class TelaCadastroPetsController implements Initializable {
     @FXML
     private void confirmarBtnHandler(ActionEvent event) {
         // Try catch de ID invalido
-        verificaCampos();
+        verificarCampos();
 
     }
 
-    private void verificaCampos(){
+    private void verificarCampos(){
         String especie = inputEspecie.getText();
         String id = inputID.getText();
         String peso = inputPeso.getText();
         String preco = inputPreco.getText();
         String tamanho = inputTamanho.getText();
-        String sexo = inputSexo.getText();
+        String sexo = choiceSexo.getValue().toString();
         LocalDate data = dataNascimento.getValue();
         boolean validados;
 
@@ -106,24 +109,38 @@ public class TelaCadastroPetsController implements Initializable {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String dataNasc = data.format(formatter);
 
-            validados = validaDados();
+            validados = validarDados();
 
             if (validados){
                 preco = inputPreco.getText();
                 peso = inputPeso.getText();
                 tamanho = inputTamanho.getText();
+                try {
+                    ProjetoPoo.petShop.cadastrarPetPetshop(especie, id, sexo, dataNasc, Double.parseDouble(peso),
+                            Double.parseDouble(tamanho), Double.parseDouble(preco));
 
-                ProjetoPoo.petShop.cadastrarPetPetshop(especie, id, sexo, dataNasc, Double.parseDouble(peso),
-                        Double.parseDouble(tamanho), Double.parseDouble(preco));
-                // Id invalido throw erro
+                    Alert a = new Alert(Alert.AlertType.NONE);
+                    a.setAlertType(Alert.AlertType.INFORMATION);
+                    a.setContentText("Pet cadastrado com sucesso!");
+                    a.show();
+                    limparCampos();
+                } catch (PetPetshopJaCadastradoException e){
+                    Alert a = new Alert(Alert.AlertType.NONE);
+                    a.setAlertType(Alert.AlertType.ERROR);
+                    a.setContentText(e.getMessage());
+                    a.show();
+                }
+
             }
-
         } else {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("Preencha todos os campos!");
+            a.show();
         }
     }
 
-    private boolean validaDados(){
+    private boolean validarDados(){
         String preco = inputPreco.getText();
         String peso = inputPeso.getText();
         String tam = inputTamanho.getText();
@@ -166,12 +183,25 @@ public class TelaCadastroPetsController implements Initializable {
         }
 
         if (erro){
-            JOptionPane.showMessageDialog(null, "Campos inseridos incorretamente!");
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("Campos inseridos incorretamente!");
+            a.show();
             return false;
         } else {
             return true;
         }
 
+    }
+
+    private void limparCampos(){
+        inputPeso.setText("");
+        inputTamanho.setText("");
+        inputPreco.setText("");
+        inputEspecie.setText("");
+        inputID.setText("");
+        choiceSexo.setValue(null);
+        dataNascimento.setValue(null);
     }
 
     @FXML

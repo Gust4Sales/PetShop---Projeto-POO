@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector;
 import gui.ProjetoPoo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,9 +19,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import negocio.entidades.Produto;
-import negocio.exececoes.ProdutoInexistenteException;
-
-import javax.swing.*;
+import negocio.excecoes.ProdutoInexistenteException;
+import negocio.excecoes.QuantidadeExcedidaException;
 
 /**
  * FXML Controller class
@@ -77,12 +77,6 @@ public class TelaVendaProdutosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ProjetoPoo.petShop.cadastrarProduto("Jhonsons Shampoo", "JJ Jhonsons", 12.50, "P01",
-                20);
-
-        ProjetoPoo.petShop.cadastrarProduto("Racao Dog Rancho", "Du Rancho", 50.50, "P02",
-                10);
-
 
         tbProduto.setCellValueFactory(
                 new PropertyValueFactory<>("Nome"));
@@ -119,8 +113,10 @@ public class TelaVendaProdutosController implements Initializable {
                 tbView.getItems().add(ultimoProdutoPesquisado); // Insere produto na Tabela de visualizacao
                 btnVender.setDisable(false);
             } catch (ProdutoInexistenteException e){
-                JOptionPane.showMessageDialog(null,e.getMessage());
-
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setContentText(e.getMessage());
+                a.show();
                 btnVender.setDisable(true);
             }
         }
@@ -128,21 +124,55 @@ public class TelaVendaProdutosController implements Initializable {
 
     @FXML
     private void btnVenderHandler(ActionEvent event) {
-        int qnt = Integer.parseInt(inputqtd.getText());
-        // Quuantiidade inválida throw, pode ser texto, metodo(validaQtd)
+        boolean validado = validarQntd(inputqtd.getText());
 
-        this.valorT += ultimoProdutoPesquisado.getPreco() * qnt;
-        ultimoProdutoPesquisado.decrementarQntd(qnt);
+        if (validado) {
+            int qnt = Integer.parseInt(inputqtd.getText());
 
-        lblValorTotal.setText(String.format("Valor Total R$ %.2f", this.valorT));
-        tbView.getItems().removeAll(ultimoProdutoPesquisado);
+            try {
+                ProjetoPoo.petShop.venderProduto(inputId.getText(), qnt);
 
-        tbViewCarrinho.getItems().add((new Produto(ultimoProdutoPesquisado.getNome(), ultimoProdutoPesquisado.getMarca(),
-                ultimoProdutoPesquisado.getPreco()*qnt, ultimoProdutoPesquisado.getId(), qnt)));
+                this.valorT += ultimoProdutoPesquisado.getPreco() * qnt;
+            } catch (QuantidadeExcedidaException | ProdutoInexistenteException e) {
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setContentText(e.getMessage());
+                a.show();
+                return;
+            }
 
-        btnVender.setDisable(true);
-        inputId.setText("");
-        inputqtd.setText("1");
+            lblValorTotal.setText(String.format("Valor Total R$ %.2f", this.valorT));
+            tbView.getItems().removeAll(ultimoProdutoPesquisado);
+
+            tbViewCarrinho.getItems().add((new Produto(ultimoProdutoPesquisado.getNome(), ultimoProdutoPesquisado.getMarca(),
+                    ultimoProdutoPesquisado.getPreco() * qnt, ultimoProdutoPesquisado.getId(), qnt)));
+
+            btnVender.setDisable(true);
+            inputId.setText("");
+            inputqtd.setText("1");
+        }
+    }
+
+    private boolean validarQntd(String qntd){
+        try {
+            int qtd = Integer.parseInt(qntd);
+            if (qtd<=0){
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setContentText("Quantidade inválida");
+                a.show();
+
+                inputqtd.setText("1");
+                return false;
+            }
+            return true;
+        } catch (Exception e){
+            inputqtd.setText("");
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("Quantidade inválida");
+            return false;
+        }
     }
 
     @FXML
@@ -150,7 +180,11 @@ public class TelaVendaProdutosController implements Initializable {
         Pane venda;
         try {
             if (valorT>0){
-                JOptionPane.showMessageDialog(null, "Venda no valor total de R$"+valorT + " efetuada!");
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setAlertType(Alert.AlertType.INFORMATION);
+                a.setContentText("Venda no valor total de R$"+valorT + " efetuada");
+                a.show();
+
             }
             venda = FXMLLoader.load(getClass().getResource("../views/TelaVenda.fxml"));
             painelVendaProdutos.getChildren().setAll(venda);

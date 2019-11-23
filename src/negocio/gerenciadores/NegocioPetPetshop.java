@@ -4,7 +4,9 @@ import dados.contratos.IRepositorioPetsPetshop;
 import dados.contratos.IRepositorioVendidos;
 import negocio.contratos.VendaAbstrata;
 import negocio.entidades.PetPetshop;
-import negocio.exececoes.PetPetshopInexistenteException;
+import negocio.entidades.VendaPet;
+import negocio.excecoes.PetPetshopInexistenteException;
+import negocio.excecoes.PetPetshopJaCadastradoException;
 
 public class NegocioPetPetshop {
     private IRepositorioPetsPetshop repositorioPetsPetshop;
@@ -15,22 +17,27 @@ public class NegocioPetPetshop {
         this.repositorioPetsVendidos = repoVendidos;
     }
 
-    public void adicionarPetPetshop(PetPetshop pet){
+    public void adicionarPetPetshop(PetPetshop pet) throws PetPetshopJaCadastradoException {
         boolean existe = this.repositorioPetsPetshop.verificarPet(pet.getId());
 
         if(existe){
-            // trow pet existete
+            throw new PetPetshopJaCadastradoException(pet.getId());
         } else {
             this.repositorioPetsPetshop.adicionarPet(pet);
         }
     }
 
-    public void removerPetPetshop(PetPetshop pet) throws PetPetshopInexistenteException{
-        boolean existe = this.repositorioPetsPetshop.verificarPet(pet.getId());
+    public void removerPetPetshop(String id) throws PetPetshopInexistenteException{
+        boolean existe = this.repositorioPetsPetshop.verificarPet(id);
 
         if(existe){
+            PetPetshop pet = this.consultarPet(id);
+            VendaAbstrata petVendido = new VendaPet(pet);
+
             this.repositorioPetsPetshop.removerPet(pet);
+            this.registrarVenda(petVendido);
         } else {
+            PetPetshop pet = this.consultarPet(id);
             throw new PetPetshopInexistenteException(pet.getId());
         }
     }

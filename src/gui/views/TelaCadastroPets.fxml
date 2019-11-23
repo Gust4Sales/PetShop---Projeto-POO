@@ -24,7 +24,7 @@
         <Label layoutX="367.0" layoutY="147.0" text="Digite o peso (Kg)" />
         <Label layoutX="120.0" layoutY="147.0" text="Digite o tamanho (cm)" />
         <Label layoutX="378.0" layoutY="231.0" text="Digite o preço" />
-        <Button fx:id="btnConfirmar" disable="true" layoutX="204.0" layoutY="361.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
+        <Button fx:id="btnConfirmar" layoutX="204.0" layoutY="361.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
         <Button fx:id="btnCancelar" layoutX="326.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
       <DatePicker fx:id="dataNascimento" layoutX="95.0" layoutY="256.0" onAction="#dataNascimentoHandler" />
       <ChoiceBox fx:id="choiceSexo" layoutX="341.0" layoutY="99.0" prefWidth="150.0" />

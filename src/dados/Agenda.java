@@ -12,10 +12,12 @@ public class Agenda implements IRepositorioServicos {
         this.agenda = new ArrayList<>();
     }
 
+    @Override
     public void adicionarServico(ServicoAbstrato servico){
         this.agenda.add(servico);
     }
 
+    @Override
     public void removerServico(ServicoAbstrato servico){
         this.agenda.remove(servico);
     }
@@ -37,5 +39,16 @@ public class Agenda implements IRepositorioServicos {
         return servicosDoCliente;
     }
 
+    @Override
+    public ArrayList<ServicoAbstrato> consultarServicosNaoConcluidos(String data){
+        ArrayList<ServicoAbstrato> servicosNaoConcluidos = new ArrayList<>();
+
+        for (ServicoAbstrato s: this.agenda){
+            if(s.isConcluido() && s.getData().equals(data)){
+                servicosNaoConcluidos.add(s);
+            }
+        }
+        return servicosNaoConcluidos;
+    }
 
 }

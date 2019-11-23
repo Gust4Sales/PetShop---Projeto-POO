@@ -29,7 +29,7 @@
             </columns>
         </TableView>
         <Button fx:id="btnCancelar" layoutX="270.0" layoutY="367.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
-      <Label fx:id="lblValorTotal" layoutX="363.0" layoutY="166.0" prefHeight="25.0" prefWidth="158.0" text="Valor Total: R$  0,00">
+      <Label fx:id="lblValorTotal" layoutX="363.0" layoutY="166.0" prefHeight="25.0" prefWidth="207.0" text="Valor Total: R$  0,00">
          <font>
             <Font size="16.0" />
          </font></Label>

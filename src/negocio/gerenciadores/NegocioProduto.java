@@ -4,7 +4,10 @@ import dados.RepositorioProdutosVendidosArray;
 import dados.contratos.IRepositorioProdutos;
 import dados.contratos.IRepositorioVendidos;
 import negocio.entidades.Produto;
-import negocio.exececoes.ProdutoInexistenteException;
+import negocio.excecoes.PetPetshopJaCadastradoException;
+import negocio.excecoes.ProdutoInexistenteException;
+import negocio.excecoes.ProdutoJaCadastradoException;
+import negocio.excecoes.QuantidadeExcedidaException;
 
 public class NegocioProduto {
     private IRepositorioProdutos repositorioProdutos;
@@ -15,11 +18,11 @@ public class NegocioProduto {
         this.repositorioProdVendidos = repositorioProdVendidos;
     }
 
-    public void adicionarProduto(Produto produto){
+    public void adicionarProduto(Produto produto) throws ProdutoJaCadastradoException{
         boolean existe = this.repositorioProdutos.verificarProduto(produto.getId());
 
         if(existe){
-            //trow erro
+            throw new ProdutoJaCadastradoException(produto.getId());
         } else {
             this.repositorioProdutos.adicionarProduto(produto);
         }
@@ -35,6 +38,17 @@ public class NegocioProduto {
             //troonom erro
         }
     }
+
+    public void decrementarQntd(String id, int qntd) throws QuantidadeExcedidaException, ProdutoInexistenteException {
+        Produto produto = this.consultarProduto(id);
+        // Gera historico
+        if (produto.getQuantidade() < qntd){
+            throw new QuantidadeExcedidaException(qntd);
+        } else {
+            produto.setQuantidade(produto.getQuantidade()-qntd);
+        }
+    }
+
 
     public Produto consultarProduto(String id) throws ProdutoInexistenteException {
         boolean existe = this.repositorioProdutos.verificarProduto(id);

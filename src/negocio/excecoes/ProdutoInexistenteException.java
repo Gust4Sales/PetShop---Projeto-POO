@@ -1,6 +1,4 @@
-package negocio.exececoes;
-
-import negocio.entidades.Produto;
+package negocio.excecoes;
 
 public class ProdutoInexistenteException extends Exception {
     private String id;
@@ -11,6 +9,6 @@ public class ProdutoInexistenteException extends Exception {
     }
 
     public String getId(){
-        return id;
+        return this.id;
     }
 }

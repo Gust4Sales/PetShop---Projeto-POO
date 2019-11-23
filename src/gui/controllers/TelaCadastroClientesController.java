@@ -28,6 +28,7 @@ import javafx.scene.layout.Pane;
  */
 public class TelaCadastroClientesController implements Initializable {
     ObservableList<String> choicesList = FXCollections.observableArrayList("Macho", "Fêmea");
+
     @FXML
     private Pane painelCadastroClientes;
     @FXML

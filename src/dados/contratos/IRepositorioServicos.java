@@ -9,5 +9,6 @@ public interface IRepositorioServicos {
     void removerServico(ServicoAbstrato servico);
     void atualizarServico(ServicoAbstrato servico);
     ArrayList<ServicoAbstrato> consultarServicosCliente(String cpf);
+    ArrayList<ServicoAbstrato> consultarServicosNaoConcluidos(String data);
 
 }

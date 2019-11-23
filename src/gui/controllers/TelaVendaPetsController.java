@@ -5,7 +5,6 @@
  */
 package gui.controllers;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,17 +16,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.Pane;
 import negocio.entidades.PetPetshop;
-import negocio.exececoes.PetPetshopInexistenteException;
-
-import javax.swing.*;
+import negocio.excecoes.PetPetshopInexistenteException;
+import negocio.excecoes.PetPetshopJaCadastradoException;
 
 /**
  * FXML Controller class
@@ -68,24 +62,27 @@ public class TelaVendaPetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
-        ProjetoPoo.petShop.cadastrarPetPetshop("Cachorro", "PE1", "fêmea", "05/11/2010", 2.5, 50, 200.10);
     }
 
     @FXML
     private void confirmarBtnHandler(ActionEvent event) throws PetPetshopInexistenteException {
         try{
-            PetPetshop pet = ProjetoPoo.petShop.consultarPetPetshop(inputId.getText());
-
-            ProjetoPoo.petShop.venderPetPetshop(pet);
+            ProjetoPoo.petShop.venderPetPetshop(inputId.getText());
 
             // Setando componentes graficos
-            JOptionPane.showMessageDialog(null, "Pet vendido com sucesso!");
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.INFORMATION);
+            a.setContentText("Pet vendido com sucesso!");
+            a.show();
+
             btnConfirmar.setDisable(true);
             tbView.setItems(null);
 
         } catch (PetPetshopInexistenteException e){
-            JOptionPane.showMessageDialog(null,e.getMessage());
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText(e.getMessage());
+            a.show();
         }
         inputId.setText("");
     }
@@ -111,7 +108,11 @@ public class TelaVendaPetsController implements Initializable {
 
                 preencherTabela(pet);
             } catch (PetPetshopInexistenteException e){
-                JOptionPane.showMessageDialog(null,e.getMessage());
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setContentText(e.getMessage());
+                a.show();
+
                 tbView.setItems(null);
                 btnConfirmar.setDisable(true);
             }

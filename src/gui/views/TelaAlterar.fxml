@@ -12,11 +12,12 @@
       <Button fx:id="btnAlterarCliente" layoutX="51.0" layoutY="86.0" mnemonicParsing="false" onAction="#alterarClienteBtnHandler" text="Alterar Cliente" />
       <Button fx:id="btnAlterarProduto" layoutX="50.0" layoutY="119.0" mnemonicParsing="false" onAction="#alterarProdutoBtnHandler" text="Alterar Produto" />
       <Button fx:id="btnPetPetshop" layoutX="50.0" layoutY="152.0" mnemonicParsing="false" onAction="#alterarPetPetshopBtnHandler" text="Alterar Pet do Petshop" />
-      <Button fx:id="btnVoltar" layoutX="51.0" layoutY="185.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
+      <Button fx:id="btnVoltar" layoutX="51.0" layoutY="213.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
       <Label layoutX="144.0" layoutY="14.0" text="Alteração de Informações">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
+      <Button fx:id="btnAlterarServico" layoutX="51.0" layoutY="183.0" mnemonicParsing="false" onAction="#alterarServicoBtnHandler" text="Alterar Serviço" />
    </children>
 </Pane>

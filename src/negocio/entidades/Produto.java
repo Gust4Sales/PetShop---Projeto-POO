@@ -50,14 +50,11 @@ public class Produto {
         this.id = id;
     }
 
+    public void setQuantidade(int quantidade){
+        this.quantidade = quantidade;
+    }
 // ---------
-    public void decrementarQntd(int quantidade){
-        this.quantidade -= quantidade;
-    }
 
-    public void incrementarQntd(int quantidade){
-        this.quantidade += quantidade;
-    }
 
     @Override
     public String toString(){

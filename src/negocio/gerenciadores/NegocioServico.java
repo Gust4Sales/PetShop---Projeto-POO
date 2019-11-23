@@ -24,4 +24,8 @@ public class NegocioServico {
         return this.agenda.consultarServicosCliente(cpf);
     }
 
+    public ArrayList<ServicoAbstrato> consultarServicosAgendados(String data){
+        return this.agenda.consultarServicosNaoConcluidos(data);
+    }
+
 }

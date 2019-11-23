@@ -36,8 +36,6 @@ public class TelaAgendamentoController implements Initializable {
     private Button btnVoltar;
     @FXML
     private Pane painelAgendamento;
-    @FXML
-    private ListView<?> listaAgenda;
 
     /**
      * Initializes the controller class.
@@ -45,6 +43,7 @@ public class TelaAgendamentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //Nao pode selecionar ontem
     }
 
     @FXML
@@ -82,10 +81,6 @@ public class TelaAgendamentoController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    @FXML
-    private void carregarLista(ActionEvent event) {
-
     }
 
     @FXML

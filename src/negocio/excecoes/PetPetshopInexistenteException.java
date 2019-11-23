@@ -1,4 +1,4 @@
-package negocio.exececoes;
+package negocio.excecoes;
 
 public class PetPetshopInexistenteException extends Exception {
     private String id;
@@ -9,6 +9,6 @@ public class PetPetshopInexistenteException extends Exception {
     }
 
     public String getId(){
-        return id;
+        return this.id;
     }
 }

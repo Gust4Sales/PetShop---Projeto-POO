@@ -28,6 +28,8 @@ public class TelaAlterarController implements Initializable {
     @FXML
     private Pane painelAlterar;
     @FXML
+    private Button btnAlterarServico;
+    @FXML
     private Button btnAlterarCliente;
     @FXML
     private Button btnAlterarProduto;
@@ -94,5 +96,15 @@ public class TelaAlterarController implements Initializable {
             Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public void alterarServicoBtnHandler(ActionEvent actionEvent) {
+        Pane alterarServico;
+        try {
+            alterarServico = FXMLLoader.load(getClass().getResource("../views/TelaAlterarServico.fxml"));
+            painelAlterar.getChildren().setAll(alterarServico);
+
+        } catch (IOException ex) {
+            Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

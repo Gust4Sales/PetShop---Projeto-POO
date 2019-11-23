@@ -22,7 +22,7 @@
         <Label layoutX="119.0" layoutY="145.0" text="Digite a marca" />
         <Label layoutX="362.0" layoutY="145.0" text="Digite o preço" />
         <Label layoutX="345.0" layoutY="69.0" text="Digite a quantidade" />
-        <Button fx:id="btnConfirmar" disable="true" layoutX="197.0" layoutY="300.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
+        <Button fx:id="btnConfirmar" layoutX="197.0" layoutY="300.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
         <Button fx:id="btnCancelar" layoutX="299.0" layoutY="299.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
       <Label layoutX="259.0" layoutY="218.0" text="Insira o Id" />
       <TextField fx:id="inputID" layoutX="211.0" layoutY="246.0" />
