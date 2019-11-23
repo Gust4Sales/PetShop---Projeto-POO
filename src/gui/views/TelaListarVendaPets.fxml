@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="painelHistoricoPets" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaListarVendaPetsController">
+    <children>
+        <Label layoutX="137.0" layoutY="14.0" text="Histórico de venda de Pets">
+            <font>
+                <Font name="System Bold" size="26.0" />
+            </font>
+        </Label>
+        <DatePicker fx:id="dateSalePets" layoutX="201.0" layoutY="60.0" onAction="#salePetsDateHandler" promptText="Buscar histórico por data" />
+        <Button fx:id="btnBuscar" layoutX="387.0" layoutY="60.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
+        <Label layoutX="228.0" layoutY="89.0" text="Lista dos Pets">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <TableView fx:id="tbView" layoutX="22.0" layoutY="119.0" prefHeight="200.0" prefWidth="560.0">
+            <columns>
+                <TableColumn fx:id="tbId" prefWidth="50.0" text="Id" />
+                <TableColumn fx:id="tbEspecie" prefWidth="70.0" text="Espécie" />
+                <TableColumn fx:id="tbSexo" prefWidth="66.0" text="Sexo" />
+                <TableColumn fx:id="tbDataDeNasc" prefWidth="92.0" text="Data de Nasc" />
+                <TableColumn fx:id="tbPeso" prefWidth="68.0" text="Peso" />
+                <TableColumn fx:id="tbTam" prefWidth="68.0" text="Tamanho " />
+                <TableColumn fx:id="tbPreco" prefWidth="50.0" text="Preço" />
+                <TableColumn fx:id="tbDataVenda" prefWidth="95.0" text="Data da venda" />
+            </columns>
+        </TableView>
+        <Button fx:id="btnVoltar" layoutX="274.0" layoutY="333.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
+    </children>
+</Pane>

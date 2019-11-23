@@ -8,15 +8,11 @@ package gui.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -25,28 +21,33 @@ import javafx.scene.layout.Pane;
 /**
  * FXML Controller class
  *
- * @author tarci
+ * @author 55819
  */
-public class TelaServicoController implements Initializable {
-
+public class TelaAlterarProdutosController implements Initializable {
     @FXML
-    private Pane painelServico;
+    private Pane painelAlterarProdutos;
     @FXML
-    private Label lblServico;
-    @FXML
-    private TextField inputBuscarCpf;
+    private TextField inputId;
     @FXML
     private Button btnBuscar;
     @FXML
     private TableView<?> tbView;
     @FXML
-    private TableColumn<?, ?> nomePet;
+    private TableColumn<?, ?> tbId;
     @FXML
-    private TableColumn<?, ?> nomeSexo;
+    private TableColumn<?, ?> tbNome;
     @FXML
-    private TableColumn<?, ?> nomeEspecie;
+    private TableColumn<?, ?> tbMarca;
     @FXML
-    private Label lblvalorTotal;
+    private TableColumn<?, ?> tbQntd;
+    @FXML
+    private TableColumn<?, ?> tbPreco;
+    @FXML
+    private Button btnRemoverProduto;
+    @FXML
+    private TextField inputQntd;
+    @FXML
+    private TextField inputPreco;
     @FXML
     private Button btnConfirmar;
     @FXML
@@ -61,7 +62,23 @@ public class TelaServicoController implements Initializable {
     }
 
     @FXML
+    private void idInputHandler(ActionEvent event) {
+    }
+
+    @FXML
     private void buscarBtnHandler(ActionEvent event) {
+    }
+
+    @FXML
+    private void removerProdutoBtnHandler(ActionEvent event) {
+    }
+
+    @FXML
+    private void qntdInputHandler(ActionEvent event) {
+    }
+
+    @FXML
+    private void precoInputHandler(ActionEvent event) {
     }
 
     @FXML
@@ -70,13 +87,14 @@ public class TelaServicoController implements Initializable {
 
     @FXML
     private void cancelarBtnHandler(ActionEvent event) {
-        Pane menuInicial;
+        Pane alterar;
         try {
-            menuInicial = FXMLLoader.load(getClass().getResource("../views/TelaAgendamento.fxml"));
-            painelServico.getChildren().setAll(menuInicial);
+            alterar = FXMLLoader.load(getClass().getResource("../views/TelaAlterar.fxml"));
+            painelAlterarProdutos.getChildren().setAll(alterar);
 
         } catch (IOException ex) {
-            Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
+
         }
     }
 

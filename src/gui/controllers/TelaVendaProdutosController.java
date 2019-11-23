@@ -10,16 +10,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import gui.ProjetoPoo;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import negocio.entidades.Produto;
@@ -33,17 +28,21 @@ import javax.swing.*;
  * @author tarci
  */
 public class TelaVendaProdutosController implements Initializable {
+    private double valorT;
+    private Produto ultimoProdutoPesquisado;
 
     @FXML
     private Pane painelVendaProdutos;
     @FXML
     private TextField inputId;
     @FXML
+    private Label lblValorTotal;
+    @FXML
     private TextField inputqtd;
     @FXML
     private Button btnBuscar;
     @FXML
-    private Button btnAdicionarAoCarrinho;
+    private Button btnVender;
     @FXML
     private TableView<Produto> tbViewCarrinho;
     @FXML
@@ -65,18 +64,44 @@ public class TelaVendaProdutosController implements Initializable {
     @FXML
     private TableColumn<?, ?> tbPreco;
     @FXML
-    private Button btnConfirmar;
-    @FXML
-    private Button btnCancelar;
+    private Button btnVoltar;
+
 
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        ProjetoPoo.petShop.cadastrarProduto("Jhonsons Shampoo", "JJ Jhonsons", 12.50, "P01", 20);
+
+    public TelaVendaProdutosController(){
+        this.valorT = 0.0;
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        ProjetoPoo.petShop.cadastrarProduto("Jhonsons Shampoo", "JJ Jhonsons", 12.50, "P01",
+                20);
+
+        ProjetoPoo.petShop.cadastrarProduto("Racao Dog Rancho", "Du Rancho", 50.50, "P02",
+                10);
+
+
+        tbProduto.setCellValueFactory(
+                new PropertyValueFactory<>("Nome"));
+        tbMarca.setCellValueFactory(
+                new PropertyValueFactory<>("Marca"));
+        tbQtd.setCellValueFactory(
+                new PropertyValueFactory<>("Quantidade"));
+        tbPreco.setCellValueFactory(
+                new PropertyValueFactory<>("Preco"));
+
+        tbProdutoCarrinho.setCellValueFactory(
+                new PropertyValueFactory<>("Nome"));
+        tbMarcaCarrinho.setCellValueFactory(
+                new PropertyValueFactory<>("Marca"));
+        tbQtdCarrinho.setCellValueFactory(
+                new PropertyValueFactory<>("Quantidade"));
+        tbPrecoCarrinho.setCellValueFactory(
+                new PropertyValueFactory<>("Preco"));
+    }
     @FXML
     private void idInputHandler(ActionEvent event) {
     }
@@ -87,54 +112,46 @@ public class TelaVendaProdutosController implements Initializable {
 
     @FXML
     private void buscarBtnHandler(ActionEvent event) {
+        tbView.getItems().removeAll(ultimoProdutoPesquisado);
         if (inputId.getText().length() > 0){
             try{
-                Produto produto = ProjetoPoo.petShop.consultarProduto(inputId.getText());
-
-                btnAdicionarAoCarrinho.setDisable(false);
+                ultimoProdutoPesquisado = ProjetoPoo.petShop.consultarProduto(inputId.getText());
+                tbView.getItems().add(ultimoProdutoPesquisado); // Insere produto na Tabela de visualizacao
+                btnVender.setDisable(false);
             } catch (ProdutoInexistenteException e){
                 JOptionPane.showMessageDialog(null,e.getMessage());
-                inputId.setText("");
+
+                btnVender.setDisable(true);
             }
-
         }
-
-//            tbProduto.setCellValueFactory(
-//                    new PropertyValueFactory<>("Nome"));
-//            tbMarca.setCellValueFactory(
-//                    new PropertyValueFactory<>("Marca"));
-//            tbQtd.setCellValueFactory(
-//                    new PropertyValueFactory<>("Quantidade"));
-//            tbPreco.setCellValueFactory(
-//                    new PropertyValueFactory<>("Preco"));
-//
-//
-//            tbView.setItems(pInfo());
-    }
-    private ObservableList<Produto> pInfo() {
-        // Classe pet apenas para teste
-        Produto p = new Produto("Jhonsons Shampoo", "JJhonsons", 12.5, "P25", 15);
-        Produto a = new Produto("Jhonsons Shampoo", "JJhonsons", 12.5, "P25", 15);
-        Produto d = new Produto("Jhonsons Shampoo", "JJhonsons", 12.5, "P25", 15);
-        Produto as = new Produto("Jhonsons Shampoo", "JJhonsons", 12.5, "P25", 15);
-        Produto s = new Produto("Jhonsons Shampoo", "JJhonsons", 12.5, "P25", 15);
-        Produto o = new Produto("Jhonsons Shampoo", "JJhonsons", 12.5, "P25", 15);
-
-        return FXCollections.observableArrayList(p, a, d, as, s, o, p, p,p, p);
     }
 
     @FXML
-    private void adicionarCarrinhoBtnHandler(ActionEvent event) {
+    private void btnVenderHandler(ActionEvent event) {
+        int qnt = Integer.parseInt(inputqtd.getText());
+        // Quuantiidade inválida throw, pode ser texto, metodo(validaQtd)
+
+        this.valorT += ultimoProdutoPesquisado.getPreco() * qnt;
+        ultimoProdutoPesquisado.decrementarQntd(qnt);
+
+        lblValorTotal.setText(String.format("Valor Total R$ %.2f", this.valorT));
+        tbView.getItems().removeAll(ultimoProdutoPesquisado);
+
+        tbViewCarrinho.getItems().add((new Produto(ultimoProdutoPesquisado.getNome(), ultimoProdutoPesquisado.getMarca(),
+                ultimoProdutoPesquisado.getPreco()*qnt, ultimoProdutoPesquisado.getId(), qnt)));
+
+        btnVender.setDisable(true);
+        inputId.setText("");
+        inputqtd.setText("1");
     }
 
     @FXML
-    private void confirmarBtnHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void cancelarBtnHandler(ActionEvent event) {
+    private void voltarBtnHandler(ActionEvent event) {
         Pane venda;
         try {
+            if (valorT>0){
+                JOptionPane.showMessageDialog(null, "Venda no valor total de R$"+valorT + " efetuada!");
+            }
             venda = FXMLLoader.load(getClass().getResource("../views/TelaVenda.fxml"));
             painelVendaProdutos.getChildren().setAll(venda);
 

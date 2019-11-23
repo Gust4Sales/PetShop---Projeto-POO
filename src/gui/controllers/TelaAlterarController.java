@@ -60,7 +60,14 @@ public class TelaAlterarController implements Initializable {
 
     @FXML
     private void alterarProdutoBtnHandler(ActionEvent event) {
+        Pane alterarPets;
+        try {
+            alterarPets = FXMLLoader.load(getClass().getResource("../views/TelaAlterarProdutos.fxml"));
+            painelAlterar.getChildren().setAll(alterarPets);
 
+        } catch (IOException ex) {
+            Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

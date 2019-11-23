@@ -7,19 +7,18 @@ package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 /**
@@ -29,10 +28,13 @@ import javafx.scene.layout.Pane;
  */
 public class TelaAlterarClientesController implements Initializable {
 
+    ObservableList<String> choicesList = FXCollections.observableArrayList("Macho", "Fêmea");
     @FXML
     private TableView<?> tbView;
     @FXML
     private Pane painelAlterar;
+    @FXML
+    private ChoiceBox choiceSexo;
     @FXML
     private TableColumn<?, ?> tbNome;
     @FXML
@@ -68,6 +70,7 @@ public class TelaAlterarClientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        choiceSexo.setItems(choicesList);
     }
 
     @FXML

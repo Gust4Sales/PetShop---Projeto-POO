@@ -16,41 +16,43 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
  *
- * @author tarci
+ * @author 55819
  */
-public class TelaServicoController implements Initializable {
-
+public class TelaListarVendaPetsController implements Initializable {
     @FXML
-    private Pane painelServico;
+    private Pane painelHistoricoPets;
     @FXML
-    private Label lblServico;
-    @FXML
-    private TextField inputBuscarCpf;
+    private DatePicker dateSalePets;
     @FXML
     private Button btnBuscar;
     @FXML
     private TableView<?> tbView;
     @FXML
-    private TableColumn<?, ?> nomePet;
+    private TableColumn<?, ?> tbId;
     @FXML
-    private TableColumn<?, ?> nomeSexo;
+    private TableColumn<?, ?> tbEspecie;
     @FXML
-    private TableColumn<?, ?> nomeEspecie;
+    private TableColumn<?, ?> tbSexo;
     @FXML
-    private Label lblvalorTotal;
+    private TableColumn<?, ?> tbDataDeNasc;
     @FXML
-    private Button btnConfirmar;
+    private TableColumn<?, ?> tbPeso;
     @FXML
-    private Button btnCancelar;
+    private TableColumn<?, ?> tbTam;
+    @FXML
+    private TableColumn<?, ?> tbPreco;
+    @FXML
+    private TableColumn<?, ?> tbDataVenda;
+    @FXML
+    private Button btnVoltar;
 
     /**
      * Initializes the controller class.
@@ -61,23 +63,24 @@ public class TelaServicoController implements Initializable {
     }
 
     @FXML
+    private void salePetsDateHandler(ActionEvent event) {
+    }
+
+    @FXML
     private void buscarBtnHandler(ActionEvent event) {
     }
 
     @FXML
-    private void confirmarBtnHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void cancelarBtnHandler(ActionEvent event) {
-        Pane menuInicial;
+    private void voltarBtnHandler(ActionEvent event) {
+        Pane historicoPets;
         try {
-            menuInicial = FXMLLoader.load(getClass().getResource("../views/TelaAgendamento.fxml"));
-            painelServico.getChildren().setAll(menuInicial);
+            historicoPets = FXMLLoader.load(getClass().getResource("../views/TelaListar.fxml"));
+            painelHistoricoPets.getChildren().setAll(historicoPets);
 
         } catch (IOException ex) {
             Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
+
+

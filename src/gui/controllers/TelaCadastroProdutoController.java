@@ -24,6 +24,8 @@ import javafx.scene.layout.Pane;
 public class TelaCadastroProdutoController implements Initializable {
 
     @FXML
+    private TextField inputID;
+    @FXML
     private Pane painelCadastroProdutos;
     @FXML
     private TextField inputDigiteNome;

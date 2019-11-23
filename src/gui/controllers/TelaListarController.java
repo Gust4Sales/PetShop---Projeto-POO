@@ -52,14 +52,42 @@ public class TelaListarController implements Initializable {
 
     @FXML
     private void listarEstoquePetsBtnHandler(ActionEvent event) {
+
+        Pane listarPets;
+
+        try {
+            listarPets = FXMLLoader.load(getClass().getResource("../views/TelaListarPets.fxml"));
+            painelListar.getChildren().setAll(listarPets);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     @FXML
     private void listarEstoqueProdutosBtnHandler(ActionEvent event) {
+        Pane listar;
+        try {
+            listar = FXMLLoader.load(getClass().getResource("../views/TelaListarProdutos.fxml"));
+            painelListar.getChildren().setAll(listar);
+
+        } catch (IOException ex) {
+            System.out.println(ex);
+
+        }
     }
 
     @FXML
     private void listarHistoricoBtnHandler(ActionEvent event) {
+        Pane historico;
+        try {
+            historico = FXMLLoader.load(getClass().getResource("../views/TelaListarHistoricoServico.fxml"));
+            painelListar.getChildren().setAll(historico);
+
+        } catch (IOException ex) {
+            Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -76,14 +104,45 @@ public class TelaListarController implements Initializable {
 
     @FXML
     private void listaVendaPetsBtnHandler(ActionEvent event) {
+        Pane historicoDeVendas;
+
+        try {
+            historicoDeVendas = FXMLLoader.load(getClass().getResource("../views/TelaListarVendaPets.fxml"));
+            painelListar.getChildren().setAll(historicoDeVendas);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     @FXML
     private void listaVendaProdutosBtnHandler(ActionEvent event) {
+        Pane historicoDeVendas;
+
+        try {
+            historicoDeVendas = FXMLLoader.load(getClass().getResource("../views/TelaListarVendaDeProdutos.fxml"));
+            painelListar.getChildren().setAll(historicoDeVendas);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
     }
 
     @FXML
     private void listaClientesBtnHandler(ActionEvent event) {
+        Pane listarClientes;
+
+        try {
+            listarClientes = FXMLLoader.load(getClass().getResource("../views/TelaListarCliente.fxml"));
+            painelListar.getChildren().setAll(listarClientes);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+
+        }
+
     }
 
 }

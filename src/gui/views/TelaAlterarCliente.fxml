@@ -36,10 +36,9 @@
         </TableView>
         <TextField fx:id="inputNomePet" layoutX="45.0" layoutY="218.0" onAction="#nomePetInputHandler" />
         <TextField fx:id="inputEspecie" layoutX="45.0" layoutY="267.0" onAction="#EspecieInputHandler" />
-        <TextField fx:id="inputSexo" layoutX="44.0" layoutY="311.0" onAction="#SexoInputHandler" />
         <Label layoutX="62.0" layoutY="200.0" text="Digite o nome do pet" />
         <Label layoutX="58.0" layoutY="248.0" text="Digite a espécie do pet" />
-        <Label layoutX="65.0" layoutY="293.0" text="Digite o sexo do pet" />
+        <Label layoutX="55.0" layoutY="293.0" text="Selecione o sexo do pet" />
         <Label layoutX="264.0" layoutY="181.0" text="Pets Cadastrados (Selecione um para remover)">
             <font>
                 <Font size="15.0" />
@@ -48,5 +47,6 @@
         <Button fx:id="btnConfirmarPet" disable="true" layoutX="60.0" layoutY="342.0" mnemonicParsing="false" onAction="#cadastrarNovoPetBtnHandler" text="Cadastrar novo pet" />
         <Button fx:id="btnRemover" disable="true" layoutX="429.0" layoutY="353.0" mnemonicParsing="false" onAction="#removerBtnHandler" text="Remover pet" />
         <Button fx:id="btnVoltar" layoutX="523.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
+      <ChoiceBox fx:id="choiceSexo" layoutX="43.0" layoutY="311.0" prefWidth="150.0" />
     </children>
 </Pane>

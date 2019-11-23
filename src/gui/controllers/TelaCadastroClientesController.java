@@ -8,14 +8,17 @@ package gui.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 /**
@@ -24,8 +27,11 @@ import javafx.scene.layout.Pane;
  * @author 55819
  */
 public class TelaCadastroClientesController implements Initializable {
+    ObservableList<String> choicesList = FXCollections.observableArrayList("Macho", "Fêmea");
     @FXML
     private Pane painelCadastroClientes;
+    @FXML
+    private ChoiceBox choiceSexo;
     @FXML
     private TextField inputNome;
     @FXML
@@ -58,6 +64,7 @@ public class TelaCadastroClientesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        choiceSexo.setItems(choicesList);
         // TODO
     }
 
@@ -106,4 +113,7 @@ public class TelaCadastroClientesController implements Initializable {
     private void confirmarPetBtnHandler(ActionEvent event) {
     }
 
+//    private void addSexo(ChoiceBox choiceSexo) {
+
+ //   }
 }
