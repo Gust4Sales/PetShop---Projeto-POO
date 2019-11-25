@@ -62,13 +62,7 @@ public class TelaCadastroPetsController implements Initializable {
         choiceSexo.setValue("");
         choiceSexo.setItems(choicesList);
 
-        LocalDate maxDate = LocalDate.now();
-        dataNascimento.setDayCellFactory(d ->
-                new DateCell() {
-                    @Override public void updateItem(LocalDate item, boolean empty) {
-                        super.updateItem(item, empty);
-                        setDisable(item.isAfter(maxDate));
-                    }});
+
     }
 
     @FXML

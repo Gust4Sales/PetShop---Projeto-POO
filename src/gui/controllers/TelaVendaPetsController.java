@@ -62,6 +62,19 @@ public class TelaVendaPetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        tbEspecie.setCellValueFactory(
+                new PropertyValueFactory<>("Especie"));
+        tbDataDeNascimento.setCellValueFactory(
+                new PropertyValueFactory<>("DataNascimento"));
+        tbPeso.setCellValueFactory(
+                new PropertyValueFactory<>("Peso"));
+        tbSexo.setCellValueFactory(
+                new PropertyValueFactory<>("Sexo"));
+        tbTamanho.setCellValueFactory(
+                new PropertyValueFactory<>("Tamanho"));
+        tbPreco.setCellValueFactory(
+                new PropertyValueFactory<>("Preco"));
+
     }
 
     @FXML
@@ -124,19 +137,6 @@ public class TelaVendaPetsController implements Initializable {
     }
 
     private void preencherTabela(PetPetshop pet) {
-        tbEspecie.setCellValueFactory(
-                new PropertyValueFactory<>("Especie"));
-        tbDataDeNascimento.setCellValueFactory(
-                new PropertyValueFactory<>("DataNascimento"));
-        tbPeso.setCellValueFactory(
-                new PropertyValueFactory<>("Peso"));
-        tbSexo.setCellValueFactory(
-                new PropertyValueFactory<>("Sexo"));
-        tbTamanho.setCellValueFactory(
-                new PropertyValueFactory<>("Tamanho"));
-        tbPreco.setCellValueFactory(
-                new PropertyValueFactory<>("Preco"));
-
         tbView.setItems(petInfo(pet));
 
         btnConfirmar.setDisable(false);

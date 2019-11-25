@@ -5,17 +5,20 @@ import negocio.entidades.PetCliente;
 
 public abstract class ServicoAbstrato {
     protected double preco;
-    protected String horaAgendada, data;  // Criar classe Banho? Tosa?
-    // Tempo associado ao serviço
+    protected String horaAgendada;
+    protected String data;  // Criar classe Banho? Tosa?
     protected Cliente cliente;
     protected PetCliente pet;
     protected boolean concluido;
+    protected String descricao;
 
-    public ServicoAbstrato(String horaAgendada, Cliente cliente, PetCliente pet){
+    public ServicoAbstrato(String horaAgendada, String data, Cliente cliente, PetCliente pet){
         this.horaAgendada = horaAgendada;
+        this.data = data;
         this.cliente = cliente;
         this.pet = pet;
     }
+
 
     public double getPreco() {
         return this.preco;
@@ -41,6 +44,10 @@ public abstract class ServicoAbstrato {
         return this.pet;
     }
 
+    public String getDescricao() {
+        return this.descricao;
+    }
+
     ///////////////////////////////////////////////////////////////////////////
 
     public void setPreco(double preco) {
@@ -63,4 +70,7 @@ public abstract class ServicoAbstrato {
         this.concluido = concluido;
     }
 
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

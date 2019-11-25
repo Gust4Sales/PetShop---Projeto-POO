@@ -34,7 +34,8 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <DatePicker layoutX="193.0" layoutY="142.0" promptText="Selecione a data" />
-      <ChoiceBox fx:id="choiseAgendamentos" layoutX="394.0" layoutY="142.0" prefWidth="150.0" />
+      <DatePicker fx:id="datePicker" layoutX="193.0" layoutY="142.0" onAction="#inputDataHandler" promptText="Selecione a data" />
+      <ChoiceBox fx:id="choiceAgendamentos" layoutX="394.0" layoutY="142.0" prefWidth="150.0" />
+      <Label layoutX="410.0" layoutY="120.0" prefHeight="23.0" prefWidth="119.0" text="Horários livre por data" />
    </children>
 </Pane>

@@ -3,10 +3,9 @@ package negocio;
 import dados.*;
 import negocio.contratos.ServicoAbstrato;
 import negocio.contratos.VendaAbstrata;
-import negocio.entidades.PetPetshop;
-import negocio.entidades.Produto;
-import negocio.entidades.VendaPet;
+import negocio.entidades.*;
 import negocio.excecoes.*;
+import negocio.gerenciadores.NegocioCliente;
 import negocio.gerenciadores.NegocioPetPetshop;
 import negocio.gerenciadores.NegocioProduto;
 import negocio.gerenciadores.NegocioServico;
@@ -17,6 +16,7 @@ public class PetShopFachada {
     private NegocioPetPetshop negocioPetPetshop;
     private NegocioProduto negocioProduto;
     private NegocioServico negocioServico;
+    private NegocioCliente negocioCliente;
 
     public PetShopFachada(){
         this.negocioProduto = new NegocioProduto(new RepositorioProdutosArray(),
@@ -27,6 +27,7 @@ public class PetShopFachada {
 
         this.negocioServico = new NegocioServico(new Agenda());
 
+        this.negocioCliente = new NegocioCliente(new RepositorioClientesArray());
     }
     // Inicio método PetPetshop
     public void cadastrarPetPetshop(String especie, String id, String sexo, String dataNascimento, double peso,
@@ -50,7 +51,7 @@ public class PetShopFachada {
 
     // Inicio métodos Produto
     public void cadastrarProduto(String nome, String marca, double preco, String id, int quantidade)
-        throws ProdutoJaCadastradoException {
+            throws ProdutoJaCadastradoException {
         Produto produto = new Produto(nome, marca, preco, id, quantidade);
 
         this.negocioProduto.adicionarProduto(produto);
@@ -64,15 +65,37 @@ public class PetShopFachada {
 
         return this.negocioProduto.consultarProduto(id);
     }
+    public void removerProduto(String id) throws ProdutoInexistenteException{
+        this.negocioProduto.removerProduto(id);
+    }
+    public void atualizarProduto(String id, int qntd, double preco) throws ProdutoInexistenteException {
+        Produto produto = negocioProduto.consultarProduto(id);
+        negocioProduto.alterarPreco(produto, preco);
+        negocioProduto.alterarQuantidade(produto, qntd);
 
-    // Fim métodos Produto
-
+    }
     // Fim métodos Produto
 
     // Inicio métodos Servico
+    public void cadastrarServico(ServicoAbstrato s){
+        this.negocioServico.adicionarServico(s);
+    }
+
+    public void desmarcarServico(ServicoAbstrato s){
+        this.negocioServico.removerServico(s);
+    }
+
     public ArrayList<ServicoAbstrato> consultarHorariosAgendados(String data){
         return this.negocioServico.consultarServicosAgendados(data);
     }
 
     // Fim métodos Servico
+
+    // Inicio metodos Cliente
+    public void cadastrarCliente(String nome, String cpf, String tel, ArrayList<PetCliente> pets) throws ClienteJaCadastradoException {
+        Cliente cliente = new Cliente(nome, cpf, tel, pets);
+        negocioCliente.adicionarCliente(cliente);
+    }
+
+    // FIm metodos CLiente
 }

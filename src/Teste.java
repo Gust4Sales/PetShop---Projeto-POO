@@ -23,7 +23,7 @@ public class Teste {
 
         p = repositorioProdutos.getProduto("09");
         System.out.println(p);
-        repositorioProdutos.removerProduto(p);
+        //repositorioProdutos.removerProduto(p);
         p = repositorioProdutos.getProduto("09");
         System.out.println(p);
 

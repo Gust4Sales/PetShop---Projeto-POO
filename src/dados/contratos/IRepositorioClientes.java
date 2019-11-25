@@ -7,6 +7,6 @@ import java.util.ArrayList;
 public interface IRepositorioClientes {
     void adicionarCliente(Cliente cliente);
     void removerCliente(String cpf);
-    boolean buscarCliente(String cpf);
+    boolean verificarCliente(String cpf);
     Cliente getCliente(String cpf);
 }

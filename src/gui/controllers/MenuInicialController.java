@@ -2,15 +2,23 @@ package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import gui.ProjetoPoo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import negocio.contratos.ServicoAbstrato;
+import negocio.entidades.Cliente;
+import negocio.entidades.PetCliente;
+import negocio.entidades.ServicoBanho;
+import negocio.entidades.ServicoCompleto;
 
 /**
  * FXML Controller class
@@ -37,6 +45,9 @@ public class MenuInicialController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public MenuInicialController(){
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

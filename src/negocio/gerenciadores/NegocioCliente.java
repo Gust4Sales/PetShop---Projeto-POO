@@ -3,6 +3,7 @@ package negocio.gerenciadores;
 import dados.contratos.IRepositorioClientes;
 import negocio.entidades.Cliente;
 import negocio.entidades.PetCliente;
+import negocio.excecoes.ClienteJaCadastradoException;
 
 public class NegocioCliente {
     private IRepositorioClientes repositorioClientes;
@@ -11,19 +12,18 @@ public class NegocioCliente {
         this.repositorioClientes = repo;
     }
 
-    public void cadastrarCliente(Cliente cliente){
-        // CLiente ja cadastrado EXcpe (CPF)
-        boolean existe = repositorioClientes.buscarCliente(cliente.getCpf());
+    public void adicionarCliente(Cliente cliente) throws ClienteJaCadastradoException{
+        boolean existe = repositorioClientes.verificarCliente(cliente.getCpf());
 
         if (existe){
-            // excecao
+            throw new ClienteJaCadastradoException(cliente.getCpf());
         } else {
             this.repositorioClientes.adicionarCliente(cliente);
         }
     }
 
     public void removerCliente(Cliente cliente){
-        boolean existe = repositorioClientes.buscarCliente(cliente.getCpf());
+        boolean existe = repositorioClientes.verificarCliente(cliente.getCpf());
 
         if (existe){
             this.repositorioClientes.removerCliente(cliente.getCpf());
@@ -33,7 +33,7 @@ public class NegocioCliente {
     }
 
     public void alterarTelCliente(Cliente cliente, String telefone){
-        boolean existe = repositorioClientes.buscarCliente(cliente.getCpf());
+        boolean existe = repositorioClientes.verificarCliente(cliente.getCpf());
 
         if (existe){
             cliente.setTelefone(telefone);

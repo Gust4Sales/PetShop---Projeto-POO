@@ -28,11 +28,11 @@ public class NegocioProduto {
         }
     }
 
-    public void removerProduto(Produto produto){
-        boolean existe = this.repositorioProdutos.verificarProduto(produto.getId());
+    public void removerProduto(String id){
+        boolean existe = this.repositorioProdutos.verificarProduto(id);
 
         if(existe){
-            this.repositorioProdutos.removerProduto(produto);
+            this.repositorioProdutos.removerProduto(id);
 
         } else {
             //troonom erro
@@ -62,14 +62,26 @@ public class NegocioProduto {
 
     }
 
-    public void alterarPreco(Produto produto, double preco){
+    public void alterarPreco(Produto produto, double preco) throws ProdutoInexistenteException{
         boolean existe = this.repositorioProdutos.verificarProduto(produto.getId());
 
         if (existe){
             produto.setPreco(preco);
             this.repositorioProdutos.atualizarProduto(produto);
         } else {
-            // erro trhow
+            throw new ProdutoInexistenteException(produto.getId());
         }
+    }
+
+    public void alterarQuantidade (Produto produto, int qntd) throws ProdutoInexistenteException{
+        boolean existe = this.repositorioProdutos.verificarProduto(produto.getId());
+
+        if(existe){
+            produto.setQuantidade(qntd);
+            this.repositorioProdutos.atualizarProduto(produto);
+        } else {
+            throw new ProdutoInexistenteException(produto.getId());
+        }
+
     }
 }

@@ -42,12 +42,15 @@ public class Agenda implements IRepositorioServicos {
     @Override
     public ArrayList<ServicoAbstrato> consultarServicosNaoConcluidos(String data){
         ArrayList<ServicoAbstrato> servicosNaoConcluidos = new ArrayList<>();
-
+        for (ServicoAbstrato s: servicosNaoConcluidos){
+            System.out.println(s.getDescricao());
+        }
         for (ServicoAbstrato s: this.agenda){
-            if(s.isConcluido() && s.getData().equals(data)){
+            if(!s.isConcluido() && s.getData().equals(data)){
                 servicosNaoConcluidos.add(s);
             }
         }
+
         return servicosNaoConcluidos;
     }
 

@@ -22,7 +22,12 @@ public class RepositorioClientesArray implements IRepositorioClientes {
     }
 
     @Override
-    public boolean buscarCliente(String cpf) {
+    public boolean verificarCliente(String cpf) {
+        for (Cliente c : this.clientes) {
+            if (cpf.equals(c.getCpf())) {
+                return true;
+            }
+        }
         return false;
     }
 

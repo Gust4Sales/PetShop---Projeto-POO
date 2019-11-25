@@ -2,6 +2,7 @@ package dados;
 import java.util.ArrayList;
 
 import dados.contratos.IRepositorioProdutos;
+import gui.ProjetoPoo;
 import negocio.entidades.Produto;
 
 public class RepositorioProdutosArray implements IRepositorioProdutos {
@@ -17,7 +18,9 @@ public class RepositorioProdutosArray implements IRepositorioProdutos {
     }
 
     @Override
-    public void removerProduto(Produto produto){
+    public void removerProduto(String id){
+        Produto produto = this.getProduto(id);
+
         this.produtos.remove(produto);
     }
 
