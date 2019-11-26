@@ -17,18 +17,18 @@ import negocio.PetShopFachada;
  */
 public class ProjetoPoo extends Application {
     public static PetShopFachada petShop;
+    public static Stage stageMain;
 
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("views/MenuInicial.fxml"));
-       
+        stageMain = stage;
         Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();
-    }
 
-    /**
+        stageMain.setScene(scene);
+        stageMain.show();
+    }
+     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {

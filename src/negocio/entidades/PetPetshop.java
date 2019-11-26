@@ -9,7 +9,8 @@ public class PetPetshop{
     private String especie;
     private String sexo;
 
-    public PetPetshop(String especie, String id, String sexo, String dataNascimento, double peso, double tamanho, double preco){
+    public PetPetshop(String especie, String id, String sexo, String dataNascimento, double peso, double tamanho,
+                      double preco){
         this.especie = especie;
         this.id = id;
         this.sexo = sexo;

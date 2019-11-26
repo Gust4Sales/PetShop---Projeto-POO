@@ -7,20 +7,22 @@ package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import gui.ProjetoPoo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import negocio.entidades.Cliente;
+import negocio.entidades.PetCliente;
+import negocio.excecoes.ClienteInexistenteException;
+import negocio.excecoes.ClienteJaCadastradoException;
 
 /**
  * FXML Controller class
@@ -38,7 +40,7 @@ public class TelaServicoController implements Initializable {
     @FXML
     private Button btnBuscar;
     @FXML
-    private TableView<?> tbView;
+    private TableView<PetCliente> tbView;
     @FXML
     private TableColumn<?, ?> nomePet;
     @FXML
@@ -58,10 +60,37 @@ public class TelaServicoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
+
+        //      teste
+        ArrayList<PetCliente> pets = new ArrayList<>();
+        pets.add(new PetCliente("hulk", "cachorro", "macho"));
+        pets.add(new PetCliente("layla", "gata", "femea"));
+
+        try {
+            ProjetoPoo.petShop.cadastrarCliente("Joao ", "702839", "81994905", pets);
+        } catch (ClienteJaCadastradoException e) {
+            System.out.println("erro");
+        }
+        // fim teste
     }
 
     @FXML
     private void buscarBtnHandler(ActionEvent event) {
+        if (inputBuscarCpf.getLength()>0){
+            try{
+                Cliente cliente = ProjetoPoo.petShop.consultarCliente(inputBuscarCpf.getText());
+                System.out.println(cliente.getCpf());
+                for (PetCliente pet: cliente.getPets()){
+                    tbView.getItems().add(pet);
+                }
+            } catch (ClienteInexistenteException e) {
+                Alert a = new Alert(Alert.AlertType.NONE);
+                a.setAlertType(Alert.AlertType.ERROR);
+                a.setContentText(e.getMessage());
+                a.show();
+            }
+        }
     }
 
     @FXML
@@ -80,4 +109,7 @@ public class TelaServicoController implements Initializable {
         }
     }
 
+    void transferirHorarioEscolhido(String data, String hora){
+        System.out.println(data + hora);
+    }
 }

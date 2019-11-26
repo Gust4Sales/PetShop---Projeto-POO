@@ -46,6 +46,14 @@ public class PetShopFachada {
 
         return this.negocioPetPetshop.consultarPet(id);
     }
+
+    public void atualizarPetPetshop(String id, double tamanho, double peso, double preco) throws
+            PetPetshopInexistenteException {
+        PetPetshop pet = negocioPetPetshop.consultarPet(id);
+        negocioPetPetshop.alterarPeso(pet, peso);
+        negocioPetPetshop.alterarPreco(pet, preco);
+        negocioPetPetshop.alterarTamanho(pet, tamanho);
+    }
     // FIm métodos PetPetshop
 
     // Inicio métodos Produto
@@ -94,6 +102,10 @@ public class PetShopFachada {
     public void cadastrarCliente(String nome, String cpf, String tel, ArrayList<PetCliente> pets) throws ClienteJaCadastradoException {
         Cliente cliente = new Cliente(nome, cpf, tel, pets);
         negocioCliente.adicionarCliente(cliente);
+    }
+
+    public Cliente consultarCliente(String cpf) throws ClienteInexistenteException{
+        return this.negocioCliente.consultarCliente(cpf);
     }
 
     // FIm metodos CLiente

@@ -9,17 +9,17 @@
 
 <Pane fx:id="painelAgendamento" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaAgendamentoController">
    <children>
-      <Button fx:id="btnBanho" disable="true" layoutX="49.0" layoutY="94.0" mnemonicParsing="false" onAction="#banhoBtnHandler" text="Banho">
+      <Button fx:id="btnBanho" layoutX="49.0" layoutY="94.0" mnemonicParsing="false" onAction="#banhoBtnHandler" text="Banho">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnTosa" disable="true" layoutX="49.0" layoutY="131.0" mnemonicParsing="false" onAction="#tosaBtnHandler" text="Tosa">
+      <Button fx:id="btnTosa" layoutX="49.0" layoutY="131.0" mnemonicParsing="false" onAction="#tosaBtnHandler" text="Tosa">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnCompleto" disable="true" layoutX="49.0" layoutY="167.0" mnemonicParsing="false" onAction="#completoBtnHandler" text="Completo">
+      <Button fx:id="btnCompleto" layoutX="49.0" layoutY="167.0" mnemonicParsing="false" onAction="#completoBtnHandler" text="Completo">
          <font>
             <Font name="Arial" size="12.0" />
          </font>

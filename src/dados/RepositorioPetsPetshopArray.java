@@ -40,6 +40,7 @@ public class RepositorioPetsPetshopArray implements IRepositorioPetsPetshop {
             }
         }
         return null;
+        // Retorna throw PetInexistente
     }
 
     @Override

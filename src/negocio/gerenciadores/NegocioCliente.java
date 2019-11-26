@@ -3,6 +3,7 @@ package negocio.gerenciadores;
 import dados.contratos.IRepositorioClientes;
 import negocio.entidades.Cliente;
 import negocio.entidades.PetCliente;
+import negocio.excecoes.ClienteInexistenteException;
 import negocio.excecoes.ClienteJaCadastradoException;
 
 public class NegocioCliente {
@@ -40,6 +41,10 @@ public class NegocioCliente {
         } else {
             //excecao
         }
+    }
+
+    public Cliente consultarCliente(String cpf) throws ClienteInexistenteException{
+            return this.repositorioClientes.getCliente(cpf);
     }
 
     public void adicionarPet(PetCliente pet){

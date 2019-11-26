@@ -6,10 +6,10 @@ public class Cliente {
     private String cpf;
     private String nome;
     private String telefone;
-    private ArrayList pets;
+    private ArrayList<PetCliente> pets;
     private double divida;
 
-    public Cliente(String nome, String cpf, String telefone, ArrayList pets) {
+    public Cliente(String nome, String cpf, String telefone, ArrayList<PetCliente> pets) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -28,7 +28,10 @@ public class Cliente {
 
     public String getTelefone() { return this.telefone; }
 
-    public ArrayList getPets() { return this.pets; }
+    public ArrayList<PetCliente> getPets() {
+
+        return this.pets;
+    }
 
     public double getDivida() {
         return this.divida;

@@ -2,6 +2,7 @@ package dados;
 
 import dados.contratos.IRepositorioClientes;
 import negocio.entidades.Cliente;
+import negocio.excecoes.ClienteInexistenteException;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,12 @@ public class RepositorioClientesArray implements IRepositorioClientes {
     }
 
     @Override
-    public Cliente getCliente(String cpf) {
-        return null;
+    public Cliente getCliente(String cpf) throws ClienteInexistenteException {
+        for (Cliente c : this.clientes) {
+            if (cpf.equals(c.getCpf())) {
+                return c;
+            }
+        }
+        throw new ClienteInexistenteException(cpf);
     }
 }
