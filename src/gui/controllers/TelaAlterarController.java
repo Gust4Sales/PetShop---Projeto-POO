@@ -27,16 +27,7 @@ public class TelaAlterarController implements Initializable {
 
     @FXML
     private Pane painelAlterar;
-    @FXML
-    private Button btnAlterarServico;
-    @FXML
-    private Button btnAlterarCliente;
-    @FXML
-    private Button btnAlterarProduto;
-    @FXML
-    private Button btnPetPetshop;
-    @FXML
-    private Button btnVoltar;
+
 
     /**
      * Initializes the controller class.

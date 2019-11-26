@@ -29,12 +29,12 @@ import negocio.excecoes.QuantidadeInvalidaException;
  */
 public class TelaAlterarProdutosController implements Initializable {
     private Produto ultimoProdutoPesquisado;
+    private Alert spam;
+
     @FXML
     private Pane painelAlterarProdutos;
     @FXML
     private TextField inputId;
-    @FXML
-    private Button btnBuscar;
     @FXML
     private TableView<Produto> tbView;
     @FXML
@@ -55,9 +55,10 @@ public class TelaAlterarProdutosController implements Initializable {
     private TextField inputPreco;
     @FXML
     private Button btnConfirmar;
-    @FXML
-    private Button btnCancelar;
 
+    public TelaAlterarProdutosController(){
+        spam = new Alert(Alert.AlertType.NONE);
+    }
     /**
      * Initializes the controller class.
      */
@@ -83,9 +84,6 @@ public class TelaAlterarProdutosController implements Initializable {
         }
     }
 
-    @FXML
-    private void idInputHandler(ActionEvent event) {
-    }
 
     @FXML
     private void buscarBtnHandler(ActionEvent event) {
@@ -98,10 +96,10 @@ public class TelaAlterarProdutosController implements Initializable {
                 btnRemoverProduto.setDisable(false);
                 btnConfirmar.setDisable(false);
             } catch (ProdutoInexistenteException e){
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setAlertType(Alert.AlertType.ERROR);
-                a.setContentText(e.getMessage());
-                a.show();
+                spam.setAlertType(Alert.AlertType.ERROR);
+                spam.setContentText(e.getMessage());
+                spam.show();
+
                 inputId.setText("");
                 tbView.getItems().clear();
                 btnRemoverProduto.setDisable(true);
@@ -118,13 +116,18 @@ public class TelaAlterarProdutosController implements Initializable {
     @FXML
     private void removerProdutoBtnHandler(ActionEvent event) throws ProdutoInexistenteException {
         tbView.getItems().clear();
+        try{
+            ProjetoPoo.petShop.removerProduto(ultimoProdutoPesquisado.getId());
 
-        ProjetoPoo.petShop.removerProduto(ultimoProdutoPesquisado.getId());
+            spam.setAlertType(Alert.AlertType.INFORMATION);
+            spam.setContentText("Produto removido com sucesso!");
+            spam.show();
 
-        Alert a = new Alert(Alert.AlertType.NONE);
-        a.setAlertType(Alert.AlertType.INFORMATION);
-        a.setContentText("Produto removido com sucesso!");
-        a.show();
+        } catch (ProdutoInexistenteException e){
+            spam.setAlertType(Alert.AlertType.INFORMATION);
+            spam.setContentText(e.getMessage());
+            spam.show();
+        }
 
         inputId.setText("");
         btnRemoverProduto.setDisable(true);
@@ -132,75 +135,48 @@ public class TelaAlterarProdutosController implements Initializable {
     }
 
     @FXML
-    private void qntdInputHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void precoInputHandler(ActionEvent event) {
-    }
-
-    @FXML
     private void confirmarBtnHandler(ActionEvent event) throws ProdutoInexistenteException {
         boolean erro = false;
 
-        if (inputPreco.getLength()==0 && inputQntd.getLength()==0){
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Insira pelo menos uma alteração");
-            a.show();
-        } else if (inputPreco.getLength()>0 && inputQntd.getLength()>0){
+        if (inputPreco.getLength() == 0 && inputQntd.getLength() == 0) {
+            spam.setAlertType(Alert.AlertType.ERROR);
+            spam.setContentText("Insira pelo menos uma alteração");
+            spam.show();
+        } else if (inputPreco.getLength() > 0 && inputQntd.getLength() > 0) {
             boolean precoValidado = validarPreco();
             boolean qntdValidada = validarQntd();
-            if (precoValidado && qntdValidada){
-                try{
-                    alterarProduto();
-                } catch (QuantidadeInvalidaException e) {
-                    Alert a = new Alert(Alert.AlertType.NONE);
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.setContentText(e.getMessage());
-                    a.show();
-                    inputQntd.setText("");
-                }
+            if (precoValidado && qntdValidada) {
+                int qntd = Integer.parseInt(inputQntd.getText());
+                double preco = Double.parseDouble(inputPreco.getText());
+
+                alterarProduto(qntd, preco);
             } else {
                 erro = true;
             }
-        } else if (inputPreco.getLength()>0){
+        } else if (inputPreco.getLength() > 0) {
             boolean precoValidado = validarPreco();
-            if (precoValidado){
-                try{
-                    alterarProduto();
-                } catch (QuantidadeInvalidaException e) {
-                    Alert a = new Alert(Alert.AlertType.NONE);
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.setContentText(e.getMessage());
-                    a.show();
-                    inputQntd.setText("");
-                }
+            if (precoValidado) {
+                int qntd = ultimoProdutoPesquisado.getQuantidade();
+                double preco = Double.parseDouble(inputPreco.getText());
+                alterarProduto(qntd, preco);
             } else {
                 erro = true;
-            }
+              }
         } else {
             boolean qntdValidada = validarQntd();
             if (qntdValidada){
-                try{
-                    alterarProduto();
-                } catch (QuantidadeInvalidaException e){
-                    Alert a = new Alert(Alert.AlertType.NONE);
-                    a.setAlertType(Alert.AlertType.ERROR);
-                    a.setContentText(e.getMessage());
-                    a.show();
-                    inputQntd.setText("");
-                }
+                int qntd = Integer.parseInt(inputQntd.getText());
+                double preco = ultimoProdutoPesquisado.getPreco();
+                alterarProduto(qntd, preco);
             } else {
                 erro = true;
             }
         }
 
         if (erro){
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Um ou mais campos inseridos incorretamente!");
-            a.show();
+            spam.setAlertType(Alert.AlertType.ERROR);
+            spam.setContentText("Um ou mais campos inseridos incorretamente!");
+            spam.show();
         }
     }
 
@@ -246,27 +222,20 @@ public class TelaAlterarProdutosController implements Initializable {
         }
 
     }
-    private void alterarProduto() throws ProdutoInexistenteException, QuantidadeInvalidaException {
+    private void alterarProduto(int qntd, double preco) {
         String id = ultimoProdutoPesquisado.getId();
 
-        if(inputQntd.getLength()>0 && inputPreco.getLength()>0){
-            int qntd = Integer.parseInt(inputQntd.getText());
-            double preco = Double.parseDouble(inputPreco.getText());
+        try {
             ProjetoPoo.petShop.atualizarProduto(id, qntd, preco);
-        }
-        else if(inputQntd.getLength()>0 && inputPreco.getLength()==0){
-            int qntd = Integer.parseInt(inputQntd.getText());
-            ProjetoPoo.petShop.atualizarProduto(id, qntd, ultimoProdutoPesquisado.getPreco());
-        }
-        else if(inputQntd.getLength()==0 && inputPreco.getLength()>0){
-            double preco = Double.parseDouble(inputPreco.getText());
-            ProjetoPoo.petShop.atualizarProduto(id, ultimoProdutoPesquisado.getQuantidade(), preco);
+        } catch (QuantidadeInvalidaException | ProdutoInexistenteException e) {
+            spam.setAlertType(Alert.AlertType.ERROR);
+            spam.setContentText(e.getMessage());
+            spam.show();
         }
 
-        Alert a = new Alert(Alert.AlertType.NONE);
-        a.setAlertType(Alert.AlertType.INFORMATION);
-        a.setContentText("Produto alterado com sucesso!");
-        a.show();
+        spam.setAlertType(Alert.AlertType.INFORMATION);
+        spam.setContentText("Produto alterado com sucesso!");
+        spam.show();
 
         tbView.getItems().clear();
         inputQntd.setText("");

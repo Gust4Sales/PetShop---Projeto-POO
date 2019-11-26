@@ -49,10 +49,6 @@ public class TelaVendaPetsController implements Initializable {
     @FXML
     private Button btnConfirmar;
     @FXML
-    private Button btnCancelar;
-    @FXML
-    private Button btnBuscar;
-    @FXML
     private Pane painelVendaPets;
 
 
@@ -82,7 +78,6 @@ public class TelaVendaPetsController implements Initializable {
         try{
             ProjetoPoo.petShop.venderPetPetshop(inputId.getText());
 
-            // Setando componentes graficos
             Alert a = new Alert(Alert.AlertType.NONE);
             a.setAlertType(Alert.AlertType.INFORMATION);
             a.setContentText("Pet vendido com sucesso!");

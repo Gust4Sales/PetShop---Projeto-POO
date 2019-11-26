@@ -54,18 +54,12 @@ public class TelaAgendamentoController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceAgendamentos;
     @FXML
-    private Button btnBanho;
-    @FXML
-    private Button btnTosa;
-    @FXML
-    private Button btnCompleto;
+    private Button btnAgendar;
     @FXML
     private Button btnVoltar;
     @FXML
     private Pane painelAgendamento;
 
-    private ServicoAbstrato s;
-    private ServicoAbstrato f;
     /**
      * Initializes the controller class.
      */
@@ -156,82 +150,6 @@ public class TelaAgendamentoController implements Initializable {
     }
 
     @FXML
-    private void banhoBtnHandler(ActionEvent event) {
-        if (choiceAgendamentos.getValue()!=null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/TelaServico.fxml"));
-                Parent root = loader.load();
-                TelaServicoController telaServicoController = loader.getController();
-
-                String data = datePicker.getValue().format(formatter);
-                String hora = choiceAgendamentos.getValue();
-                telaServicoController.transferirHorarioEscolhido(data, hora);
-
-                ProjetoPoo.stageMain.setScene(new Scene(root));
-                ProjetoPoo.stageMain.show();
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Selecione um horário!");
-            a.show();
-        }
-    }
-
-    @FXML
-    private void tosaBtnHandler(ActionEvent event) {
-        if (choiceAgendamentos.getValue()!=null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/TelaServico.fxml"));
-                Parent root = loader.load();
-                TelaServicoController telaServicoController = loader.getController();
-
-                String data = datePicker.getValue().format(formatter);
-                String hora = choiceAgendamentos.getValue();
-                telaServicoController.transferirHorarioEscolhido(data, hora);
-
-                ProjetoPoo.stageMain.setScene(new Scene(root));
-                ProjetoPoo.stageMain.show();
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Selecione um horário!");
-            a.show();
-        }
-    }
-
-    @FXML
-    private void completoBtnHandler(ActionEvent event) {
-        if (choiceAgendamentos.getValue()!=null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/TelaServico.fxml"));
-                Parent root = loader.load();
-                TelaServicoController telaServicoController = loader.getController();
-
-                String data = datePicker.getValue().format(formatter);
-                String hora = choiceAgendamentos.getValue();
-                telaServicoController.transferirHorarioEscolhido(data, hora);
-
-                ProjetoPoo.stageMain.setScene(new Scene(root));
-                ProjetoPoo.stageMain.show();
-
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Selecione um horário!");
-            a.show();
-        }
-    }
-
-    @FXML
     private void voltarBtnHandler(ActionEvent event) {
         Pane menuInicial;
         try {
@@ -242,18 +160,37 @@ public class TelaAgendamentoController implements Initializable {
             Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        //teste
-        ProjetoPoo.petShop.desmarcarServico(s);
-        ProjetoPoo.petShop.desmarcarServico(f);
-        //fimteste
     }
 
+    @FXML
+    private void agendarBtnHandler(ActionEvent actionEvent) {
+        if (choiceAgendamentos.getValue()!=null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/TelaServico.fxml"));
+                Parent root = loader.load();
+                TelaServicoController telaServicoController = loader.getController();
+
+                String data = datePicker.getValue().format(formatter);
+                String hora = choiceAgendamentos.getValue();
+                telaServicoController.transferirInfo(data, hora);
+
+                ProjetoPoo.stageMain.setScene(new Scene(root));
+                ProjetoPoo.stageMain.show();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("Selecione um horário!");
+            a.show();
+        }
+    }
     @FXML
     private void inputDataHandler(ActionEvent actionEvent) {
         String data = datePicker.getValue().format(formatter);
 
         preencherListaHoras(data);
     }
-
 
 }

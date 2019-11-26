@@ -27,15 +27,8 @@ public class NegocioProduto {
         }
     }
 
-    public void removerProduto(String id){
-        boolean existe = this.repositorioProdutos.verificarProduto(id);
-
-        if(existe){
+    public void removerProduto(String id) throws ProdutoInexistenteException {
             this.repositorioProdutos.removerProduto(id);
-
-        } else {
-            //troonom erro
-        }
     }
 
     public void decrementarQntd(String id, int qntd) throws QuantidadeInvalidaException, ProdutoInexistenteException {
@@ -50,14 +43,7 @@ public class NegocioProduto {
 
 
     public Produto consultarProduto(String id) throws ProdutoInexistenteException {
-        boolean existe = this.repositorioProdutos.verificarProduto(id);
-
-        if (existe) {
-            Produto produto = this.repositorioProdutos.getProduto(id);
-            return produto;
-        } else {
-            throw new ProdutoInexistenteException(id);
-        }
+        return this.repositorioProdutos.getProduto(id);
 
     }
 

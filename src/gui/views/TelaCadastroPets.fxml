@@ -16,17 +16,17 @@
         </Label>
         <Label layoutX="138.0" layoutY="74.0" text="Digite a espécie" />
         <Label layoutX="373.0" layoutY="74.0" text="Selecione o sexo" />
-        <TextField fx:id="inputPreco" layoutX="341.0" layoutY="256.0" onAction="#precoInputHandler" />
-        <TextField fx:id="inputEspecie" layoutX="107.0" layoutY="99.0" onAction="#especieInputHandler" />
-        <TextField fx:id="inputPeso" layoutX="342.0" layoutY="175.0" onAction="#pesoInputHandler" />
-        <TextField fx:id="inputTamanho" layoutX="107.0" layoutY="175.0" onAction="#tamanhoInputHandler" />
+        <TextField fx:id="inputPreco" layoutX="341.0" layoutY="256.0" />
+        <TextField fx:id="inputEspecie" layoutX="107.0" layoutY="99.0"  />
+        <TextField fx:id="inputPeso" layoutX="342.0" layoutY="175.0" />
+        <TextField fx:id="inputTamanho" layoutX="107.0" layoutY="175.0" />
         <Label layoutX="107.0" layoutY="231.0" text="Insira a data de nascimento" />
         <Label layoutX="367.0" layoutY="147.0" text="Digite o peso (Kg)" />
         <Label layoutX="120.0" layoutY="147.0" text="Digite o tamanho (cm)" />
         <Label layoutX="378.0" layoutY="231.0" text="Digite o preço" />
         <Button fx:id="btnConfirmar" layoutX="204.0" layoutY="361.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
         <Button fx:id="btnCancelar" layoutX="326.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
-      <DatePicker fx:id="dataNascimento" layoutX="95.0" layoutY="256.0" onAction="#dataNascimentoHandler" />
+      <DatePicker fx:id="dataNascimento" layoutX="95.0" layoutY="256.0" />
       <ChoiceBox fx:id="choiceSexo" layoutX="341.0" layoutY="99.0" prefWidth="150.0" />
       <Label layoutX="277.0" layoutY="291.0" text="Insira o Id" />
       <TextField fx:id="inputID" layoutX="229.0" layoutY="318.0" />

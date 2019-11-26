@@ -26,14 +26,6 @@ import javafx.scene.layout.Pane;
 public class TelaCadastroController implements Initializable {
 
     @FXML
-    private Button btnCadrastraPet;
-    @FXML
-    private Button btnCadastraProd;
-    @FXML
-    private Button btnCadastrarCliente;
-    @FXML
-    private Button btnVoltar;
-    @FXML
     private Pane painelCadastro;
 
     /**

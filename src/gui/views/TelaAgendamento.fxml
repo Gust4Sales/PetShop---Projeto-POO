@@ -9,22 +9,12 @@
 
 <Pane fx:id="painelAgendamento" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaAgendamentoController">
    <children>
-      <Button fx:id="btnBanho" layoutX="49.0" layoutY="94.0" mnemonicParsing="false" onAction="#banhoBtnHandler" text="Banho">
+      <Button fx:id="btnAgendar" layoutX="425.0" layoutY="143.0" mnemonicParsing="false" onAction="#agendarBtnHandler" text="Agendar horário">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnTosa" layoutX="49.0" layoutY="131.0" mnemonicParsing="false" onAction="#tosaBtnHandler" text="Tosa">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnCompleto" layoutX="49.0" layoutY="167.0" mnemonicParsing="false" onAction="#completoBtnHandler" text="Completo">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnVoltar" layoutX="49.0" layoutY="200.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
+      <Button fx:id="btnVoltar" layoutX="276.0" layoutY="351.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -34,8 +24,8 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <DatePicker fx:id="datePicker" layoutX="193.0" layoutY="142.0" onAction="#inputDataHandler" promptText="Selecione a data" />
-      <ChoiceBox fx:id="choiceAgendamentos" layoutX="394.0" layoutY="142.0" prefWidth="150.0" />
-      <Label layoutX="410.0" layoutY="120.0" prefHeight="23.0" prefWidth="119.0" text="Horários livre por data" />
+      <DatePicker fx:id="datePicker" layoutX="49.0" layoutY="142.0" onAction="#inputDataHandler" promptText="Selecione a data" />
+      <ChoiceBox fx:id="choiceAgendamentos" layoutX="248.0" layoutY="142.0" prefWidth="150.0" />
+      <Label layoutX="264.0" layoutY="117.0" prefHeight="23.0" prefWidth="119.0" text="Horários livre por data" />
    </children>
 </Pane>

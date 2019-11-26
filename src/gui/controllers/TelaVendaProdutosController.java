@@ -39,8 +39,6 @@ public class TelaVendaProdutosController implements Initializable {
     @FXML
     private TextField inputqtd;
     @FXML
-    private Button btnBuscar;
-    @FXML
     private Button btnVender;
     @FXML
     private TableView<Produto> tbViewCarrinho;
@@ -62,8 +60,7 @@ public class TelaVendaProdutosController implements Initializable {
     private TableColumn<?, ?> tbQtd;
     @FXML
     private TableColumn<?, ?> tbPreco;
-    @FXML
-    private Button btnVoltar;
+
 
 
     /**
@@ -94,13 +91,6 @@ public class TelaVendaProdutosController implements Initializable {
                 new PropertyValueFactory<>("Quantidade"));
         tbPrecoCarrinho.setCellValueFactory(
                 new PropertyValueFactory<>("Preco"));
-    }
-    @FXML
-    private void idInputHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void qtdInputHandler(ActionEvent event) {
     }
 
     @FXML

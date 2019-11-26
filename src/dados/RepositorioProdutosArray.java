@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import dados.contratos.IRepositorioProdutos;
 import gui.ProjetoPoo;
 import negocio.entidades.Produto;
+import negocio.excecoes.ProdutoInexistenteException;
 
 public class RepositorioProdutosArray implements IRepositorioProdutos {
     private ArrayList<Produto> produtos;
@@ -18,14 +19,18 @@ public class RepositorioProdutosArray implements IRepositorioProdutos {
     }
 
     @Override
-    public void removerProduto(String id){
-        Produto produto = this.getProduto(id);
+    public void removerProduto(String id) throws ProdutoInexistenteException{
+        try{
+            Produto produto = this.getProduto(id);
 
-        this.produtos.remove(produto);
+            this.produtos.remove(produto);
+        } catch (ProdutoInexistenteException e){
+            throw new ProdutoInexistenteException(id);
+        }
     }
 
     @Override
-    public Produto getProduto(String id) {
+    public Produto getProduto(String id) throws ProdutoInexistenteException {
         int index;
 
         for (Produto p : this.produtos) {
@@ -34,7 +39,7 @@ public class RepositorioProdutosArray implements IRepositorioProdutos {
                 return this.produtos.get(index);
             }
         }
-        return null;
+        throw new ProdutoInexistenteException(id);
     }
 
     @Override

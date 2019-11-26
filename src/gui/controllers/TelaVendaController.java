@@ -26,12 +26,6 @@ import javafx.scene.layout.Pane;
 public class TelaVendaController implements Initializable {
 
     @FXML
-    private Button btnVendaPets;
-    @FXML
-    private Button btnVendaProdutos;
-    @FXML
-    private Button btnVoltar;
-    @FXML
     private Pane painel;
 
     /**

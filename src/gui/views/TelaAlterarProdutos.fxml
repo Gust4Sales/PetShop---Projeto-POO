@@ -16,7 +16,7 @@
             </font>
         </Label>
         <Label layoutX="263.0" layoutY="46.0" text="Insira o Id" />
-        <TextField fx:id="inputId" layoutX="213.0" layoutY="63.0" onAction="#idInputHandler" />
+        <TextField fx:id="inputId" layoutX="213.0" layoutY="63.0"  />
         <Button fx:id="btnBuscar" layoutX="368.0" layoutY="63.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
         <Separator layoutY="95.0" prefHeight="0.0" prefWidth="600.0" />
         <Label layoutX="197.0" layoutY="97.0" text="Informações do Produto">
@@ -35,9 +35,9 @@
         </TableView>
         <Button fx:id="btnRemoverProduto" disable="true" layoutX="232.0" layoutY="200.0" mnemonicParsing="false" onAction="#removerProdutoBtnHandler" text="Remover Produto" />
         <Label layoutX="132.0" layoutY="275.0" text="Insira a nova quantidade" />
-        <TextField fx:id="inputQntd" layoutX="123.0" layoutY="300.0" onAction="#qntdInputHandler" />
+        <TextField fx:id="inputQntd" layoutX="123.0" layoutY="300.0" />
         <Label layoutX="345.0" layoutY="275.0" text="Insira o novo preço" />
-        <TextField fx:id="inputPreco" layoutX="319.0" layoutY="300.0" onAction="#precoInputHandler" />
+        <TextField fx:id="inputPreco" layoutX="319.0" layoutY="300.0" />
         <Button fx:id="btnConfirmar" disable="true" layoutX="213.0" layoutY="347.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
         <Button fx:id="btnCancelar" layoutX="304.0" layoutY="347.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
     </children>

@@ -21,11 +21,11 @@ public class Teste {
         repositorioProdutos.adicionarProduto(p1);
         repositorioProdutos.adicionarProduto(p2);
 
-        p = repositorioProdutos.getProduto("09");
-        System.out.println(p);
+        //p = repositorioProdutos.getProduto("09");
+        //System.out.println(p);
         //repositorioProdutos.removerProduto(p);
-        p = repositorioProdutos.getProduto("09");
-        System.out.println(p);
+       // p = repositorioProdutos.getProduto("09");
+        //System.out.println(p);
 
 
 

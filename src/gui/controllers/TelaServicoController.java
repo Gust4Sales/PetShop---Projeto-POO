@@ -18,9 +18,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import negocio.contratos.ServicoAbstrato;
 import negocio.entidades.Cliente;
 import negocio.entidades.PetCliente;
+import negocio.entidades.ServicoCompleto;
 import negocio.excecoes.ClienteInexistenteException;
 import negocio.excecoes.ClienteJaCadastradoException;
 
@@ -30,15 +33,12 @@ import negocio.excecoes.ClienteJaCadastradoException;
  * @author tarci
  */
 public class TelaServicoController implements Initializable {
+    private Alert spam;
 
     @FXML
     private Pane painelServico;
     @FXML
-    private Label lblServico;
-    @FXML
     private TextField inputBuscarCpf;
-    @FXML
-    private Button btnBuscar;
     @FXML
     private TableView<PetCliente> tbView;
     @FXML
@@ -48,11 +48,17 @@ public class TelaServicoController implements Initializable {
     @FXML
     private TableColumn<?, ?> nomeEspecie;
     @FXML
-    private Label lblvalorTotal;
+    private ChoiceBox<String> choiceServico;
     @FXML
     private Button btnConfirmar;
     @FXML
     private Button btnCancelar;
+    @FXML
+    private Label lblAgenda;
+
+    public TelaServicoController(){
+        spam = new Alert(Alert.AlertType.NONE);
+    }
 
     /**
      * Initializes the controller class.
@@ -60,6 +66,12 @@ public class TelaServicoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        nomePet.setCellValueFactory(
+                new PropertyValueFactory<>("nome"));
+        nomeEspecie.setCellValueFactory(
+                new PropertyValueFactory<>("Especie"));
+        nomeSexo.setCellValueFactory(
+                new PropertyValueFactory<>("Sexo"));
 
 
         //      teste
@@ -72,7 +84,7 @@ public class TelaServicoController implements Initializable {
         } catch (ClienteJaCadastradoException e) {
             System.out.println("erro");
         }
-        // fim teste
+
     }
 
     @FXML
@@ -80,16 +92,20 @@ public class TelaServicoController implements Initializable {
         if (inputBuscarCpf.getLength()>0){
             try{
                 Cliente cliente = ProjetoPoo.petShop.consultarCliente(inputBuscarCpf.getText());
-                System.out.println(cliente.getCpf());
+
+                tbView.getItems().clear();
                 for (PetCliente pet: cliente.getPets()){
                     tbView.getItems().add(pet);
                 }
             } catch (ClienteInexistenteException e) {
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setAlertType(Alert.AlertType.ERROR);
-                a.setContentText(e.getMessage());
-                a.show();
+                spam.setAlertType(Alert.AlertType.ERROR);
+                spam.setContentText(e.getMessage());
+                spam.show();
+
+                tbView.getItems().clear();
             }
+        } else {
+            tbView.getItems().clear();
         }
     }
 
@@ -109,7 +125,10 @@ public class TelaServicoController implements Initializable {
         }
     }
 
-    void transferirHorarioEscolhido(String data, String hora){
+    void transferirInfo(String data, String hora){
         System.out.println(data + hora);
+
+        lblAgenda.setText("Agendamento pro dia "+data+" às "+hora+"h");
+
     }
 }
