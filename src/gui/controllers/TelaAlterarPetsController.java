@@ -32,6 +32,8 @@ import negocio.excecoes.QuantidadeInvalidaException;
  */
 public class TelaAlterarPetsController implements Initializable {
     private PetPetshop ultimoPetPetshopPesquisado;
+    private Alert spam;
+
     @FXML
     private Pane painelAlterarPets;
     @FXML
@@ -65,6 +67,10 @@ public class TelaAlterarPetsController implements Initializable {
     @FXML
     private Button btnCancelar;
 
+    public TelaAlterarPetsController(){
+        spam = new Alert(Alert.AlertType.NONE);
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -90,9 +96,6 @@ public class TelaAlterarPetsController implements Initializable {
         }
     }
 
-    @FXML
-    private void idInputHandler(ActionEvent event) {
-    }
 
     @FXML
     private void buscarBtnHandler(ActionEvent event) {
@@ -105,10 +108,10 @@ public class TelaAlterarPetsController implements Initializable {
                 btnRemoverPet.setDisable(false);
                 btnConfirmar.setDisable(false);
             } catch (PetPetshopInexistenteException e){
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setAlertType(Alert.AlertType.ERROR);
-                a.setContentText(e.getMessage());
-                a.show();
+                spam.setAlertType(Alert.AlertType.ERROR);
+                spam.setContentText(e.getMessage());
+                spam.show();
+
                 inputId.setText("");
                 tbView.getItems().clear();
                 btnRemoverPet.setDisable(true);
@@ -123,27 +126,14 @@ public class TelaAlterarPetsController implements Initializable {
     }
 
     @FXML
-    private void pesoInputHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void tamanhoInputHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void PrecoInputHandler(ActionEvent event) {
-    }
-
-    @FXML
     private void removerPetBtnHandler(ActionEvent event) throws PetPetshopInexistenteException {
         tbView.getItems().clear();
 
         ProjetoPoo.petShop.venderPetPetshop(ultimoPetPetshopPesquisado.getId());
 
-        Alert a = new Alert(Alert.AlertType.NONE);
-        a.setAlertType(Alert.AlertType.INFORMATION);
-        a.setContentText("Pet removido com sucesso!");
-        a.show();
+        spam.setAlertType(Alert.AlertType.INFORMATION);
+        spam.setContentText("Pet removido com sucesso!");
+        spam.show();
 
         inputId.setText("");
         btnRemoverPet.setDisable(true);
@@ -152,23 +142,19 @@ public class TelaAlterarPetsController implements Initializable {
 
     @FXML
     private void confirmarBtnHandler(ActionEvent event) throws PetPetshopInexistenteException {
-        //boolean erro = false;
-
         if (inputPreco.getLength()==0 && inputPeso.getLength()==0 && inputTamanho.getLength()==0){
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.NONE);
-            a.setContentText("Insira pelo menos uma alteração");
-            a.show();
+            spam.setAlertType(Alert.AlertType.NONE);
+            spam.setContentText("Insira pelo menos uma alteração");
+            spam.show();
         } else{
             boolean precoValidado = validarPreco();
             boolean tamanhoValidado = validarTamanho();
             boolean pesoValidado = validarPeso();
 
             if (!(precoValidado && tamanhoValidado && pesoValidado)){
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setAlertType(Alert.AlertType.ERROR);
-                a.setContentText("Um ou mais campos inseridos incorretamente");
-                a.show();
+                spam.setAlertType(Alert.AlertType.ERROR);
+                spam.setContentText("Um ou mais campos inseridos incorretamente");
+                spam.show();
                 return;
             }
 
@@ -179,17 +165,14 @@ public class TelaAlterarPetsController implements Initializable {
 
     @FXML
     private void cancelarBtnHandler(ActionEvent event) {
-        {
-            Pane alterar;
-            try {
-                alterar = FXMLLoader.load(getClass().getResource("../views/TelaAlterar.fxml"));
-                painelAlterarPets.getChildren().setAll(alterar);
+        Pane alterar;
+        try {
+            alterar = FXMLLoader.load(getClass().getResource("../views/TelaAlterar.fxml"));
+            painelAlterarPets.getChildren().setAll(alterar);
 
-            } catch (IOException ex) {
-                Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (IOException ex) {
+            Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     private boolean validarPreco() {
@@ -277,21 +260,18 @@ public class TelaAlterarPetsController implements Initializable {
         } else{
             peso = ultimoPetPetshopPesquisado.getPeso();
         }
+
         ProjetoPoo.petShop.atualizarPetPetshop(id,tam,peso,preco);
 
-        Alert a = new Alert(Alert.AlertType.NONE);
-        a.setAlertType(Alert.AlertType.INFORMATION);
-        a.setContentText("Pet alterado com sucesso!");
-        a.show();
+        spam.setAlertType(Alert.AlertType.INFORMATION);
+        spam.setContentText("Pet alterado com sucesso!");
+        spam.show();
 
         tbView.getItems().clear();
         inputPeso.setText("");
         inputPreco.setText("");
         inputTamanho.setText("");
         tbView.getItems().add(ultimoPetPetshopPesquisado);
-
-
-
     }
 
 }
