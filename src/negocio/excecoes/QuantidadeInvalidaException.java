@@ -1,11 +1,11 @@
 package negocio.excecoes;
 
-public class QuantidadeExcedidaException extends Exception{
+public class QuantidadeInvalidaException extends Exception{
 
     private int quantidade;
     
-    public QuantidadeExcedidaException(int quantidade){
-        super("Quantidade " + quantidade + " indisponivel");
+    public QuantidadeInvalidaException(int quantidade){
+        super("Quantidade " + quantidade + " inválida");
         this.quantidade = quantidade;
     }
     

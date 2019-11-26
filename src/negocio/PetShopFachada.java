@@ -2,7 +2,6 @@ package negocio;
 
 import dados.*;
 import negocio.contratos.ServicoAbstrato;
-import negocio.contratos.VendaAbstrata;
 import negocio.entidades.*;
 import negocio.excecoes.*;
 import negocio.gerenciadores.NegocioCliente;
@@ -57,7 +56,7 @@ public class PetShopFachada {
         this.negocioProduto.adicionarProduto(produto);
     }
 
-    public void venderProduto(String id, int qntd) throws QuantidadeExcedidaException, ProdutoInexistenteException {
+    public void venderProduto(String id, int qntd) throws QuantidadeInvalidaException, ProdutoInexistenteException {
         this.negocioProduto.decrementarQntd(id, qntd);
     }
 
@@ -68,7 +67,7 @@ public class PetShopFachada {
     public void removerProduto(String id) throws ProdutoInexistenteException{
         this.negocioProduto.removerProduto(id);
     }
-    public void atualizarProduto(String id, int qntd, double preco) throws ProdutoInexistenteException {
+    public void atualizarProduto(String id, int qntd, double preco) throws ProdutoInexistenteException, QuantidadeInvalidaException {
         Produto produto = negocioProduto.consultarProduto(id);
         negocioProduto.alterarPreco(produto, preco);
         negocioProduto.alterarQuantidade(produto, qntd);

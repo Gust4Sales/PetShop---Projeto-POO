@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import gui.ProjetoPoo;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import negocio.PetShopFachada;
-import negocio.entidades.PetPetshop;
 import negocio.entidades.Produto;
 import negocio.excecoes.ProdutoInexistenteException;
 import negocio.excecoes.ProdutoJaCadastradoException;
+import negocio.excecoes.QuantidadeInvalidaException;
 
 /**
  * FXML Controller class
@@ -154,21 +152,45 @@ public class TelaAlterarProdutosController implements Initializable {
             boolean precoValidado = validarPreco();
             boolean qntdValidada = validarQntd();
             if (precoValidado && qntdValidada){
-                alterarProduto();
+                try{
+                    alterarProduto();
+                } catch (QuantidadeInvalidaException e) {
+                    Alert a = new Alert(Alert.AlertType.NONE);
+                    a.setAlertType(Alert.AlertType.ERROR);
+                    a.setContentText(e.getMessage());
+                    a.show();
+                    inputQntd.setText("");
+                }
             } else {
                 erro = true;
             }
         } else if (inputPreco.getLength()>0){
             boolean precoValidado = validarPreco();
             if (precoValidado){
-                alterarProduto();
+                try{
+                    alterarProduto();
+                } catch (QuantidadeInvalidaException e) {
+                    Alert a = new Alert(Alert.AlertType.NONE);
+                    a.setAlertType(Alert.AlertType.ERROR);
+                    a.setContentText(e.getMessage());
+                    a.show();
+                    inputQntd.setText("");
+                }
             } else {
                 erro = true;
             }
         } else {
             boolean qntdValidada = validarQntd();
             if (qntdValidada){
-                alterarProduto();
+                try{
+                    alterarProduto();
+                } catch (QuantidadeInvalidaException e){
+                    Alert a = new Alert(Alert.AlertType.NONE);
+                    a.setAlertType(Alert.AlertType.ERROR);
+                    a.setContentText(e.getMessage());
+                    a.show();
+                    inputQntd.setText("");
+                }
             } else {
                 erro = true;
             }
@@ -198,10 +220,7 @@ public class TelaAlterarProdutosController implements Initializable {
     private boolean validarQntd(){
         try{
             int quantidade = Integer.parseInt(inputQntd.getText());
-            if(quantidade<=0){
-                inputQntd.setText("");
-                return false;
-            }
+
             return true;
         } catch (Exception e){
             inputQntd.setText("");
@@ -227,7 +246,7 @@ public class TelaAlterarProdutosController implements Initializable {
         }
 
     }
-    private void alterarProduto() throws ProdutoInexistenteException {
+    private void alterarProduto() throws ProdutoInexistenteException, QuantidadeInvalidaException {
         String id = ultimoProdutoPesquisado.getId();
 
         if(inputQntd.getLength()>0 && inputPreco.getLength()>0){

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector;
 import gui.ProjetoPoo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import negocio.entidades.Produto;
 import negocio.excecoes.ProdutoInexistenteException;
-import negocio.excecoes.QuantidadeExcedidaException;
+import negocio.excecoes.QuantidadeInvalidaException;
 
 /**
  * FXML Controller class
@@ -133,7 +132,7 @@ public class TelaVendaProdutosController implements Initializable {
                 ProjetoPoo.petShop.venderProduto(inputId.getText(), qnt);
 
                 this.valorT += ultimoProdutoPesquisado.getPreco() * qnt;
-            } catch (QuantidadeExcedidaException | ProdutoInexistenteException e) {
+            } catch (QuantidadeInvalidaException | ProdutoInexistenteException e) {
                 Alert a = new Alert(Alert.AlertType.NONE);
                 a.setAlertType(Alert.AlertType.ERROR);
                 a.setContentText(e.getMessage());

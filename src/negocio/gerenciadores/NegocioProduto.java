@@ -4,10 +4,9 @@ import dados.RepositorioProdutosVendidosArray;
 import dados.contratos.IRepositorioProdutos;
 import dados.contratos.IRepositorioVendidos;
 import negocio.entidades.Produto;
-import negocio.excecoes.PetPetshopJaCadastradoException;
 import negocio.excecoes.ProdutoInexistenteException;
 import negocio.excecoes.ProdutoJaCadastradoException;
-import negocio.excecoes.QuantidadeExcedidaException;
+import negocio.excecoes.QuantidadeInvalidaException;
 
 public class NegocioProduto {
     private IRepositorioProdutos repositorioProdutos;
@@ -39,11 +38,11 @@ public class NegocioProduto {
         }
     }
 
-    public void decrementarQntd(String id, int qntd) throws QuantidadeExcedidaException, ProdutoInexistenteException {
+    public void decrementarQntd(String id, int qntd) throws QuantidadeInvalidaException, ProdutoInexistenteException {
         Produto produto = this.consultarProduto(id);
         // Gera historico
         if (produto.getQuantidade() < qntd){
-            throw new QuantidadeExcedidaException(qntd);
+            throw new QuantidadeInvalidaException(qntd);
         } else {
             produto.setQuantidade(produto.getQuantidade()-qntd);
         }
@@ -73,12 +72,16 @@ public class NegocioProduto {
         }
     }
 
-    public void alterarQuantidade (Produto produto, int qntd) throws ProdutoInexistenteException{
+    public void alterarQuantidade (Produto produto, int qntd) throws ProdutoInexistenteException, QuantidadeInvalidaException {
         boolean existe = this.repositorioProdutos.verificarProduto(produto.getId());
 
         if(existe){
-            produto.setQuantidade(qntd);
-            this.repositorioProdutos.atualizarProduto(produto);
+            if (qntd>0){
+                produto.setQuantidade(qntd);
+                this.repositorioProdutos.atualizarProduto(produto);
+            } else {
+                throw new QuantidadeInvalidaException(qntd);
+            }
         } else {
             throw new ProdutoInexistenteException(produto.getId());
         }
