@@ -3,8 +3,10 @@ package negocio.gerenciadores;
 import dados.RepositorioProdutosVendidosArray;
 import dados.contratos.IRepositorioProdutos;
 import dados.contratos.IRepositorioVendidos;
+import negocio.contratos.VendaAbstrata;
 import negocio.entidades.PetPetshop;
 import negocio.entidades.Produto;
+import negocio.entidades.VendaProduto;
 import negocio.excecoes.ProdutoInexistenteException;
 import negocio.excecoes.ProdutoJaCadastradoException;
 import negocio.excecoes.QuantidadeInvalidaException;
@@ -36,14 +38,19 @@ public class NegocioProduto {
 
     public void decrementarQntd(String id, int qntd) throws QuantidadeInvalidaException, ProdutoInexistenteException {
         Produto produto = this.consultarProduto(id);
-        // Gera historico
         if (produto.getQuantidade() < qntd){
             throw new QuantidadeInvalidaException(qntd);
         } else {
             produto.setQuantidade(produto.getQuantidade()-qntd);
+
+            VendaAbstrata vendaProduto = new VendaProduto(produto);
+            this.registrarVenda(vendaProduto);
         }
     }
 
+    private void registrarVenda(VendaAbstrata vendaProduto){
+        this.repositorioProdVendidos.adicionarVenda(vendaProduto);
+    }
 
     public Produto consultarProduto(String id) throws ProdutoInexistenteException {
         return this.repositorioProdutos.getProduto(id);

@@ -60,22 +60,10 @@ public class Agenda implements IRepositorioServicos {
     @Override
     public  ArrayList<ServicoAbstrato> consultarServicosPorData(String data){
         ArrayList<ServicoAbstrato> servicos = new ArrayList<>();
-        SimpleDateFormat sdfDataComp = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        GregorianCalendar dataLimite = new GregorianCalendar();
-        GregorianCalendar dataServico = new GregorianCalendar();
-        try {
-            dataLimite.setTime(sdfDataComp.parse(data + " " + "23:59"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
         for (ServicoAbstrato s: this.agenda){
-            try {
-                dataServico.setTime(sdfDataComp.parse(s.getData() + " " + s.getHoraAgendada()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            if(dataServico.getTime().before(dataLimite.getTime())){
+
+            if(data.equals(s.getData())){
                 servicos.add(s);
             }
         }

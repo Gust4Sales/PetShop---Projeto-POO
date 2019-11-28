@@ -45,7 +45,7 @@ public class NegocioPetPetshop {
         }
     }
 
-    public void registrarVenda(VendaAbstrata petVendido){
+    private void registrarVenda(VendaAbstrata petVendido){
         this.repositorioPetsVendidos.adicionarVenda(petVendido);
     }
 

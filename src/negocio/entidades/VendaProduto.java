@@ -5,7 +5,7 @@ import negocio.contratos.VendaAbstrata;
 public class VendaProduto extends VendaAbstrata {
     private Produto produto;
 
-    public VendaProduto(Produto produto, String hora, String data){
+    public VendaProduto(Produto produto){
         super();
         this.produto = produto;
     }
