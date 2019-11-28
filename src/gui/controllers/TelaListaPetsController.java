@@ -7,10 +7,12 @@ package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import gui.ProjetoPoo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +20,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import negocio.entidades.PetPetshop;
 
 /**
  * FXML Controller class
@@ -30,7 +34,7 @@ public class TelaListaPetsController implements Initializable {
     @FXML
     private Pane painelEstoquePets;
     @FXML
-    private TableView<?> tbEstoquePets;
+    private TableView<PetPetshop> tbEstoquePets;
     @FXML
     private TableColumn<?, ?> tbId;
     @FXML
@@ -45,8 +49,7 @@ public class TelaListaPetsController implements Initializable {
     private TableColumn<?, ?> tbDataDeNasciemento;
     @FXML
     private TableColumn<?, ?> tbPreço;
-    @FXML
-    private Button btnVoltar;
+
 
     /**
      * Initializes the controller class.
@@ -54,7 +57,28 @@ public class TelaListaPetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        tbId.setCellValueFactory(
+                new PropertyValueFactory<>("Id"));
+        tbEspecie.setCellValueFactory(
+                new PropertyValueFactory<>("Especie"));
+        tbSexo.setCellValueFactory(
+                new PropertyValueFactory<>("Sexo"));
+        tbTamanho.setCellValueFactory(
+                new PropertyValueFactory<>("Tamanho"));
+        tbPeso.setCellValueFactory(
+                new PropertyValueFactory<>("Peso"));
+        tbDataDeNasciemento.setCellValueFactory(
+                new PropertyValueFactory<>("dataNascimento"));
+        tbPreço.setCellValueFactory(
+                new PropertyValueFactory<>("Preco"));
+
+        ArrayList<PetPetshop> pets = ProjetoPoo.petShop.consultarPetsEstoque();
+
+        for (PetPetshop pet: pets){
+            tbEstoquePets.getItems().add(pet);
+        }
+
+    }
 
     @FXML
     private void voltarBtnHandler(ActionEvent event) {
@@ -67,5 +91,5 @@ public class TelaListaPetsController implements Initializable {
             Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

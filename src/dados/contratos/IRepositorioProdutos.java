@@ -1,5 +1,6 @@
 package dados.contratos;
 
+import negocio.entidades.PetPetshop;
 import negocio.entidades.Produto;
 import negocio.excecoes.ProdutoInexistenteException;
 
@@ -12,4 +13,5 @@ public interface IRepositorioProdutos {
     void atualizarProduto(Produto produto);
     ArrayList<Produto> getListaProdutos();
     boolean verificarProduto(String id);
+    ArrayList<Produto> listarProdutos();
 }

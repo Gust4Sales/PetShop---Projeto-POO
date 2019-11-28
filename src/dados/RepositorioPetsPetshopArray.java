@@ -30,6 +30,11 @@ public class RepositorioPetsPetshopArray implements IRepositorioPetsPetshop {
     }
 
     @Override
+    public ArrayList<PetPetshop> listarPets() {
+        return this.petsDisponiveis;
+    }
+
+    @Override
     public PetPetshop getPet(String id) {
         int index;
 

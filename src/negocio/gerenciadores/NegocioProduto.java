@@ -3,10 +3,13 @@ package negocio.gerenciadores;
 import dados.RepositorioProdutosVendidosArray;
 import dados.contratos.IRepositorioProdutos;
 import dados.contratos.IRepositorioVendidos;
+import negocio.entidades.PetPetshop;
 import negocio.entidades.Produto;
 import negocio.excecoes.ProdutoInexistenteException;
 import negocio.excecoes.ProdutoJaCadastradoException;
 import negocio.excecoes.QuantidadeInvalidaException;
+
+import java.util.ArrayList;
 
 public class NegocioProduto {
     private IRepositorioProdutos repositorioProdutos;
@@ -72,5 +75,9 @@ public class NegocioProduto {
             throw new ProdutoInexistenteException(produto.getId());
         }
 
+    }
+
+    public ArrayList<Produto> consultarProdutosEstoque(){
+        return this.repositorioProdutos.listarProdutos();
     }
 }

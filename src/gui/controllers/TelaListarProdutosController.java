@@ -7,7 +7,10 @@ package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import gui.ProjetoPoo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import negocio.entidades.PetPetshop;
+import negocio.entidades.Produto;
 
 /**
  * FXML Controller class
@@ -26,7 +32,7 @@ public class TelaListarProdutosController implements Initializable {
     @FXML
     private Pane painelEstoqueProdutos;
     @FXML
-    private TableView<?> tbView;
+    private TableView<Produto> tbView;
     @FXML
     private TableColumn<?, ?> tbId;
     @FXML
@@ -37,8 +43,6 @@ public class TelaListarProdutosController implements Initializable {
     private TableColumn<?, ?> tbQntd;
     @FXML
     private TableColumn<?, ?> tbPreco;
-    @FXML
-    private Button btnVoltar;
 
     /**
      * Initializes the controller class.
@@ -46,6 +50,23 @@ public class TelaListarProdutosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        tbId.setCellValueFactory(
+                new PropertyValueFactory<>("Id"));
+        tbNome.setCellValueFactory(
+                new PropertyValueFactory<>("Nome"));
+        tbMarca.setCellValueFactory(
+                new PropertyValueFactory<>("Marca"));
+        tbQntd.setCellValueFactory(
+                new PropertyValueFactory<>("Quantidade"));
+        tbPreco.setCellValueFactory(
+                new PropertyValueFactory<>("Preco"));
+
+        ArrayList<Produto> produtos = ProjetoPoo.petShop.consultarProdutosEstoque();
+
+        for (Produto produto: produtos){
+            tbView.getItems().add(produto);
+        }
+
     }
 
     @FXML

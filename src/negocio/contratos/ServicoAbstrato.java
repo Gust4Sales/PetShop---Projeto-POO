@@ -9,7 +9,7 @@ public abstract class ServicoAbstrato {
     protected String data;  // Criar classe Banho? Tosa?
     protected Cliente cliente;
     protected PetCliente pet;
-    protected boolean concluido;
+    protected String status;
     protected String descricao;
 
     public ServicoAbstrato(String horaAgendada, String data, Cliente cliente, PetCliente pet){
@@ -32,8 +32,8 @@ public abstract class ServicoAbstrato {
         return this.data;
     }
 
-    public boolean isConcluido() {
-        return this.concluido;
+    public String getStatus() {
+        return this.status;
     }
 
     public Cliente getCliente() {
@@ -66,11 +66,12 @@ public abstract class ServicoAbstrato {
         this.data = data;
     }
 
-    public void setConcluido(boolean concluido) {
-        this.concluido = concluido;
-    }
-
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+
+    public void concluirStatus(){
+        this.status = "Concluído";
     }
 }

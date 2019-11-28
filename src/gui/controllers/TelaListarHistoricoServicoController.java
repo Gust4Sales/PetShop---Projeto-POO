@@ -7,16 +7,25 @@ package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import gui.ProjetoPoo;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableStringValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import negocio.contratos.ServicoAbstrato;
+import negocio.entidades.Cliente;
+import negocio.entidades.PetCliente;
+import negocio.excecoes.ClienteInexistenteException;
 
 /**
  * FXML Controller class
@@ -24,6 +33,10 @@ import javafx.scene.layout.Pane;
  * @author 55819
  */
 public class TelaListarHistoricoServicoController implements Initializable {
+    private Alert spam;
+
+    @FXML
+    private TableView<ServicoAbstrato> tbView;
     @FXML
     private Pane painelListaServico;
     @FXML
@@ -31,21 +44,27 @@ public class TelaListarHistoricoServicoController implements Initializable {
     @FXML
     private DatePicker dateSearch;
     @FXML
-    private Button btnBuscarCpf;
-    @FXML
     private Button btnBuscar;
     @FXML
-    private TableColumn<?, ?> tbNome;
+    private TableColumn<ServicoAbstrato, String> tbNome;
     @FXML
-    private TableColumn<?, ?> tbCpf;
+    private TableColumn<ServicoAbstrato, String> tbCpf;
     @FXML
-    private TableColumn<?, ?> tbTipoServico;
+    private TableColumn<ServicoAbstrato, String> tbTipoServico;
     @FXML
-    private TableColumn<?, ?> tbPet;
+    private TableColumn<ServicoAbstrato, String> tbPet;
     @FXML
-    private TableColumn<?, ?> tbData;
+    private TableColumn<ServicoAbstrato, String> tbData;
+    @FXML
+    private TableColumn<?, ?> tbStatus;
     @FXML
     private Button btnVoltar;
+
+
+    public TelaListarHistoricoServicoController(){
+        spam = new Alert(Alert.AlertType.NONE);
+        spam.setAlertType(Alert.AlertType.ERROR);
+    }
 
     /**
      * Initializes the controller class.
@@ -53,22 +72,59 @@ public class TelaListarHistoricoServicoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
+        tbNome.setCellValueFactory(cliente -> new SimpleStringProperty(cliente.getValue().getCliente().getNome()));
+        tbCpf.setCellValueFactory(cliente -> new SimpleStringProperty(cliente.getValue().getCliente().getCpf()));
+        tbTipoServico.setCellValueFactory(
+                new PropertyValueFactory<>("descricao"));
+        tbPet.setCellValueFactory(pet -> new SimpleStringProperty(pet.getValue().getPet().getNome()));
+        tbData.setCellValueFactory(agendamento -> new SimpleStringProperty(
+                (agendamento.getValue().getData() + " - " + agendamento.getValue().getHoraAgendada())));
+        tbStatus.setCellValueFactory(
+                new PropertyValueFactory<>("Status"));
+
     }
 
     @FXML
-    private void cpfInputHandler(ActionEvent event) {
-    }
+    private void buscarBtnHandler(ActionEvent event) {
+        LocalDate date = dateSearch.getValue();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    @FXML
-    private void searchDateHandler(ActionEvent event) {
-    }
+        tbView.getItems().clear();
+        if (inputCpf.getLength()>0){
+            try{
+                Cliente cliente = ProjetoPoo.petShop.consultarCliente(inputCpf.getText());
 
-    @FXML
-    private void cpfBuscarHandler(ActionEvent event) {
-    }
+            } catch (ClienteInexistenteException e) {
+                spam.setContentText(e.getMessage());
+                spam.show();
+                tbView.getItems().clear();
+                return;
+            }
+            if (dateSearch.getValue()!=null){
+                String data = date.format(formatter);
+                ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicosClientePorData(
+                        inputCpf.getText(), data);
 
-    @FXML
-    private void bsucarBtnHandler(ActionEvent event) {
+                for (ServicoAbstrato s: servicos) {
+                    tbView.getItems().add(s);
+                }
+            } else {
+                ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicosCliente(inputCpf.getText());
+
+                for (ServicoAbstrato s: servicos){
+                    tbView.getItems().add(s);
+                }
+            }
+        } else {
+            String data = date.format(formatter);
+            ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicosPorData(data);
+
+            for (ServicoAbstrato s: servicos){
+                tbView.getItems().add(s);
+            }
+        }
+
     }
 
     @FXML

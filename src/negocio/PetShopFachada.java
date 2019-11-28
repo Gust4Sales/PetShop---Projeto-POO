@@ -28,6 +28,7 @@ public class PetShopFachada {
 
         this.negocioCliente = new NegocioCliente(new RepositorioClientesArray());
     }
+
     // Inicio método PetPetshop
     public void cadastrarPetPetshop(String especie, String id, String sexo, String dataNascimento, double peso,
                                     double tamanho, double preco) throws PetPetshopJaCadastradoException {
@@ -54,6 +55,10 @@ public class PetShopFachada {
         negocioPetPetshop.alterarPreco(pet, preco);
         negocioPetPetshop.alterarTamanho(pet, tamanho);
     }
+
+    public ArrayList<PetPetshop> consultarPetsEstoque(){
+        return this.negocioPetPetshop.consultarPetsEstoque();
+    }
     // FIm métodos PetPetshop
 
     // Inicio métodos Produto
@@ -72,19 +77,35 @@ public class PetShopFachada {
 
         return this.negocioProduto.consultarProduto(id);
     }
+
     public void removerProduto(String id) throws ProdutoInexistenteException{
         this.negocioProduto.removerProduto(id);
     }
+
     public void atualizarProduto(String id, int qntd, double preco) throws ProdutoInexistenteException, QuantidadeInvalidaException {
         Produto produto = negocioProduto.consultarProduto(id);
         negocioProduto.alterarPreco(produto, preco);
         negocioProduto.alterarQuantidade(produto, qntd);
-
     }
+
+    public ArrayList<Produto> consultarProdutosEstoque(){
+        return this.negocioProduto.consultarProdutosEstoque();
+    }
+
     // Fim métodos Produto
 
     // Inicio métodos Servico
-    public void cadastrarServico(ServicoAbstrato s){
+    public void agendarServico(String descricao, String hora, String data, Cliente cliente, PetCliente pet){
+        ServicoAbstrato s;
+
+        if (descricao.equals("Completo")){
+            s = new ServicoCompleto(hora, data, cliente, pet);
+        } else if (descricao.equals("Tosa")){
+            s = new ServicoTosa(hora, data, cliente, pet);
+        } else {
+            s = new ServicoBanho(hora, data, cliente, pet);
+        }
+
         this.negocioServico.adicionarServico(s);
     }
 
@@ -92,10 +113,22 @@ public class PetShopFachada {
         this.negocioServico.removerServico(s);
     }
 
-    public ArrayList<ServicoAbstrato> consultarHorariosAgendados(String data){
-        return this.negocioServico.consultarServicosAgendados(data);
+    public ArrayList<String> consultarHorariosAgendadosNaoConcluidos(String data){
+        return this.negocioServico.consultarServicosAgendadosNaoConcluidos(data);
     }
 
+
+    public ArrayList<ServicoAbstrato> consultarServicosPorData(String data) {
+        return this.negocioServico.consultarServicosPorData(data);
+    }
+
+    public ArrayList<ServicoAbstrato> consultarServicosCliente(String cpf){
+        return this.negocioServico.consultarServicosCliente(cpf);
+    }
+
+    public ArrayList<ServicoAbstrato> consultarServicosClientePorData(String cpf, String data){
+        return this.negocioServico.consultarServicosClientePorData(cpf, data);
+    }
     // Fim métodos Servico
 
     // Inicio metodos Cliente
@@ -107,6 +140,16 @@ public class PetShopFachada {
     public Cliente consultarCliente(String cpf) throws ClienteInexistenteException{
         return this.negocioCliente.consultarCliente(cpf);
     }
+
+    public void atualizarTelefoneCliente(Cliente cliente, String telefone){
+        this.negocioCliente.alterarTelCliente(cliente, telefone);
+    }
+
+    public void alterarPetsCliente(Cliente cliente, ArrayList<PetCliente> pets){
+        this.negocioCliente.alterarListaPets(cliente, pets);
+    }
+
+
 
     // FIm metodos CLiente
 }

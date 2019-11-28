@@ -18,7 +18,7 @@
       <Button fx:id="btnAgenda" layoutX="86.0" layoutY="96.0" mnemonicParsing="false" onAction="#agendaBtnHandler" text="Agendamento de Serviços" />
       <Button fx:id="btnCadastro" layoutX="86.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastroBtnHandler" text="Cadastro" />
       <Button fx:id="btnAlterar" layoutX="86.0" layoutY="162.0" mnemonicParsing="false" onAction="#alterarBtnHandler" text="Alterar " />
-      <Button fx:id="btnListar" layoutX="86.0" layoutY="197.0" mnemonicParsing="false" onAction="#listarBtnHandler" text="Listar Estoque" />
+      <Button fx:id="btnListar" layoutX="86.0" layoutY="197.0" mnemonicParsing="false" onAction="#listarBtnHandler" text="Consultas" />
       <Button fx:id="btnSair" layoutX="86.0" layoutY="233.0" mnemonicParsing="false" onAction="#sairBtnHandler" text="Sair" />
    </children>
 </Pane>

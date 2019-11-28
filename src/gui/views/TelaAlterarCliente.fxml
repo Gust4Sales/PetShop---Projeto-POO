@@ -11,14 +11,14 @@
 <Pane fx:id="painelAlterar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.controllers.TelaAlterarClientesController">
     <children>
         <Button fx:id="btnBuscar" layoutX="378.0" layoutY="65.0" mnemonicParsing="false" onAction="#buscarCpfBtnHandler" text="Buscar" />
-        <TextField fx:id="inputAlteraCpf" layoutX="226.0" layoutY="65.0" onAction="#alteraCpfInputHandler" />
+        <TextField fx:id="inputCpf" layoutX="226.0" layoutY="65.0"  />
         <Label layoutX="206.0" text="Alterar Clientes">
             <font>
                 <Font name="System Bold" size="26.0" />
             </font>
         </Label>
         <Label layoutX="265.0" layoutY="45.0" text="Insira seu cpf" />
-        <TextField fx:id="inputAlteraTell" layoutX="93.0" layoutY="150.0" onAction="#alteraTellInputHandler" />
+        <TextField fx:id="inputAlteraTell" layoutX="93.0" layoutY="150.0" />
         <Separator layoutY="95.0" prefHeight="1.0" prefWidth="600.0" />
         <Label fx:id="alterarInformacoes" layoutX="242.0" layoutY="98.0" text="Alterar Informações">
             <font>
@@ -26,7 +26,7 @@
             </font>
         </Label>
         <Label layoutX="6.0" layoutY="152.0" text="Telefone atual:" />
-        <Button fx:id="btnTrocarTell" layoutX="250.0" layoutY="150.0" mnemonicParsing="false" onAction="#trocarTellBtnHandler" text="Trocar" />
+        <Button fx:id="btnTrocarTell" disable="true" layoutX="250.0" layoutY="150.0" mnemonicParsing="false" onAction="#trocarTellBtnHandler" text="Trocar" />
         <TableView fx:id="tbView" layoutX="231.0" layoutY="204.0" prefHeight="135.0" prefWidth="366.0">
             <columns>
                 <TableColumn fx:id="tbNome" prefWidth="155.0" text="Nome" />

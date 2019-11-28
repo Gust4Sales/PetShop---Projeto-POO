@@ -3,7 +3,10 @@ package dados;
 import dados.contratos.IRepositorioServicos;
 import negocio.contratos.ServicoAbstrato;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class Agenda implements IRepositorioServicos {
     private ArrayList<ServicoAbstrato> agenda;
@@ -22,8 +25,10 @@ public class Agenda implements IRepositorioServicos {
         this.agenda.remove(servico);
     }
 
+    @Override
     public void atualizarServico(ServicoAbstrato servico){
         int index = this.agenda.indexOf(servico);
+
         this.agenda.set(index, servico);
     }
 
@@ -42,16 +47,39 @@ public class Agenda implements IRepositorioServicos {
     @Override
     public ArrayList<ServicoAbstrato> consultarServicosNaoConcluidos(String data){
         ArrayList<ServicoAbstrato> servicosNaoConcluidos = new ArrayList<>();
-        for (ServicoAbstrato s: servicosNaoConcluidos){
-            System.out.println(s.getDescricao());
-        }
+
         for (ServicoAbstrato s: this.agenda){
-            if(!s.isConcluido() && s.getData().equals(data)){
+            if(!s.getStatus().equals("Concluído") && s.getData().equals(data)){
                 servicosNaoConcluidos.add(s);
             }
         }
 
         return servicosNaoConcluidos;
+    }
+
+    @Override
+    public  ArrayList<ServicoAbstrato> consultarServicosPorData(String data){
+        ArrayList<ServicoAbstrato> servicos = new ArrayList<>();
+        SimpleDateFormat sdfDataComp = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        GregorianCalendar dataLimite = new GregorianCalendar();
+        GregorianCalendar dataServico = new GregorianCalendar();
+        try {
+            dataLimite.setTime(sdfDataComp.parse(data + " " + "23:59"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        for (ServicoAbstrato s: this.agenda){
+            try {
+                dataServico.setTime(sdfDataComp.parse(s.getData() + " " + s.getHoraAgendada()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if(dataServico.getTime().before(dataLimite.getTime())){
+                servicos.add(s);
+            }
+        }
+        return servicos;
     }
 
 }

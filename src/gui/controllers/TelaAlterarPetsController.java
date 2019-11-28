@@ -89,11 +89,7 @@ public class TelaAlterarPetsController implements Initializable {
                 new PropertyValueFactory<>("Peso"));
         tbPreco.setCellValueFactory(
                 new PropertyValueFactory<>("Preco"));
-        try {
-            ProjetoPoo.petShop.cadastrarPetPetshop("cachorro", "1", "macho", "21/10/2015", 54.21, 78.52, 50);
-        } catch (PetPetshopJaCadastradoException e) {
-            e.printStackTrace();
-        }
+
     }
 
 

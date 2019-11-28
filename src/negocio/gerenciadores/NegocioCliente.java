@@ -6,6 +6,8 @@ import negocio.entidades.PetCliente;
 import negocio.excecoes.ClienteInexistenteException;
 import negocio.excecoes.ClienteJaCadastradoException;
 
+import java.util.ArrayList;
+
 public class NegocioCliente {
     private IRepositorioClientes repositorioClientes;
 
@@ -34,21 +36,17 @@ public class NegocioCliente {
     }
 
     public void alterarTelCliente(Cliente cliente, String telefone){
-        boolean existe = repositorioClientes.verificarCliente(cliente.getCpf());
-
-        if (existe){
-            cliente.setTelefone(telefone);
-        } else {
-            //excecao
-        }
+        cliente.setTelefone(telefone);
+        this.repositorioClientes.atualizarCliente(cliente);
     }
 
     public Cliente consultarCliente(String cpf) throws ClienteInexistenteException{
             return this.repositorioClientes.getCliente(cpf);
     }
 
-    public void adicionarPet(PetCliente pet){
-
+    public void alterarListaPets(Cliente cliente, ArrayList<PetCliente> pets){
+        cliente.setPets(pets);
+        this.repositorioClientes.atualizarCliente(cliente);
     }
 
     public void removerPet(PetCliente pet){

@@ -7,7 +7,7 @@ public class ServicoTosa extends ServicoAbstrato {
     public ServicoTosa(String horaAgendada, String data, Cliente cliente, PetCliente pet) {
         super(horaAgendada, data, cliente, pet);
         this.preco = 25.50;
-        this.concluido = false;
+        this.status = "Não concluído";
         this.descricao = "tosa";
     }
 }

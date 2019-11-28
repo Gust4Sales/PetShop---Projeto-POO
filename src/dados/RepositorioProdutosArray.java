@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import dados.contratos.IRepositorioProdutos;
 import gui.ProjetoPoo;
+import negocio.entidades.PetPetshop;
 import negocio.entidades.Produto;
 import negocio.excecoes.ProdutoInexistenteException;
 
@@ -16,6 +17,11 @@ public class RepositorioProdutosArray implements IRepositorioProdutos {
     @Override
     public void adicionarProduto(Produto produto){
         this.produtos.add(produto);
+    }
+
+    @Override
+    public ArrayList<Produto> listarProdutos() {
+        return this.produtos;
     }
 
     @Override

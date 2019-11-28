@@ -12,6 +12,7 @@ public class RepositorioClientesArray implements IRepositorioClientes {
     public RepositorioClientesArray(){
         clientes = new ArrayList<>();
     }
+
     @Override
     public void adicionarCliente(Cliente cliente) {
         clientes.add(cliente);
@@ -30,6 +31,12 @@ public class RepositorioClientesArray implements IRepositorioClientes {
             }
         }
         return false;
+    }
+
+    @Override
+    public void atualizarCliente(Cliente cliente){
+        int index = this.clientes.indexOf(cliente);
+        this.clientes.set(index, cliente);
     }
 
     @Override

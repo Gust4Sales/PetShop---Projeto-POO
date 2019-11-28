@@ -1,5 +1,6 @@
 package negocio.gerenciadores;
 
+
 import dados.contratos.IRepositorioPetsPetshop;
 import dados.contratos.IRepositorioVendidos;
 import negocio.contratos.VendaAbstrata;
@@ -7,6 +8,8 @@ import negocio.entidades.PetPetshop;
 import negocio.entidades.VendaPet;
 import negocio.excecoes.PetPetshopInexistenteException;
 import negocio.excecoes.PetPetshopJaCadastradoException;
+
+import java.util.ArrayList;
 
 public class NegocioPetPetshop {
     private IRepositorioPetsPetshop repositorioPetsPetshop;
@@ -88,6 +91,10 @@ public class NegocioPetPetshop {
         } else {
             throw new PetPetshopInexistenteException(id);
         }
-
     }
+
+    public ArrayList<PetPetshop> consultarPetsEstoque(){
+        return this.repositorioPetsPetshop.listarPets();
+    }
+
 }

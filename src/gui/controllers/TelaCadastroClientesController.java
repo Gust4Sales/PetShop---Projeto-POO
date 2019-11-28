@@ -31,6 +31,7 @@ import negocio.excecoes.ClienteJaCadastradoException;
  * @author 55819
  */
 public class TelaCadastroClientesController implements Initializable {
+    private Alert spam;
     private ObservableList<String> choicesList;
 
     @FXML
@@ -69,6 +70,7 @@ public class TelaCadastroClientesController implements Initializable {
      */
     public TelaCadastroClientesController(){
         choicesList = FXCollections.observableArrayList("Macho", "Fêmea");
+        spam = new Alert(Alert.AlertType.NONE);
     }
 
     @Override
@@ -107,17 +109,14 @@ public class TelaCadastroClientesController implements Initializable {
 
         if (nome.length()>0 && cpf.length()>0 && tel.length()>0){
             List<PetCliente> petsTemp= tbView.getItems();
-            ArrayList<PetCliente> pets = new ArrayList<>();
-            for (PetCliente p : petsTemp){
-                pets.add(p);
-            }
+            ArrayList<PetCliente> pets = new ArrayList<>(petsTemp);
+
             try {
                 ProjetoPoo.petShop.cadastrarCliente(nome, cpf, tel, pets);
 
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setAlertType(Alert.AlertType.INFORMATION);
-                a.setContentText("Cliente cadastrado com sucesso!");
-                a.show();
+                spam.setAlertType(Alert.AlertType.INFORMATION);
+                spam.setContentText("Cliente cadastrado com sucesso!");
+                spam.show();
 
                 inputTelefone.setText("");
                 inputNome.setText("");
@@ -125,16 +124,14 @@ public class TelaCadastroClientesController implements Initializable {
                 tbView.getItems().clear();
                 btnConfirmar.setDisable(true);
             } catch (ClienteJaCadastradoException e) {
-                Alert a = new Alert(Alert.AlertType.NONE);
-                a.setAlertType(Alert.AlertType.ERROR);
-                a.setContentText(e.getMessage());
-                a.show();
+                spam.setAlertType(Alert.AlertType.ERROR);
+                spam.setContentText(e.getMessage());
+                spam.show();
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Preencha todas as informações do cliente");
-            a.show();
+            spam.setAlertType(Alert.AlertType.ERROR);
+            spam.setContentText("Preencha todas as informações do cliente");
+            spam.show();
         }
     }
 
@@ -174,15 +171,14 @@ public class TelaCadastroClientesController implements Initializable {
 
             inputEspecie.setText("");
             inputNomePet.setText("");
-            choiceSexo.setValue(null);
+            choiceSexo.setValue("");
             tbView.getItems().add(pet);
 
             btnConfirmar.setDisable(false);
         } else {
-            Alert a = new Alert(Alert.AlertType.NONE);
-            a.setAlertType(Alert.AlertType.ERROR);
-            a.setContentText("Preencha todas as informações do pet!");
-            a.show();
+            spam.setAlertType(Alert.AlertType.ERROR);
+            spam.setContentText("Preencha todas as informações do pet!");
+            spam.show();
         }
     }
 

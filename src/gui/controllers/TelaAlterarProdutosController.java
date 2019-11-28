@@ -75,13 +75,6 @@ public class TelaAlterarProdutosController implements Initializable {
                 new PropertyValueFactory<>("Quantidade"));
         tbPreco.setCellValueFactory(
                 new PropertyValueFactory<>("Preco"));
-
-        //TEste
-        try {
-            ProjetoPoo.petShop.cadastrarProduto("Jhonson", "JJ Jhonso", 12.5, "p1", 50);
-        } catch (ProdutoJaCadastradoException e) {
-            e.printStackTrace();
-        }
     }
 
 
