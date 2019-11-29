@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="painelCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.gui.controllers.cadastro.TelaCadastroController">
+   <children>
+      <Button fx:id="btnCadrastraPet" layoutX="14.0" layoutY="102.0" mnemonicParsing="false" onAction="#cadastraPetBtnHandler" text="Cadastrar Pet">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCadastraProd" layoutX="14.0" layoutY="134.0" mnemonicParsing="false" onAction="#cadastraProdutoBtnHandler" text="Cadastrar Produto">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnVoltar" layoutX="14.0" layoutY="198.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="246.0" layoutY="14.0" text="Cadastro">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnCadastrarCliente" layoutX="14.0" layoutY="164.0" mnemonicParsing="false" onAction="#cadastrarClienteBtnHandler" text="Cadastrar Cliente">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
