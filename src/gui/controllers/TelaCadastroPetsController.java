@@ -58,8 +58,15 @@ public class TelaCadastroPetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        LocalDate maxDate = LocalDate.now();
+        dataNascimento.setDayCellFactory(d ->
+                new DateCell() {
+                    @Override public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setDisable(item.isAfter(maxDate));
+                    }});
+
         ObservableList<String> choicesList = FXCollections.observableArrayList("Macho", "Fêmea");
-        choiceSexo.setValue("");
         choiceSexo.setItems(choicesList);
 
     }
@@ -76,7 +83,8 @@ public class TelaCadastroPetsController implements Initializable {
         boolean validados;
 
         if ((especie.length()>0) && (peso.length() > 0) && (preco.length()>0) &&
-                (tamanho.length()>0) && (id.length()>0) && (sexo.length()>0) && data!=null){
+                (tamanho.length()>0) && (id.length()>0) && (choiceSexo.getValue()!=null) &&
+                dataNascimento.getValue()!=null){
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String dataNasc = data.format(formatter);
 

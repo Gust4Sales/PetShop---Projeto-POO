@@ -58,7 +58,7 @@ public class Agenda implements IRepositorioServicos {
     }
 
     @Override
-    public  ArrayList<ServicoAbstrato> consultarServicosPorData(String data){
+    public ArrayList<ServicoAbstrato> consultarServicosPorData(String data){
         ArrayList<ServicoAbstrato> servicos = new ArrayList<>();
 
         for (ServicoAbstrato s: this.agenda){
@@ -70,4 +70,8 @@ public class Agenda implements IRepositorioServicos {
         return servicos;
     }
 
+    @Override
+    public ArrayList<ServicoAbstrato> consultarServicos(){
+        return this.agenda;
+    }
 }

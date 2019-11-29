@@ -1,6 +1,7 @@
 package negocio.gerenciadores;
 
 
+import dados.RepositorioPetsVendidosArray;
 import dados.contratos.IRepositorioPetsPetshop;
 import dados.contratos.IRepositorioVendidos;
 import negocio.contratos.VendaAbstrata;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 
 public class NegocioPetPetshop {
     private IRepositorioPetsPetshop repositorioPetsPetshop;
-    private IRepositorioVendidos repositorioPetsVendidos;
+    private RepositorioPetsVendidosArray repositorioPetsVendidos;
 
-    public NegocioPetPetshop(IRepositorioPetsPetshop repo, IRepositorioVendidos repoVendidos){
+    public NegocioPetPetshop(IRepositorioPetsPetshop repo, RepositorioPetsVendidosArray repoVendidos){
         this.repositorioPetsPetshop = repo;
         this.repositorioPetsVendidos = repoVendidos;
     }
@@ -35,7 +36,7 @@ public class NegocioPetPetshop {
 
         if(existe){
             PetPetshop pet = this.consultarPet(id);
-            VendaAbstrata petVendido = new VendaPet(pet);
+            VendaPet petVendido = new VendaPet(pet);
 
             this.repositorioPetsPetshop.removerPet(pet);
             this.registrarVenda(petVendido);
@@ -45,7 +46,7 @@ public class NegocioPetPetshop {
         }
     }
 
-    private void registrarVenda(VendaAbstrata petVendido){
+    private void registrarVenda(VendaPet petVendido){
         this.repositorioPetsVendidos.adicionarVenda(petVendido);
     }
 
@@ -95,6 +96,14 @@ public class NegocioPetPetshop {
 
     public ArrayList<PetPetshop> consultarPetsEstoque(){
         return this.repositorioPetsPetshop.listarPets();
+    }
+
+    public ArrayList<VendaPet> consultarVendaPets() {
+        return this.repositorioPetsVendidos.consultarVendas();
+    }
+
+    public ArrayList<VendaPet> consultarVendaPetsPorData(String data){
+        return this.repositorioPetsVendidos.consultarVendasPorData(data);
     }
 
 }

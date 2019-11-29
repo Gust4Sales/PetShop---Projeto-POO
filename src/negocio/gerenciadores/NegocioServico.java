@@ -22,11 +22,40 @@ public class NegocioServico {
         this.agenda.removerServico(servico);
     }
 
+    public void marcarServicoConcluido(ServicoAbstrato s){
+        s.concluirStatus();
+        this.agenda.atualizarServico(s);
+    }
+
     public ArrayList<ServicoAbstrato> consultarServicosCliente(String cpf){
         return this.agenda.consultarServicosCliente(cpf);
     }
 
-    public ArrayList<String> consultarServicosAgendadosNaoConcluidos(String data){
+    public ArrayList<ServicoAbstrato> consultarServicosClienteConcluidos(String cpf){
+        ArrayList<ServicoAbstrato> servicosCliente = this.agenda.consultarServicosCliente(cpf);
+        ArrayList<ServicoAbstrato> servicosClienteConcluidos = new ArrayList<>();
+
+        for (ServicoAbstrato s: servicosCliente){
+            if (s.getStatus().equals("Concluído")){
+                servicosClienteConcluidos.add(s);
+            }
+        }
+        return servicosClienteConcluidos;
+    }
+
+    public ArrayList<ServicoAbstrato> consultarServicosClienteNaoConcluidos(String cpf){
+        ArrayList<ServicoAbstrato> servicosCliente = this.agenda.consultarServicosCliente(cpf);
+        ArrayList<ServicoAbstrato> servicos = new ArrayList<>();
+
+        for (ServicoAbstrato s: servicosCliente){
+            if (s.getStatus().equals("Não concluído")){
+                servicos.add(s);
+            }
+        }
+        return servicos;
+    }
+
+    public ArrayList<String> consultarHorariosDisponiveisPorData(String data){
         SimpleDateFormat sdfData = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdfDataComp = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         GregorianCalendar gc = new GregorianCalendar();
@@ -83,6 +112,10 @@ public class NegocioServico {
         }
 
         return listaHoras;
+    }
+
+    public ArrayList<ServicoAbstrato> consultarServicos(){
+        return this.agenda.consultarServicos();
     }
 
     public ArrayList<ServicoAbstrato> consultarServicosPorData(String data){

@@ -11,4 +11,5 @@ public interface IRepositorioServicos {
     ArrayList<ServicoAbstrato> consultarServicosCliente(String cpf);
     ArrayList<ServicoAbstrato> consultarServicosNaoConcluidos(String data);
     ArrayList<ServicoAbstrato> consultarServicosPorData(String data);
+    ArrayList<ServicoAbstrato> consultarServicos();
 }

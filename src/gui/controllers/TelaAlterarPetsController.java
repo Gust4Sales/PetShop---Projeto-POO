@@ -90,6 +90,7 @@ public class TelaAlterarPetsController implements Initializable {
         tbPreco.setCellValueFactory(
                 new PropertyValueFactory<>("Preco"));
 
+        spam = new Alert(Alert.AlertType.NONE);
     }
 
 
@@ -139,7 +140,7 @@ public class TelaAlterarPetsController implements Initializable {
     @FXML
     private void confirmarBtnHandler(ActionEvent event) throws PetPetshopInexistenteException {
         if (inputPreco.getLength()==0 && inputPeso.getLength()==0 && inputTamanho.getLength()==0){
-            spam.setAlertType(Alert.AlertType.NONE);
+            spam.setAlertType(Alert.AlertType.ERROR);
             spam.setContentText("Insira pelo menos uma alteração");
             spam.show();
         } else{
@@ -267,6 +268,7 @@ public class TelaAlterarPetsController implements Initializable {
         inputPeso.setText("");
         inputPreco.setText("");
         inputTamanho.setText("");
+
         tbView.getItems().add(ultimoPetPetshopPesquisado);
     }
 

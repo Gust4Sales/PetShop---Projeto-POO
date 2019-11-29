@@ -10,5 +10,7 @@ public class VendaPet extends VendaAbstrata {
         this.pet = pet;
     }
 
-
+    public PetPetshop getPet() {
+        return this.pet;
+    }
 }

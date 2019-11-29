@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class NegocioProduto {
     private IRepositorioProdutos repositorioProdutos;
-    private IRepositorioVendidos repositorioProdVendidos;
+    private RepositorioProdutosVendidosArray repositorioProdVendidos;
 
     public NegocioProduto(IRepositorioProdutos repo, RepositorioProdutosVendidosArray repositorioProdVendidos){
         this.repositorioProdutos = repo;
@@ -43,12 +43,13 @@ public class NegocioProduto {
         } else {
             produto.setQuantidade(produto.getQuantidade()-qntd);
 
-            VendaAbstrata vendaProduto = new VendaProduto(produto);
+            VendaProduto vendaProduto = new VendaProduto(new Produto(produto.getNome(), produto.getMarca(),
+                    produto.getPreco()*qntd, produto.getId(), qntd));
             this.registrarVenda(vendaProduto);
         }
     }
 
-    private void registrarVenda(VendaAbstrata vendaProduto){
+    private void registrarVenda(VendaProduto vendaProduto){
         this.repositorioProdVendidos.adicionarVenda(vendaProduto);
     }
 
@@ -86,5 +87,13 @@ public class NegocioProduto {
 
     public ArrayList<Produto> consultarProdutosEstoque(){
         return this.repositorioProdutos.listarProdutos();
+    }
+
+    public ArrayList<VendaProduto> consultarVendaProdutosPorData(String data){
+        return this.repositorioProdVendidos.consultarVendasPorData(data);
+    }
+
+    public ArrayList<VendaProduto> consultarVendaProdutos() {
+        return this.repositorioProdVendidos.consultarVendas();
     }
 }

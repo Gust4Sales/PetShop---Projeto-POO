@@ -9,4 +9,8 @@ public class VendaProduto extends VendaAbstrata {
         super();
         this.produto = produto;
     }
+
+    public Produto getProduto() {
+        return this.produto;
+    }
 }

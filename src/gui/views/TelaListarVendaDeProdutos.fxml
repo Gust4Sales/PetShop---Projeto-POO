@@ -15,14 +15,15 @@
                 <Font name="Arial Black" size="26.0" />
             </font>
         </Label>
-        <TableView layoutX="3.0" layoutY="145.0" prefHeight="195.0" prefWidth="594.0">
+        <TableView fx:id="tbView" layoutX="3.0" layoutY="145.0" prefHeight="195.0" prefWidth="594.0">
             <columns>
                 <TableColumn fx:id="tbId" prefWidth="44.0" text="Id" />
-                <TableColumn fx:id="tbNome" prefWidth="224.0" text="Nome" />
-                <TableColumn fx:id="tbMarca" prefWidth="126.0" text="Marca" />
-                <TableColumn fx:id="tbQuantidade" prefWidth="42.0" text="Qtd" />
-                <TableColumn fx:id="tbPreço" prefWidth="58.0" text="Preço" />
-            <TableColumn fx:id="tbDataDeVenda" prefWidth="99.0" text="Data de venda" />
+                <TableColumn fx:id="tbNome" prefWidth="164.0" text="Nome" />
+                <TableColumn fx:id="tbMarca" prefWidth="131.0" text="Marca" />
+                <TableColumn fx:id="tbQuantidade" prefWidth="39.0" text="Qtd" />
+                <TableColumn fx:id="tbPreço" prefWidth="55.0" text="Preço" />
+            <TableColumn fx:id="tbDataDeVenda" prefWidth="100.0" text="Data de venda" />
+            <TableColumn fx:id="tbHora" prefWidth="61.0" text="Hora " />
             </columns>
         </TableView>
         <Button fx:id="btnBucar" layoutX="350.0" layoutY="86.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />

@@ -109,19 +109,6 @@ public class TelaAlterarClientesController implements Initializable{
     }
 
     @FXML
-    private void nomePetInputHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void EspecieInputHandler(ActionEvent event) {
-    }
-
-    @FXML
-    private void SexoInputHandler(ActionEvent event) {
-    }
-
-
-    @FXML
     private void voltarBtnHandler(ActionEvent event) {
         Pane telaCadastro;
         try {
@@ -235,6 +222,10 @@ public class TelaAlterarClientesController implements Initializable{
 
             spam.setAlertType(Alert.AlertType.INFORMATION);
             spam.setContentText("Pet removido com sucesso!");
+            spam.show();
+        } else {
+            spam.setAlertType(Alert.AlertType.ERROR);
+            spam.setContentText("Selecione um pet!");
             spam.show();
         }
     }

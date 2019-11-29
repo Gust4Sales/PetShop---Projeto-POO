@@ -90,27 +90,29 @@ public class TelaServicoController implements Initializable {
             tbView.getItems().clear();
             try{
                 cliente = ProjetoPoo.petShop.consultarCliente(inputBuscarCpf.getText());
-                ArrayList<ServicoAbstrato> servicosDoCliente = ProjetoPoo.petShop.consultarServicosCliente(cliente.getCpf());
-                ArrayList<PetCliente> petsEmServico = new ArrayList<>();
-                for (ServicoAbstrato s: servicosDoCliente){
-                    petsEmServico.add(s.getPet());
-                }
+//                ArrayList<ServicoAbstrato> servicosDoCliente = ProjetoPoo.petShop.consultarServicosClienteConcluidos(
+//                        cliente.getCpf());
+//
+//                ArrayList<PetCliente> pets = new ArrayList<>();
+//                for (ServicoAbstrato s: servicosDoCliente){
+//                    pets.add(s.getPet());
+//                }
 
+//                for (PetCliente pet: cliente.getPets()) {
+//                    if (!servicosDoCliente.isEmpty()) {
+//                        tbView.getItems().add(pet);
+//                    } else {
+//                        tbView.getItems().add(pet);
+//                    }
+//                }
                 for (PetCliente pet: cliente.getPets()){
-                    if (!servicosDoCliente.isEmpty()) {
-                        if (!petsEmServico.contains(pet)) {
-                            tbView.getItems().add(pet);
-                        }
-                    } else {
-                        tbView.getItems().add(pet);
-                    }
+                    tbView.getItems().add(pet);
                 }
-
-                if (tbView.getItems().isEmpty()){
-                    spam.setAlertType(Alert.AlertType.ERROR);
-                    spam.setContentText("Nenhum pet disponível do cliente "+cliente.getNome()+" para agendamento!");
-                    spam.show();
-                }
+//                if (tbView.getItems().isEmpty()){
+//                    spam.setAlertType(Alert.AlertType.ERROR);
+//                    spam.setContentText("Nenhum pet disponível do cliente "+cliente.getNome()+" para agendamento!");
+//                    spam.show();
+//                }
 
             } catch (ClienteInexistenteException e) {
                 spam.setAlertType(Alert.AlertType.ERROR);

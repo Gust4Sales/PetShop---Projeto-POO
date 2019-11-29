@@ -14,23 +14,24 @@
                 <Font name="System Bold" size="26.0" />
             </font>
         </Label>
-        <DatePicker fx:id="dateSalePets" layoutX="201.0" layoutY="60.0" onAction="#salePetsDateHandler" promptText="Buscar histórico por data" />
+        <DatePicker fx:id="dateSalePets" layoutX="201.0" layoutY="60.0" promptText="Buscar histórico por data" />
         <Button fx:id="btnBuscar" layoutX="387.0" layoutY="60.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
         <Label layoutX="228.0" layoutY="89.0" text="Lista dos Pets">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <TableView fx:id="tbView" layoutX="22.0" layoutY="119.0" prefHeight="200.0" prefWidth="560.0">
+        <TableView fx:id="tbView" layoutY="119.0" prefHeight="200.0" prefWidth="600.0">
             <columns>
                 <TableColumn fx:id="tbId" prefWidth="50.0" text="Id" />
                 <TableColumn fx:id="tbEspecie" prefWidth="70.0" text="Espécie" />
                 <TableColumn fx:id="tbSexo" prefWidth="66.0" text="Sexo" />
                 <TableColumn fx:id="tbDataDeNasc" prefWidth="92.0" text="Data de Nasc" />
-                <TableColumn fx:id="tbPeso" prefWidth="68.0" text="Peso" />
-                <TableColumn fx:id="tbTam" prefWidth="68.0" text="Tamanho " />
-                <TableColumn fx:id="tbPreco" prefWidth="50.0" text="Preço" />
-                <TableColumn fx:id="tbDataVenda" prefWidth="95.0" text="Data da venda" />
+                <TableColumn fx:id="tbPeso" prefWidth="53.0" text="Peso" />
+                <TableColumn fx:id="tbTam" prefWidth="67.0" text="Tamanho " />
+                <TableColumn fx:id="tbPreco" prefWidth="54.0" text="Preço" />
+                <TableColumn fx:id="tbDataVenda" prefWidth="88.0" text="Data da venda" />
+            <TableColumn fx:id="tbHora" prefWidth="59.0" text="Hora" />
             </columns>
         </TableView>
         <Button fx:id="btnVoltar" layoutX="274.0" layoutY="333.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />

@@ -83,6 +83,16 @@ public class TelaListarHistoricoServicoController implements Initializable {
         tbStatus.setCellValueFactory(
                 new PropertyValueFactory<>("Status"));
 
+        preencherHistorico();
+    }
+
+    private void preencherHistorico(){
+        ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicos();
+
+        tbView.getItems().clear();
+        for (ServicoAbstrato s: servicos){
+            tbView.getItems().add(s);
+        }
     }
 
     @FXML
@@ -116,15 +126,16 @@ public class TelaListarHistoricoServicoController implements Initializable {
                     tbView.getItems().add(s);
                 }
             }
-        } else {
+        } else if (dateSearch.getValue()!=null){
             String data = date.format(formatter);
             ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicosPorData(data);
 
             for (ServicoAbstrato s: servicos){
                 tbView.getItems().add(s);
             }
+        } else {
+            preencherHistorico();
         }
-
     }
 
     @FXML
@@ -135,7 +146,7 @@ public class TelaListarHistoricoServicoController implements Initializable {
             painelListaServico.getChildren().setAll(listar);
 
         } catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
 
         }
     }

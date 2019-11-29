@@ -10,12 +10,22 @@ public abstract class VendaAbstrata {
 
     public VendaAbstrata(){
         Calendar c = Calendar.getInstance();
+        c.add(Calendar.HOUR,-1);
         Date data = c.getTime();
         SimpleDateFormat dFormatada = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat hFormatada = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat hFormatada = new SimpleDateFormat("HH:mm");
         // Hora e Data atual do sistema.
 
         this.hora = hFormatada.format(data);
         this.data = dFormatada.format(data);
     }
+
+    public String getData() {
+        return this.data;
+    }
+
+    public String getHora() {
+        return this.hora;
+    }
+
 }

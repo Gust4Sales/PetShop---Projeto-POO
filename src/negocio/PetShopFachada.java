@@ -59,6 +59,14 @@ public class PetShopFachada {
     public ArrayList<PetPetshop> consultarPetsEstoque(){
         return this.negocioPetPetshop.consultarPetsEstoque();
     }
+
+    public ArrayList<VendaPet> consultarVendasPet(){
+        return this.negocioPetPetshop.consultarVendaPets();
+    }
+
+    public ArrayList<VendaPet> consultarVendasPetPorData(String data){
+        return this.negocioPetPetshop.consultarVendaPetsPorData(data);
+    }
     // FIm métodos PetPetshop
 
     // Inicio métodos Produto
@@ -92,6 +100,13 @@ public class PetShopFachada {
         return this.negocioProduto.consultarProdutosEstoque();
     }
 
+    public ArrayList<VendaProduto> consultarVendaProdutos(){
+        return this.negocioProduto.consultarVendaProdutos();
+    }
+
+    public ArrayList<VendaProduto> consultarVendaProdutosPorData(String data){
+        return this.negocioProduto.consultarVendaProdutosPorData(data);
+    }
     // Fim métodos Produto
 
     // Inicio métodos Servico
@@ -113,17 +128,32 @@ public class PetShopFachada {
         this.negocioServico.removerServico(s);
     }
 
-    public ArrayList<String> consultarHorariosAgendadosNaoConcluidos(String data){
-        return this.negocioServico.consultarServicosAgendadosNaoConcluidos(data);
+    public void marcarServicoConcluido(ServicoAbstrato s){
+        this.negocioServico.marcarServicoConcluido(s);
     }
 
+    public ArrayList<ServicoAbstrato> consultarServicos() {
+        return this.negocioServico.consultarServicos();
+    }
+
+    public ArrayList<ServicoAbstrato> consultarServicosCliente(String cpf) {
+        return this.negocioServico.consultarServicosCliente(cpf);
+    }
+
+    public ArrayList<String> consultarHorariosAgendadosNaoConcluidos(String data){
+        return this.negocioServico.consultarHorariosDisponiveisPorData(data);
+    }
+
+    public ArrayList<ServicoAbstrato> consultarServicosClienteNaoConcluidos(String cpf){
+        return this.negocioServico.consultarServicosClienteNaoConcluidos(cpf);
+    }
 
     public ArrayList<ServicoAbstrato> consultarServicosPorData(String data) {
         return this.negocioServico.consultarServicosPorData(data);
     }
 
-    public ArrayList<ServicoAbstrato> consultarServicosCliente(String cpf){
-        return this.negocioServico.consultarServicosCliente(cpf);
+    public ArrayList<ServicoAbstrato> consultarServicosClienteConcluidos(String cpf){
+        return this.negocioServico.consultarServicosClienteConcluidos(cpf);
     }
 
     public ArrayList<ServicoAbstrato> consultarServicosClientePorData(String cpf, String data){
@@ -148,8 +178,6 @@ public class PetShopFachada {
     public void alterarPetsCliente(Cliente cliente, ArrayList<PetCliente> pets){
         this.negocioCliente.alterarListaPets(cliente, pets);
     }
-
-
 
     // FIm metodos CLiente
 }

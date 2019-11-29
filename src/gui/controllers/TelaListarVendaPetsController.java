@@ -7,10 +7,18 @@ package gui.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import gui.ProjetoPoo;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +27,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import negocio.contratos.VendaAbstrata;
+import negocio.entidades.VendaPet;
 
 /**
  * FXML Controller class
@@ -34,21 +45,23 @@ public class TelaListarVendaPetsController implements Initializable {
     @FXML
     private Button btnBuscar;
     @FXML
-    private TableView<?> tbView;
+    private TableView<VendaPet> tbView;
     @FXML
-    private TableColumn<?, ?> tbId;
+    private TableColumn<VendaPet, String> tbId;
     @FXML
-    private TableColumn<?, ?> tbEspecie;
+    private TableColumn<VendaPet, String> tbEspecie;
     @FXML
-    private TableColumn<?, ?> tbSexo;
+    private TableColumn<VendaPet, String> tbSexo;
     @FXML
-    private TableColumn<?, ?> tbDataDeNasc;
+    private TableColumn<VendaPet, String> tbDataDeNasc;
     @FXML
-    private TableColumn<?, ?> tbPeso;
+    private TableColumn<VendaPet, String> tbPeso;
     @FXML
-    private TableColumn<?, ?> tbTam;
+    private TableColumn<VendaPet, String> tbTam;
     @FXML
-    private TableColumn<?, ?> tbPreco;
+    private TableColumn<VendaPet, String> tbPreco;
+    @FXML
+    private TableColumn<VendaPet, String> tbHora;
     @FXML
     private TableColumn<?, ?> tbDataVenda;
     @FXML
@@ -60,14 +73,45 @@ public class TelaListarVendaPetsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        tbId.setCellValueFactory(pet -> new SimpleStringProperty(pet.getValue().getPet().getId()));
+        tbEspecie.setCellValueFactory(pet -> new SimpleStringProperty(pet.getValue().getPet().getEspecie()));
+        tbDataDeNasc.setCellValueFactory(pet -> new SimpleStringProperty(pet.getValue().getPet().getDataNascimento()));
+        tbPeso.setCellValueFactory(pet -> new SimpleStringProperty(String.valueOf(pet.getValue().getPet().getPeso())));
+        tbSexo.setCellValueFactory(pet -> new SimpleStringProperty(pet.getValue().getPet().getSexo()));
+        tbTam.setCellValueFactory(pet -> new SimpleStringProperty(String.valueOf(pet.getValue().getPet().getTamanho())));
+        tbPreco.setCellValueFactory(pet -> new SimpleStringProperty(String.valueOf(pet.getValue().getPet().getPreco())));
+        tbDataVenda.setCellValueFactory(
+                new PropertyValueFactory<>("data"));
+        tbHora.setCellValueFactory(
+                new PropertyValueFactory<>("hora"));
+
+        preencherHistorico();
     }
 
-    @FXML
-    private void salePetsDateHandler(ActionEvent event) {
+    private void preencherHistorico(){
+        ArrayList<VendaPet> vendas = ProjetoPoo.petShop.consultarVendasPet();
+        for (VendaPet v: vendas) {
+            tbView.getItems().add(v);
+        }
     }
 
     @FXML
     private void buscarBtnHandler(ActionEvent event) {
+        LocalDate date = dateSalePets.getValue();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        tbView.getItems().clear();
+        if (dateSalePets.getValue()!=null){
+            String data = date.format(formatter);
+            ArrayList<VendaPet> vendaPets = ProjetoPoo.petShop.consultarVendasPetPorData(data);
+
+            for (VendaPet v: vendaPets) {
+                tbView.getItems().add(v);
+            }
+        } else {
+            preencherHistorico();
+        }
+
     }
 
     @FXML

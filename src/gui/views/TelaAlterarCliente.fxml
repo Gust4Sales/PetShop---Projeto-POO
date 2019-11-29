@@ -34,8 +34,8 @@
                 <TableColumn fx:id="tbSexo" prefWidth="90.0" text="Sexo" />
             </columns>
         </TableView>
-        <TextField fx:id="inputNomePet" layoutX="45.0" layoutY="218.0" onAction="#nomePetInputHandler" />
-        <TextField fx:id="inputEspecie" layoutX="45.0" layoutY="267.0" onAction="#EspecieInputHandler" />
+        <TextField fx:id="inputNomePet" layoutX="45.0" layoutY="218.0" />
+        <TextField fx:id="inputEspecie" layoutX="45.0" layoutY="267.0" />
         <Label layoutX="62.0" layoutY="200.0" text="Digite o nome do pet" />
         <Label layoutX="58.0" layoutY="248.0" text="Digite a espécie do pet" />
         <Label layoutX="55.0" layoutY="293.0" text="Selecione o sexo do pet" />
