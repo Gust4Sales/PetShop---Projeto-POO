@@ -5,7 +5,11 @@ import PetShop.negocio.entidades.Cliente;
 import PetShop.negocio.excecoes.ClienteInexistenteException;
 
 import java.util.ArrayList;
-
+/**
+ * Essa classe é reponsável por armazenar, e gerenciar a recuperação dos Clientes
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class RepositorioClientesArray implements IRepositorioClientes {
     private ArrayList<Cliente> clientes;
 
@@ -16,11 +20,6 @@ public class RepositorioClientesArray implements IRepositorioClientes {
     @Override
     public void adicionarCliente(Cliente cliente) {
         clientes.add(cliente);
-    }
-
-    @Override
-    public void removerCliente(String cpf) {
-
     }
 
     @Override

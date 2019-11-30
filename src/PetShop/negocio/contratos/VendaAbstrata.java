@@ -3,7 +3,11 @@ package PetShop.negocio.contratos;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Classe abstrata que representa as Vendas do sistema de forma geral
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public abstract class VendaAbstrata {
     protected String hora;
     protected String data;

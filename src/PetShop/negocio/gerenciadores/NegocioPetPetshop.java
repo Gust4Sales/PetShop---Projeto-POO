@@ -10,6 +10,11 @@ import PetShop.negocio.excecoes.PetPetshopJaCadastradoException;
 
 import java.util.ArrayList;
 
+/**
+ * Essa classe aplica as regras de negócio e o gerenciamento do PetPetshop no sistema
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class NegocioPetPetshop {
     private IRepositorioPetsPetshop repositorioPetsPetshop;
     private RepositorioPetsVendidosArray repositorioPetsVendidos;
@@ -29,7 +34,7 @@ public class NegocioPetPetshop {
         }
     }
 
-    public void removerPetPetshop(String id) throws PetPetshopInexistenteException{
+    public void venderPetPetshop(String id) throws PetPetshopInexistenteException{
         boolean existe = this.repositorioPetsPetshop.verificarPet(id);
 
         if(existe){
@@ -39,8 +44,20 @@ public class NegocioPetPetshop {
             this.repositorioPetsPetshop.removerPet(pet);
             this.registrarVenda(petVendido);
         } else {
+            throw new PetPetshopInexistenteException(id);
+        }
+    }
+
+    public void removerPetPetshop(String id) throws PetPetshopInexistenteException{
+        boolean existe = this.repositorioPetsPetshop.verificarPet(id);
+
+        if(existe){
             PetPetshop pet = this.consultarPet(id);
-            throw new PetPetshopInexistenteException(pet.getId());
+            VendaPet petVendido = new VendaPet(pet);
+
+            this.repositorioPetsPetshop.removerPet(pet);
+        } else {
+            throw new PetPetshopInexistenteException(id);
         }
     }
 

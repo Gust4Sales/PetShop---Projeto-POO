@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import PetShop.dados.contratos.IRepositorioProdutos;
 import PetShop.negocio.entidades.Produto;
 import PetShop.negocio.excecoes.ProdutoInexistenteException;
-
+/**
+ * Essa classe é reponsável por armazenar e gerenciar a recuperação dos Produtos
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class RepositorioProdutosArray implements IRepositorioProdutos {
     private ArrayList<Produto> produtos;
 

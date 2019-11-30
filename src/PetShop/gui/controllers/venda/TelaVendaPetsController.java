@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,8 +24,8 @@ import PetShop.negocio.excecoes.PetPetshopInexistenteException;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaVendaPetsController implements Initializable {
 
@@ -75,7 +75,7 @@ public class TelaVendaPetsController implements Initializable {
     @FXML
     private void confirmarBtnHandler(ActionEvent event) {
         try{
-            ProjetoPoo.petShop.venderPetPetshop(inputId.getText());
+            Main.petShop.venderPetPetshop(inputId.getText());
 
             Alert a = new Alert(Alert.AlertType.NONE);
             a.setAlertType(Alert.AlertType.INFORMATION);
@@ -111,7 +111,7 @@ public class TelaVendaPetsController implements Initializable {
     private void buscarBtnHandler(ActionEvent event) {
         if (inputId.getText().length() > 0){
             try{
-                PetPetshop pet = ProjetoPoo.petShop.consultarPetPetshop(inputId.getText());
+                PetPetshop pet = Main.petShop.consultarPetPetshop(inputId.getText());
 
                 preencherTabela(pet);
             } catch (PetPetshopInexistenteException e){

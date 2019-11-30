@@ -7,7 +7,11 @@ import PetShop.negocio.excecoes.ClienteInexistenteException;
 import PetShop.negocio.excecoes.ClienteJaCadastradoException;
 
 import java.util.ArrayList;
-
+/**
+ * Essa classe aplica as regras de negócio e o gerenciamento do Cliente no sistema
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class NegocioCliente {
     private IRepositorioClientes repositorioClientes;
 
@@ -25,16 +29,6 @@ public class NegocioCliente {
         }
     }
 
-    public void removerCliente(Cliente cliente){
-        boolean existe = repositorioClientes.verificarCliente(cliente.getCpf());
-
-        if (existe){
-            this.repositorioClientes.removerCliente(cliente.getCpf());
-        } else {
-            //exceção
-        }
-    }
-
     public void alterarTelCliente(Cliente cliente, String telefone){
         cliente.setTelefone(telefone);
         this.repositorioClientes.atualizarCliente(cliente);
@@ -49,11 +43,4 @@ public class NegocioCliente {
         this.repositorioClientes.atualizarCliente(cliente);
     }
 
-    public void removerPet(PetCliente pet){
-
-    }
-
-    public void alterarDivida(double divida){
-
-    }
 }

@@ -1,5 +1,9 @@
 package PetShop.negocio.excecoes;
-
+/**
+ * Classe de exceção que é lançada quando não é encontrado produto com esse id
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class ProdutoInexistenteException extends Exception {
     private String id;
 

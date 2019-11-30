@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,8 +25,8 @@ import PetShop.negocio.excecoes.PetPetshopInexistenteException;
 
 /**
  * FXML Controller class
- *
- * @author 55819
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaAlterarPetsController implements Initializable {
     private PetPetshop ultimoPetPetshopPesquisado;
@@ -92,7 +92,7 @@ public class TelaAlterarPetsController implements Initializable {
     private void buscarBtnHandler(ActionEvent event) {
         if (inputId.getText().length() > 0){
             try{
-                ultimoPetPetshopPesquisado = ProjetoPoo.petShop.consultarPetPetshop(inputId.getText());
+                ultimoPetPetshopPesquisado = Main.petShop.consultarPetPetshop(inputId.getText());
 
                 tbView.getItems().clear();
                 tbView.getItems().add(ultimoPetPetshopPesquisado); // Insere produto na Tabela de visualizacao
@@ -120,7 +120,7 @@ public class TelaAlterarPetsController implements Initializable {
     private void removerPetBtnHandler(ActionEvent event) throws PetPetshopInexistenteException {
         tbView.getItems().clear();
 
-        ProjetoPoo.petShop.venderPetPetshop(ultimoPetPetshopPesquisado.getId());
+        Main.petShop.removerPetPetshop(ultimoPetPetshopPesquisado.getId());
 
         spam.setAlertType(Alert.AlertType.INFORMATION);
         spam.setContentText("Pet removido com sucesso!");
@@ -252,7 +252,7 @@ public class TelaAlterarPetsController implements Initializable {
             peso = ultimoPetPetshopPesquisado.getPeso();
         }
 
-        ProjetoPoo.petShop.atualizarPetPetshop(id,tam,peso,preco);
+        Main.petShop.atualizarPetPetshop(id,tam,peso,preco);
 
         spam.setAlertType(Alert.AlertType.INFORMATION);
         spam.setContentText("Pet alterado com sucesso!");

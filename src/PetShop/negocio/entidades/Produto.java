@@ -1,5 +1,9 @@
 package PetShop.negocio.entidades;
-
+/**
+ * Essa classe representa os produtos do Petshop
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class Produto {
     private String nome, id, marca;
     private double preco;
@@ -55,9 +59,4 @@ public class Produto {
     }
 // ---------
 
-
-    @Override
-    public String toString(){
-        return this.nome;
-    }
 }

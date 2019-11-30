@@ -5,7 +5,11 @@ import PetShop.negocio.entidades.PetPetshop;
 import PetShop.negocio.excecoes.PetPetshopInexistenteException;
 
 import java.util.ArrayList;
-
+/**
+ * Essa classe é reponsável por armazenar, e gerenciar a recuperação dos PetsPetshop
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class RepositorioPetsPetshopArray implements IRepositorioPetsPetshop {
     private ArrayList<PetPetshop> petsDisponiveis;
 

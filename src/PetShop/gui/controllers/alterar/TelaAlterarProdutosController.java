@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +23,8 @@ import PetShop.negocio.excecoes.QuantidadeInvalidaException;
 
 /**
  * FXML Controller class
- *
- * @author 55819
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaAlterarProdutosController implements Initializable {
     private Produto ultimoProdutoPesquisado;
@@ -81,7 +81,7 @@ public class TelaAlterarProdutosController implements Initializable {
     private void buscarBtnHandler(ActionEvent event) {
         if (inputId.getText().length() > 0){
             try{
-                ultimoProdutoPesquisado = ProjetoPoo.petShop.consultarProduto(inputId.getText());
+                ultimoProdutoPesquisado = Main.petShop.consultarProduto(inputId.getText());
 
                 tbView.getItems().clear();
                 tbView.getItems().add(ultimoProdutoPesquisado); // Insere produto na Tabela de visualizacao
@@ -109,7 +109,7 @@ public class TelaAlterarProdutosController implements Initializable {
     private void removerProdutoBtnHandler(ActionEvent event){
         tbView.getItems().clear();
         try{
-            ProjetoPoo.petShop.removerProduto(ultimoProdutoPesquisado.getId());
+            Main.petShop.removerProduto(ultimoProdutoPesquisado.getId());
 
             spam.setAlertType(Alert.AlertType.INFORMATION);
             spam.setContentText("Produto removido com sucesso!");
@@ -219,7 +219,7 @@ public class TelaAlterarProdutosController implements Initializable {
         String id = ultimoProdutoPesquisado.getId();
 
         try {
-            ProjetoPoo.petShop.atualizarProduto(id, qntd, preco);
+            Main.petShop.atualizarProduto(id, qntd, preco);
         } catch (QuantidadeInvalidaException | ProdutoInexistenteException e) {
             spam.setAlertType(Alert.AlertType.ERROR);
             spam.setContentText(e.getMessage());

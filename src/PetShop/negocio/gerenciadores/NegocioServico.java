@@ -7,6 +7,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Essa classe aplica as regras de negócio e o gerenciamento do Serviço no sistema
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class NegocioServico {
     private IRepositorioServicos agenda;
 
@@ -37,18 +42,12 @@ public class NegocioServico {
         return this.agenda.consultarServicosCliente(cpf);
     }
 
-    public ArrayList<ServicoAbstrato> consultarServicosClienteConcluidos(String cpf){
-        ArrayList<ServicoAbstrato> servicosCliente = this.agenda.consultarServicosCliente(cpf);
-        ArrayList<ServicoAbstrato> servicosClienteConcluidos = new ArrayList<>();
-
-        for (ServicoAbstrato s: servicosCliente){
-            if (s.getStatus().equals("Concluído")){
-                servicosClienteConcluidos.add(s);
-            }
-        }
-        return servicosClienteConcluidos;
-    }
-
+    /**
+     * Retorna apenas a lista de serviços contratados pelo cliente que ainda não foram concluídos.
+     *
+     * @param cpf CPF do cliente
+     * @return ArrayList<ServicoAbstrato> servicos
+     */
     public ArrayList<ServicoAbstrato> consultarServicosClienteNaoConcluidos(String cpf){
         ArrayList<ServicoAbstrato> servicosCliente = this.agenda.consultarServicosCliente(cpf);
         ArrayList<ServicoAbstrato> servicos = new ArrayList<>();
@@ -61,6 +60,16 @@ public class NegocioServico {
         return servicos;
     }
 
+    /**
+     * Método que recebe uma data e retorna uma lista com os horários disponíveis para aquele data, a lista de
+     * horários disponíveis é de acordo com o horário comercial (8h ás 12h, 14h ás 15h). A lista só contém
+     * horários disponíveis, isto é, nenhum serviço foi agendado nesse horário. Se a data em questão
+     * for a data presente, é removido da lista as horas que já se passaram também, visto que é impossível agendar
+     * um horário que já se passou.
+     *
+     * @param data Data em que será consultado os horários livres
+     * @return listaHoras
+     */
     public ArrayList<String> consultarHorariosDisponiveisPorData(String data){
         SimpleDateFormat sdfData = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat sdfDataComp = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -108,7 +117,8 @@ public class NegocioServico {
                             int index = listaHoras.indexOf(servico.getHoraAgendada()) + 1;
                             listaHoras.remove(index);
                         }
-                    } else if (!servico.getDescricao().equals("completo") && listaHoras.contains(servico.getHoraAgendada())) {
+                    } else if (!servico.getDescricao().equals("completo") && listaHoras.contains(
+                            servico.getHoraAgendada())) {
                         listaHoras.remove(servico.getHoraAgendada());
                     }
                 } catch (ParseException e) {

@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,8 +27,8 @@ import PetShop.negocio.excecoes.ClienteInexistenteException;
 
 /**
  * FXML Controller class
- *
- * @author 55819
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaListarHistoricoServicoController implements Initializable {
     private Alert spam;
@@ -80,7 +80,7 @@ public class TelaListarHistoricoServicoController implements Initializable {
     }
 
     private void preencherHistorico(){
-        ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicos();
+        ArrayList<ServicoAbstrato> servicos = Main.petShop.consultarServicos();
 
         tbView.getItems().clear();
         for (ServicoAbstrato s: servicos){
@@ -96,7 +96,7 @@ public class TelaListarHistoricoServicoController implements Initializable {
         tbView.getItems().clear();
         if (inputCpf.getLength()>0){
             try{
-                Cliente cliente = ProjetoPoo.petShop.consultarCliente(inputCpf.getText());
+                Cliente cliente = Main.petShop.consultarCliente(inputCpf.getText());
 
             } catch (ClienteInexistenteException e) {
                 spam.setContentText(e.getMessage());
@@ -106,14 +106,14 @@ public class TelaListarHistoricoServicoController implements Initializable {
             }
             if (dateSearch.getValue()!=null){
                 String data = date.format(formatter);
-                ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicosClientePorData(
+                ArrayList<ServicoAbstrato> servicos = Main.petShop.consultarServicosClientePorData(
                         inputCpf.getText(), data);
 
                 for (ServicoAbstrato s: servicos) {
                     tbView.getItems().add(s);
                 }
             } else {
-                ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicosCliente(inputCpf.getText());
+                ArrayList<ServicoAbstrato> servicos = Main.petShop.consultarServicosCliente(inputCpf.getText());
 
                 for (ServicoAbstrato s: servicos){
                     tbView.getItems().add(s);
@@ -121,7 +121,7 @@ public class TelaListarHistoricoServicoController implements Initializable {
             }
         } else if (dateSearch.getValue()!=null){
             String data = date.format(formatter);
-            ArrayList<ServicoAbstrato> servicos = ProjetoPoo.petShop.consultarServicosPorData(data);
+            ArrayList<ServicoAbstrato> servicos = Main.petShop.consultarServicosPorData(data);
 
             for (ServicoAbstrato s: servicos){
                 tbView.getItems().add(s);

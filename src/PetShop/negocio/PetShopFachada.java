@@ -10,7 +10,11 @@ import PetShop.negocio.gerenciadores.NegocioProduto;
 import PetShop.negocio.gerenciadores.NegocioServico;
 
 import java.util.ArrayList;
-
+/**
+ * Classe fachada. Representa todas as funcionalidades possíveis do sistema
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class PetShopFachada {
     private NegocioPetPetshop negocioPetPetshop;
     private NegocioProduto negocioProduto;
@@ -29,7 +33,7 @@ public class PetShopFachada {
         this.negocioCliente = new NegocioCliente(new RepositorioClientesArray());
     }
 
-    // Inicio método PetPetshop
+    // Inicio métodos PetPetshop
     public void cadastrarPetPetshop(String especie, String id, String sexo, String dataNascimento, double peso,
                                     double tamanho, double preco) throws PetPetshopJaCadastradoException {
         PetPetshop pet = new PetPetshop(especie, id, sexo, dataNascimento, peso, tamanho, preco);
@@ -38,13 +42,14 @@ public class PetShopFachada {
     }
 
     public void venderPetPetshop(String id) throws PetPetshopInexistenteException{
+        this.negocioPetPetshop.venderPetPetshop(id);
+    }
 
+    public void removerPetPetshop(String id) throws PetPetshopInexistenteException{
         this.negocioPetPetshop.removerPetPetshop(id);
-
     }
 
     public PetPetshop consultarPetPetshop(String id) throws PetPetshopInexistenteException {
-
         return this.negocioPetPetshop.consultarPet(id);
     }
 
@@ -82,7 +87,6 @@ public class PetShopFachada {
     }
 
     public Produto consultarProduto(String id) throws ProdutoInexistenteException {
-
         return this.negocioProduto.consultarProduto(id);
     }
 
@@ -90,7 +94,8 @@ public class PetShopFachada {
         this.negocioProduto.removerProduto(id);
     }
 
-    public void atualizarProduto(String id, int qntd, double preco) throws ProdutoInexistenteException, QuantidadeInvalidaException {
+    public void atualizarProduto(String id, int qntd, double preco) throws ProdutoInexistenteException,
+            QuantidadeInvalidaException {
         Produto produto = negocioProduto.consultarProduto(id);
         negocioProduto.alterarPreco(produto, preco);
         negocioProduto.alterarQuantidade(produto, qntd);
@@ -156,17 +161,14 @@ public class PetShopFachada {
         return this.negocioServico.consultarServicosPorData(data);
     }
 
-    public ArrayList<ServicoAbstrato> consultarServicosClienteConcluidos(String cpf){
-        return this.negocioServico.consultarServicosClienteConcluidos(cpf);
-    }
-
     public ArrayList<ServicoAbstrato> consultarServicosClientePorData(String cpf, String data){
         return this.negocioServico.consultarServicosClientePorData(cpf, data);
     }
     // Fim métodos Servico
 
     // Inicio metodos Cliente
-    public void cadastrarCliente(String nome, String cpf, String tel, ArrayList<PetCliente> pets) throws ClienteJaCadastradoException {
+    public void cadastrarCliente(String nome, String cpf, String tel, ArrayList<PetCliente> pets) throws
+            ClienteJaCadastradoException {
         Cliente cliente = new Cliente(nome, cpf, tel, pets);
         negocioCliente.adicionarCliente(cliente);
     }
@@ -183,5 +185,5 @@ public class PetShopFachada {
         this.negocioCliente.alterarListaPets(cliente, pets);
     }
 
-    // FIm metodos CLiente
+    // FIm metodos Cliente
 }

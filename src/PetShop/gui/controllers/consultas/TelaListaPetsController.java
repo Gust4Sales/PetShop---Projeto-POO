@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,8 +26,8 @@ import PetShop.negocio.entidades.PetPetshop;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaListaPetsController implements Initializable {
 
@@ -71,7 +71,7 @@ public class TelaListaPetsController implements Initializable {
         tbPreco.setCellValueFactory(
                 new PropertyValueFactory<>("Preco"));
 
-        ArrayList<PetPetshop> pets = ProjetoPoo.petShop.consultarPetsEstoque();
+        ArrayList<PetPetshop> pets = Main.petShop.consultarPetsEstoque();
 
         for (PetPetshop pet: pets){
             tbEstoquePets.getItems().add(pet);

@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -28,8 +28,8 @@ import PetShop.negocio.entidades.VendaProduto;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaListarVendaDeProdutosController implements Initializable {
 
@@ -84,7 +84,7 @@ public class TelaListarVendaDeProdutosController implements Initializable {
 
 
     private void preencherHistorico(){
-        ArrayList<VendaProduto> vendas = ProjetoPoo.petShop.consultarVendaProdutos();
+        ArrayList<VendaProduto> vendas = Main.petShop.consultarVendaProdutos();
         for (VendaProduto v: vendas) {
             tbView.getItems().add(v);
         }
@@ -98,7 +98,7 @@ public class TelaListarVendaDeProdutosController implements Initializable {
         tbView.getItems().clear();
         if (dateBuscarHistorico.getValue()!=null){
             String data = date.format(formatter);
-            ArrayList<VendaProduto> vendaProdutos = ProjetoPoo.petShop.consultarVendaProdutosPorData(data);
+            ArrayList<VendaProduto> vendaProdutos = Main.petShop.consultarVendaProdutosPorData(data);
 
             for (VendaProduto v: vendaProdutos) {
                 tbView.getItems().add(v);

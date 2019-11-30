@@ -4,7 +4,11 @@ import PetShop.negocio.entidades.Produto;
 import PetShop.negocio.excecoes.ProdutoInexistenteException;
 
 import java.util.ArrayList;
-
+/**
+ * Classe de interface para repositórios de produtos.
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public interface IRepositorioProdutos {
     void adicionarProduto(Produto produto);
     void removerProduto(String id) throws ProdutoInexistenteException;

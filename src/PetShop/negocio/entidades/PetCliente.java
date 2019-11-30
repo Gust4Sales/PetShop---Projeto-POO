@@ -1,5 +1,9 @@
 package PetShop.negocio.entidades;
-
+/**
+ * Essa classe representa o pet do cliente, cujo serviços serão prestados
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class PetCliente {
     private String nome;
     private String especie;
@@ -24,8 +28,5 @@ public class PetCliente {
     }
 
 //        -----------------------------------------------------
-@Override
-public String toString(){
-        return "    Nome: " + this.nome + ". " + "Especie: " + this.especie + ". " + "Sexo: " + this.sexo + ".";
-        }
+
 }

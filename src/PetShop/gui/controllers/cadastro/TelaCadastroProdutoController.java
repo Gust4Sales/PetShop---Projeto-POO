@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +21,8 @@ import PetShop.negocio.excecoes.ProdutoJaCadastradoException;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaCadastroProdutoController implements Initializable {
 
@@ -68,7 +68,7 @@ public class TelaCadastroProdutoController implements Initializable {
                 preco = inputDigitePreco.getText();
                 qtd = inputDigiteQtd.getText();
                 try {
-                    ProjetoPoo.petShop.cadastrarProduto(nome, marca, Double.parseDouble(preco), id,
+                    Main.petShop.cadastrarProduto(nome, marca, Double.parseDouble(preco), id,
                             Integer.parseInt(qtd));
 
                     Alert a = new Alert(Alert.AlertType.NONE);

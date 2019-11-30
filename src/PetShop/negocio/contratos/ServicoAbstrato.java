@@ -2,7 +2,11 @@ package PetShop.negocio.contratos;
 
 import PetShop.negocio.entidades.Cliente;
 import PetShop.negocio.entidades.PetCliente;
-
+/**
+ * Classe abstrata que representa os Serviços de forma geral no sistema
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public abstract class ServicoAbstrato {
     protected double preco;
     protected String horaAgendada;
@@ -65,11 +69,6 @@ public abstract class ServicoAbstrato {
     public void setData(String data) {
         this.data = data;
     }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
 
     public void concluirStatus(){
         this.status = "Concluído";

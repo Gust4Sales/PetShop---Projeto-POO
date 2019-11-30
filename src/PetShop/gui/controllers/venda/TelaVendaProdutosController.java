@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +23,8 @@ import PetShop.negocio.excecoes.QuantidadeInvalidaException;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaVendaProdutosController implements Initializable {
     private double valorT;
@@ -98,7 +98,7 @@ public class TelaVendaProdutosController implements Initializable {
         tbView.getItems().removeAll(ultimoProdutoPesquisado);
         if (inputId.getText().length() > 0){
             try{
-                ultimoProdutoPesquisado = ProjetoPoo.petShop.consultarProduto(inputId.getText());
+                ultimoProdutoPesquisado = Main.petShop.consultarProduto(inputId.getText());
                 tbView.getItems().add(ultimoProdutoPesquisado); // Insere produto na Tabela de visualizacao
                 btnVender.setDisable(false);
             } catch (ProdutoInexistenteException e){
@@ -118,7 +118,7 @@ public class TelaVendaProdutosController implements Initializable {
         if (validado) {
             int qnt = Integer.parseInt(inputqtd.getText());
             try {
-                ProjetoPoo.petShop.venderProduto(inputId.getText(), qnt);
+                Main.petShop.venderProduto(inputId.getText(), qnt);
 
                 this.valorT += ultimoProdutoPesquisado.getPreco() * qnt;
             } catch (QuantidadeInvalidaException | ProdutoInexistenteException e) {

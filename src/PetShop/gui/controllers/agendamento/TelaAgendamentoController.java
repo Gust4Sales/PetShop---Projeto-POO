@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,8 +29,8 @@ import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaAgendamentoController implements Initializable {
     private String dataAtual;
@@ -75,7 +75,7 @@ public class TelaAgendamentoController implements Initializable {
     }
 
     private void preencherListaHoras(String data) {
-        ArrayList<String> lista = ProjetoPoo.petShop.consultarListaHorariosLivres(data);
+        ArrayList<String> lista = Main.petShop.consultarListaHorariosLivres(data);
 
         ObservableList<String> choicesList = FXCollections.observableArrayList(lista);
         choiceAgendamentos.setItems(choicesList);
@@ -106,8 +106,8 @@ public class TelaAgendamentoController implements Initializable {
                 String hora = choiceAgendamentos.getValue();
                 telaServicoController.transferirInfo(data, hora);
 
-                ProjetoPoo.stageMain.setScene(new Scene(root));
-                ProjetoPoo.stageMain.show();
+                Main.stageMain.setScene(new Scene(root));
+                Main.stageMain.show();
             } catch (IOException ex) {
                 Logger.getLogger(MenuInicialController.class.getName()).log(Level.SEVERE, null, ex);
             }

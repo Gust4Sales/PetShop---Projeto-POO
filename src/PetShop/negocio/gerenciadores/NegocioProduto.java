@@ -9,7 +9,11 @@ import PetShop.negocio.excecoes.ProdutoJaCadastradoException;
 import PetShop.negocio.excecoes.QuantidadeInvalidaException;
 
 import java.util.ArrayList;
-
+/**
+ * Essa classe aplica as regras de negócio e o gerenciamento do Produto no sistema
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class NegocioProduto {
     private IRepositorioProdutos repositorioProdutos;
     private RepositorioProdutosVendidosArray repositorioProdVendidos;

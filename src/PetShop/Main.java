@@ -8,10 +8,11 @@ import javafx.stage.Stage;
 import PetShop.negocio.PetShopFachada;
 
 /**
+ * Classe Main. Herda de application e starta o sistema
  *
- * @author tarci
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
-public class ProjetoPoo extends Application {
+public class Main extends Application {
     public static PetShopFachada petShop;
     public static Stage stageMain;
 

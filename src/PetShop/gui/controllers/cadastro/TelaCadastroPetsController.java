@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,8 +24,8 @@ import PetShop.negocio.excecoes.PetPetshopJaCadastradoException;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaCadastroPetsController implements Initializable {
     private Alert spam;
@@ -95,7 +95,7 @@ public class TelaCadastroPetsController implements Initializable {
                 peso = inputPeso.getText();
                 tamanho = inputTamanho.getText();
                 try {
-                    ProjetoPoo.petShop.cadastrarPetPetshop(especie, id, sexo, dataNasc, Double.parseDouble(peso),
+                    Main.petShop.cadastrarPetPetshop(especie, id, sexo, dataNasc, Double.parseDouble(peso),
                             Double.parseDouble(tamanho), Double.parseDouble(preco));
 
                     spam.setAlertType(Alert.AlertType.INFORMATION);

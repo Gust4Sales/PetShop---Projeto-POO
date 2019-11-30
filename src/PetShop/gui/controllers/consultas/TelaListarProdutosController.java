@@ -10,7 +10,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +23,8 @@ import PetShop.negocio.entidades.Produto;
 
 /**
  * FXML Controller class
- *
- * @author 55819
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaListarProdutosController implements Initializable {
     @FXML
@@ -59,7 +59,7 @@ public class TelaListarProdutosController implements Initializable {
         tbPreco.setCellValueFactory(
                 new PropertyValueFactory<>("Preco"));
 
-        ArrayList<Produto> produtos = ProjetoPoo.petShop.consultarProdutosEstoque();
+        ArrayList<Produto> produtos = Main.petShop.consultarProdutosEstoque();
 
         for (Produto produto: produtos){
             tbView.getItems().add(produto);

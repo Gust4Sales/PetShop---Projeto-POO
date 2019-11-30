@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,8 +30,8 @@ import PetShop.negocio.excecoes.ClienteInexistenteException;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaAlterarClientesController implements Initializable{
     private Alert spam;
@@ -111,7 +111,7 @@ public class TelaAlterarClientesController implements Initializable{
     private void buscarCpfBtnHandler(ActionEvent event) {
         if (inputCpf.getLength()>0){
             try{
-                cliente = ProjetoPoo.petShop.consultarCliente(inputCpf.getText());
+                cliente = Main.petShop.consultarCliente(inputCpf.getText());
                 ArrayList<PetCliente> pets = cliente.getPets();
 
                 tbView.getItems().clear();
@@ -156,7 +156,7 @@ public class TelaAlterarClientesController implements Initializable{
 
         if (inputAlteraTell.getLength()>0){
             if (!telefone.equals(cliente.getTelefone())){
-                ProjetoPoo.petShop.atualizarTelefoneCliente(cliente, telefone);
+                Main.petShop.atualizarTelefoneCliente(cliente, telefone);
 
                 spam.setAlertType(Alert.AlertType.INFORMATION);
                 spam.setContentText("Telefone alterado com sucesso!");
@@ -178,7 +178,7 @@ public class TelaAlterarClientesController implements Initializable{
             ArrayList<PetCliente> pets = new ArrayList<>(petsTemp);
             pets.add(pet);
 
-            ProjetoPoo.petShop.alterarPetsCliente(cliente, pets);
+            Main.petShop.alterarPetsCliente(cliente, pets);
 
             inputEspecie.setText("");
             inputNomePet.setText("");
@@ -204,7 +204,7 @@ public class TelaAlterarClientesController implements Initializable{
             List<PetCliente> petsTemp= tbView.getItems();
             ArrayList<PetCliente> pets = new ArrayList<>(petsTemp);
 
-            ProjetoPoo.petShop.alterarPetsCliente(cliente, pets);
+            Main.petShop.alterarPetsCliente(cliente, pets);
 
             spam.setAlertType(Alert.AlertType.INFORMATION);
             spam.setContentText("Pet removido com sucesso!");

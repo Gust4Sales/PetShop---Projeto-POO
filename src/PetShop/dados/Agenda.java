@@ -4,7 +4,11 @@ import PetShop.dados.contratos.IRepositorioServicos;
 import PetShop.negocio.contratos.ServicoAbstrato;
 
 import java.util.ArrayList;
-
+/**
+ * Essa classe é reponsável por armazenar, e gerenciar a recuperação dos Serviços
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class Agenda implements IRepositorioServicos {
     private ArrayList<ServicoAbstrato> agenda;
 

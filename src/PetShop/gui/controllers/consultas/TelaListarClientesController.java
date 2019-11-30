@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,8 +27,8 @@ import PetShop.negocio.excecoes.ClienteInexistenteException;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaListarClientesController implements Initializable {
     private Alert spam;
@@ -84,7 +84,7 @@ public class TelaListarClientesController implements Initializable {
         tbPetCliente.getItems().clear();
         if (inputBuscar.getLength()>0){
             try{
-                Cliente cliente = ProjetoPoo.petShop.consultarCliente(inputBuscar.getText());
+                Cliente cliente = Main.petShop.consultarCliente(inputBuscar.getText());
                 ArrayList<PetCliente> pets = cliente.getPets();
 
                 tbCliente.getItems().clear();

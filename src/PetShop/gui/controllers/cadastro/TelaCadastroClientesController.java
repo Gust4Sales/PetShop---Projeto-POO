@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,8 +26,8 @@ import PetShop.negocio.excecoes.ClienteJaCadastradoException;
 
 /**
  * FXML Controller class
- *
- * @author 55819
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaCadastroClientesController implements Initializable {
     private Alert spam;
@@ -93,7 +93,7 @@ public class TelaCadastroClientesController implements Initializable {
             ArrayList<PetCliente> pets = new ArrayList<>(petsTemp);
 
             try {
-                ProjetoPoo.petShop.cadastrarCliente(nome, cpf, tel, pets);
+                Main.petShop.cadastrarCliente(nome, cpf, tel, pets);
 
                 spam.setAlertType(Alert.AlertType.INFORMATION);
                 spam.setContentText("Cliente cadastrado com sucesso!");

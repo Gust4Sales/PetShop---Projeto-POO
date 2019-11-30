@@ -1,6 +1,6 @@
 package PetShop.gui.controllers.alterar;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +23,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-
+/**
+ * FXML Controller class
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class TelaAlterarServicoController implements Initializable {
     private Alert spam;
 
@@ -88,7 +92,7 @@ public class TelaAlterarServicoController implements Initializable {
     }
 
     private void preencherListaHoras(String data){
-        ArrayList<String> lista = ProjetoPoo.petShop.consultarListaHorariosLivres(data);
+        ArrayList<String> lista = Main.petShop.consultarListaHorariosLivres(data);
 
         ObservableList<String> choicesList = FXCollections.observableArrayList(lista);
         choiceHorario.setItems(choicesList);
@@ -100,7 +104,7 @@ public class TelaAlterarServicoController implements Initializable {
         if (servico!=null){
             tbServicoview.getItems().remove(servico);
 
-            ProjetoPoo.petShop.marcarServicoConcluido(servico);
+            Main.petShop.marcarServicoConcluido(servico);
 
             spam.setAlertType(Alert.AlertType.INFORMATION);
             spam.setContentText("Serviço concluído com sucesso!");
@@ -132,8 +136,8 @@ public class TelaAlterarServicoController implements Initializable {
 
         if (inputCpf.getLength()>0){
             try{
-                Cliente cliente = ProjetoPoo.petShop.consultarCliente(inputCpf.getText());
-                ArrayList<ServicoAbstrato> servicosNaoConcluidos = ProjetoPoo.petShop.consultarServicosClienteNaoConcluidos(
+                Cliente cliente = Main.petShop.consultarCliente(inputCpf.getText());
+                ArrayList<ServicoAbstrato> servicosNaoConcluidos = Main.petShop.consultarServicosClienteNaoConcluidos(
                         cliente.getCpf());
 
                 for (ServicoAbstrato s: servicosNaoConcluidos){
@@ -163,7 +167,7 @@ public class TelaAlterarServicoController implements Initializable {
         if (servico!=null){
             tbServicoview.getItems().remove(servico);
 
-            ProjetoPoo.petShop.desmarcarServico(servico);
+            Main.petShop.desmarcarServico(servico);
 
             spam.setAlertType(Alert.AlertType.INFORMATION);
             spam.setContentText("Serviço removido com sucesso!");
@@ -181,7 +185,7 @@ public class TelaAlterarServicoController implements Initializable {
         if (choiceHorario.getValue()!=null && servico!=null){
             String data = dataAlterar.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-            ProjetoPoo.petShop.alterarServico(servico, data, choiceHorario.getValue());
+            Main.petShop.alterarServico(servico, data, choiceHorario.getValue());
             tbServicoview.getItems().clear();
             tbServicoview.getItems().add(servico);
         } else {

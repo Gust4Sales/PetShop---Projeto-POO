@@ -11,8 +11,12 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import PetShop.ProjetoPoo;
+import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
+import PetShop.negocio.entidades.ServicoBanho;
+import PetShop.negocio.entidades.ServicoCompleto;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,8 +32,8 @@ import PetShop.negocio.excecoes.ClienteInexistenteException;
 
 /**
  * FXML Controller class
- *
- * @author tarci
+ * Essa classe faz a conexão entre a interface gráfica e a fachada.
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
  */
 public class TelaServicoController implements Initializable {
     private Alert spam;
@@ -53,6 +57,8 @@ public class TelaServicoController implements Initializable {
     private ChoiceBox<String> choiceServico;
     @FXML
     private Label lblAgenda;
+    @FXML
+    private Label lblValor;
 
     public TelaServicoController(){
         spam = new Alert(Alert.AlertType.NONE);
@@ -73,9 +79,20 @@ public class TelaServicoController implements Initializable {
 
         ObservableList<String> choicesList = FXCollections.observableArrayList("Banho", "Tosa", "Completo");
 
-        choiceServico.setValue("");
+        choiceServico.setValue(null);
         choiceServico.setItems(choicesList);
 
+        choiceServico.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                String servicoEscolhido = (choicesList.get(newValue.intValue()));
+                if (servicoEscolhido.equals("Banho") || servicoEscolhido.equals("Tosa")){
+                    lblValor.setText("Valor R$" + "25,00");
+                } else {
+                    lblValor.setText("Valor R$" + "45,00");
+                }
+            }
+        });
     }
 
     @FXML
@@ -83,31 +100,10 @@ public class TelaServicoController implements Initializable {
         if (inputBuscarCpf.getLength()>0){
             tbView.getItems().clear();
             try{
-                cliente = ProjetoPoo.petShop.consultarCliente(inputBuscarCpf.getText());
-//                ArrayList<ServicoAbstrato> servicosDoCliente = PetShop.ProjetoPoo.petShop.consultarServicosClienteConcluidos(
-//                        cliente.getCpf());
-//
-//                ArrayList<PetCliente> pets = new ArrayList<>();
-//                for (ServicoAbstrato s: servicosDoCliente){
-//                    pets.add(s.getPet());
-//                }
-
-//                for (PetCliente pet: cliente.getPets()) {
-//                    if (!servicosDoCliente.isEmpty()) {
-//                        tbView.getItems().add(pet);
-//                    } else {
-//                        tbView.getItems().add(pet);
-//                    }
-//                }
+                cliente = Main.petShop.consultarCliente(inputBuscarCpf.getText());
                 for (PetCliente pet: cliente.getPets()){
                     tbView.getItems().add(pet);
                 }
-//                if (tbView.getItems().isEmpty()){
-//                    spam.setAlertType(Alert.AlertType.ERROR);
-//                    spam.setContentText("Nenhum pet disponível do cliente "+cliente.getNome()+" para agendamento!");
-//                    spam.show();
-//                }
-
             } catch (ClienteInexistenteException e) {
                 spam.setAlertType(Alert.AlertType.ERROR);
                 spam.setContentText(e.getMessage());
@@ -125,13 +121,11 @@ public class TelaServicoController implements Initializable {
         PetCliente pet = tbView.getSelectionModel().getSelectedItem();
         String descricao = choiceServico.getValue();
 
-        if ((!choiceServico.getValue().equals("")) && (pet!=null)){
-            System.out.println("agendar");
-            ProjetoPoo.petShop.agendarServico(descricao, hora, data, cliente, pet);
+        if ((choiceServico.getValue()!=null) && (pet!=null)){
+            Main.petShop.agendarServico(descricao, hora, data, cliente, pet);
 
             spam.setAlertType(Alert.AlertType.INFORMATION);
-            spam.setContentText("Agendamento marcado! "+"Serviço "+descricao+" no Pet "+ pet.getNome() +
-                    " agendado às "+hora+"h do dia "+data);
+            spam.setContentText("Agendamento marcado! "+"Serviço "+descricao+" no Pet "+ pet.getNome() + " agendado às "+hora+"h do dia "+data);
             spam.show();
             cancelarBtnHandler(event);
         } else {

@@ -1,5 +1,9 @@
 package PetShop.negocio.entidades;
-
+/**
+ * Essa classe representa os pets do Petshop
+ *
+ * @author Tárcio Lins, Manoel Gustavo, Letícia Araújo, Fábio dos Santos
+ */
 public class PetPetshop{
     private String dataNascimento;
     private String id;
@@ -53,11 +57,6 @@ public class PetPetshop{
 
     //---------------------------SETTERS--------------------------
 
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
     public void setPeso(double peso){
         this.peso = peso;
     }
@@ -84,8 +83,4 @@ public class PetPetshop{
 
     //-----------------------------------------------------------
 
-    @Override
-    public String toString(){
-        return" data:"+this.dataNascimento+"."+"Peso:"+this.peso+"."+"Tamanho:"+this.tamanho+"."+"Preco:"+this.preco+"."+"Especie:"+this.especie+"."+"Sexo"+this.sexo+".";
-    }
 }
