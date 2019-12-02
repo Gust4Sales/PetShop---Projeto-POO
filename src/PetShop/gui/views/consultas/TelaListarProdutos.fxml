@@ -7,7 +7,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane fx:id="painelEstoqueProdutos" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.gui.controllers.consultas.TelaListarProdutosController">
     <children>
         <Label layoutX="192.0" layoutY="14.0" text="Estoque Produtos">
@@ -24,6 +23,9 @@
                 <TableColumn fx:id="tbPreco" prefWidth="63.0" text="Preço" />
             </columns>
         </TableView>
-        <Button fx:id="btnVoltar" layoutX="274.0" layoutY="355.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
+        <Button fx:id="btnVoltar" layoutX="274.0" layoutY="355.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
     </children>
 </Pane>

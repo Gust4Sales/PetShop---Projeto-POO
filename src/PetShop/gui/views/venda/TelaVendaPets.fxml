@@ -14,7 +14,10 @@
                 <Font name="System Bold" size="26.0" />
             </font>
         </Label>
-        <TextField fx:id="inputId" layoutX="201.0" layoutY="104.0" />
+        <TextField fx:id="inputId" layoutX="201.0" layoutY="104.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
         <Label layoutX="249.0" layoutY="79.0" text="Insira o Id" />
         <TableView fx:id="tbView" layoutX="93.0" layoutY="169.0" prefHeight="66.0" prefWidth="421.0">
             <columns>
@@ -26,8 +29,17 @@
                 <TableColumn fx:id="tbPreco" prefWidth="59.0" text="Preço" />
             </columns>
         </TableView>
-        <Button fx:id="btnConfirmar" disable="true" layoutX="223.0" layoutY="259.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar" />
-        <Button fx:id="btnCancelar" layoutX="304.0" layoutY="259.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar" />
-        <Button fx:id="btnBuscar" layoutX="361.0" layoutY="104.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
+        <Button fx:id="btnConfirmar" disable="true" layoutX="223.0" layoutY="259.0" mnemonicParsing="false" onAction="#confirmarBtnHandler" text="Confirmar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Button fx:id="btnCancelar" layoutX="304.0" layoutY="259.0" mnemonicParsing="false" onAction="#cancelarBtnHandler" text="Cancelar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Button fx:id="btnBuscar" layoutX="361.0" layoutY="104.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
     </children>
 </Pane>

@@ -9,15 +9,30 @@
 
 <Pane fx:id="painelAlterar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.gui.controllers.alterar.TelaAlterarController">
    <children>
-      <Button fx:id="btnAlterarCliente" layoutX="51.0" layoutY="86.0" mnemonicParsing="false" onAction="#alterarClienteBtnHandler" text="Alterar Cliente" />
-      <Button fx:id="btnAlterarProduto" layoutX="50.0" layoutY="119.0" mnemonicParsing="false" onAction="#alterarProdutoBtnHandler" text="Alterar Produto" />
-      <Button fx:id="btnPetPetshop" layoutX="50.0" layoutY="152.0" mnemonicParsing="false" onAction="#alterarPetPetshopBtnHandler" text="Alterar Pet do Petshop" />
-      <Button fx:id="btnVoltar" layoutX="51.0" layoutY="213.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
+      <Button fx:id="btnAlterarCliente" layoutX="63.0" layoutY="64.0" mnemonicParsing="false" onAction="#alterarClienteBtnHandler" prefHeight="72.0" prefWidth="163.0" text="Alterar Cliente">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnAlterarProduto" layoutX="355.0" layoutY="64.0" mnemonicParsing="false" onAction="#alterarProdutoBtnHandler" prefHeight="72.0" prefWidth="163.0" text="Alterar Produto">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnPetPetshop" layoutX="355.0" layoutY="168.0" mnemonicParsing="false" onAction="#alterarPetPetshopBtnHandler" prefHeight="72.0" prefWidth="163.0" text="Alterar Pet do Petshop">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnVoltar" layoutX="211.0" layoutY="267.0" mnemonicParsing="false" onAction="#voltarBtnHandler" prefHeight="72.0" prefWidth="163.0" text="Voltar" />
       <Label layoutX="144.0" layoutY="14.0" text="Alteração de Informações">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </Label>
-      <Button fx:id="btnAlterarServico" layoutX="51.0" layoutY="183.0" mnemonicParsing="false" onAction="#alterarServicoBtnHandler" text="Alterar Serviço" />
+      <Button fx:id="btnAlterarServico" layoutX="63.0" layoutY="168.0" mnemonicParsing="false" onAction="#alterarServicoBtnHandler" prefHeight="72.0" prefWidth="163.0" text="Alterar Serviço">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </Pane>

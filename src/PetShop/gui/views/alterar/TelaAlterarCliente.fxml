@@ -10,15 +10,24 @@
 
 <Pane fx:id="painelAlterar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PetShop.gui.controllers.alterar.TelaAlterarClientesController">
     <children>
-        <Button fx:id="btnBuscar" layoutX="378.0" layoutY="65.0" mnemonicParsing="false" onAction="#buscarCpfBtnHandler" text="Buscar" />
-        <TextField fx:id="inputCpf" layoutX="226.0" layoutY="65.0"  />
+        <Button fx:id="btnBuscar" layoutX="378.0" layoutY="65.0" mnemonicParsing="false" onAction="#buscarCpfBtnHandler" text="Buscar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <TextField fx:id="inputCpf" layoutX="226.0" layoutY="65.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
         <Label layoutX="206.0" text="Alterar Clientes">
             <font>
                 <Font name="System Bold" size="26.0" />
             </font>
         </Label>
         <Label layoutX="265.0" layoutY="45.0" text="Insira seu cpf" />
-        <TextField fx:id="inputAlteraTell" layoutX="93.0" layoutY="150.0" />
+        <TextField fx:id="inputAlteraTell" layoutX="93.0" layoutY="150.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
         <Separator layoutY="95.0" prefHeight="1.0" prefWidth="600.0" />
         <Label fx:id="alterarInformacoes" layoutX="242.0" layoutY="98.0" text="Alterar Informações">
             <font>
@@ -26,7 +35,10 @@
             </font>
         </Label>
         <Label layoutX="6.0" layoutY="152.0" text="Telefone atual:" />
-        <Button fx:id="btnTrocarTell" disable="true" layoutX="250.0" layoutY="150.0" mnemonicParsing="false" onAction="#trocarTellBtnHandler" text="Trocar" />
+        <Button fx:id="btnTrocarTell" disable="true" layoutX="250.0" layoutY="150.0" mnemonicParsing="false" onAction="#trocarTellBtnHandler" text="Trocar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
         <TableView fx:id="tbView" layoutX="231.0" layoutY="204.0" prefHeight="135.0" prefWidth="366.0">
             <columns>
                 <TableColumn fx:id="tbNome" prefWidth="155.0" text="Nome" />
@@ -44,9 +56,21 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <Button fx:id="btnConfirmarPet" disable="true" layoutX="60.0" layoutY="342.0" mnemonicParsing="false" onAction="#cadastrarNovoPetBtnHandler" text="Cadastrar novo pet" />
-        <Button fx:id="btnRemover" disable="true" layoutX="429.0" layoutY="353.0" mnemonicParsing="false" onAction="#removerBtnHandler" text="Remover pet" />
-        <Button fx:id="btnVoltar" layoutX="523.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
-      <ChoiceBox fx:id="choiceSexo" layoutX="43.0" layoutY="311.0" prefWidth="150.0" />
+        <Button fx:id="btnConfirmarPet" disable="true" layoutX="60.0" layoutY="342.0" mnemonicParsing="false" onAction="#cadastrarNovoPetBtnHandler" text="Cadastrar novo pet">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Button fx:id="btnRemover" disable="true" layoutX="429.0" layoutY="353.0" mnemonicParsing="false" onAction="#removerBtnHandler" text="Remover pet">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+        <Button fx:id="btnVoltar" layoutX="523.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <ChoiceBox fx:id="choiceSexo" layoutX="43.0" layoutY="311.0" prefWidth="150.0">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor></ChoiceBox>
     </children>
 </Pane>

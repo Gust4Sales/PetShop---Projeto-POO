@@ -17,14 +17,14 @@
             </font>
         </Label>
         <Button fx:id="btnBuscar" layoutX="354.0" layoutY="79.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar">
-            <effect>
-                <DropShadow />
-            </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-        <TextField fx:id="inputBuscar" layoutX="200.0" layoutY="79.0" >
-            <effect>
-                <DropShadow />
-            </effect>
+        <TextField fx:id="inputBuscar" layoutX="200.0" layoutY="79.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
         </TextField>
         <Label layoutX="217.0" layoutY="55.0" text="Insira o cpf do cliente" />
         <TableView fx:id="tbCliente" layoutY="149.0" prefHeight="65.0" prefWidth="600.0">
@@ -42,9 +42,9 @@
             </columns>
         </TableView>
         <Button fx:id="btnVoltar" layoutX="274.0" layoutY="372.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
-         <effect>
-            <DropShadow />
-         </effect></Button>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Label layoutX="233.0" layoutY="122.0" text="Informações Clientes">
          <font>
             <Font size="14.0" />

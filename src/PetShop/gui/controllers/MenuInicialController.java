@@ -40,7 +40,7 @@ public class MenuInicialController implements Initializable {
             painel.getChildren().setAll(telaVenda);
            
         } catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
         }
         
     }

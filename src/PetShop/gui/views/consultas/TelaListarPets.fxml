@@ -28,8 +28,8 @@
             </columns>
         </TableView>
         <Button fx:id="btnVoltar" layoutX="275.0" layoutY="361.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
-         <effect>
-            <DropShadow />
-         </effect></Button>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
     </children>
 </Pane>

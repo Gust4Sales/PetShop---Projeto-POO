@@ -112,7 +112,11 @@ public class NegocioServico {
                         if (listaHoras.contains(servico.getHoraAgendada())){
                             int index = listaHoras.indexOf(servico.getHoraAgendada());
                             listaHoras.remove(index);
-                            listaHoras.remove(index);
+                            try {
+                                listaHoras.remove(index);
+                            } catch (IndexOutOfBoundsException e){
+
+                            }
                         } else {
                             int index = listaHoras.indexOf(servico.getHoraAgendada()) + 1;
                             listaHoras.remove(index);

@@ -14,10 +14,19 @@
                 <Font name="System Bold" size="26.0" />
             </font>
         </Label>
-        <TextField fx:id="inputCpf" layoutX="125.0" layoutY="81.0" promptText="Insira o CPF" />
-        <DatePicker fx:id="dateSearch" layoutX="283.0" layoutY="81.0" promptText="Buscar por data" />
-        <Label ellipsisString="" layoutX="150.0" layoutY="64.0" prefHeight="17.0" prefWidth="99.0" text="Buscar por cliente" />
-        <Button fx:id="btnBuscar" layoutX="469.0" layoutY="81.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar" />
+        <TextField fx:id="inputCpf" layoutX="98.0" layoutY="81.0" promptText="Insira o CPF">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
+        <DatePicker fx:id="dateSearch" layoutX="283.0" layoutY="81.0" promptText="Buscar por data">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></DatePicker>
+        <Label ellipsisString="" layoutX="123.0" layoutY="64.0" prefHeight="17.0" prefWidth="99.0" text="Buscar por cliente" />
+        <Button fx:id="btnBuscar" layoutX="469.0" layoutY="81.0" mnemonicParsing="false" onAction="#buscarBtnHandler" text="Buscar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
         <TableView fx:id="tbView" layoutY="120.0" prefHeight="200.0" prefWidth="600.0">
             <columns>
                 <TableColumn fx:id="tbNome" prefWidth="128.0" text="Nome" />
@@ -28,6 +37,9 @@
             <TableColumn fx:id="tbStatus" prefWidth="94.0" text="Status" />
             </columns>
         </TableView>
-        <Button fx:id="btnVoltar" layoutX="274.0" layoutY="345.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar" />
+        <Button fx:id="btnVoltar" layoutX="283.0" layoutY="345.0" mnemonicParsing="false" onAction="#voltarBtnHandler" text="Voltar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
     </children>
 </Pane>

@@ -13,12 +13,33 @@
          <font>
             <Font name="System Bold" size="28.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
       </Label>
-      <Button fx:id="btnVenda" layoutX="86.0" layoutY="62.0" mnemonicParsing="false" onAction="#vendaBtnHandler" text="Venda" />
-      <Button fx:id="btnAgenda" layoutX="86.0" layoutY="96.0" mnemonicParsing="false" onAction="#agendaBtnHandler" text="Agendamento de Serviços" />
-      <Button fx:id="btnCadastro" layoutX="86.0" layoutY="128.0" mnemonicParsing="false" onAction="#cadastroBtnHandler" text="Cadastro" />
-      <Button fx:id="btnAlterar" layoutX="86.0" layoutY="162.0" mnemonicParsing="false" onAction="#alterarBtnHandler" text="Alterar " />
-      <Button fx:id="btnListar" layoutX="86.0" layoutY="197.0" mnemonicParsing="false" onAction="#listarBtnHandler" text="Consultas" />
-      <Button fx:id="btnSair" layoutX="86.0" layoutY="233.0" mnemonicParsing="false" onAction="#sairBtnHandler" text="Sair" />
+      <Button fx:id="btnVenda" layoutX="13.0" layoutY="91.0" mnemonicParsing="false" onAction="#vendaBtnHandler" prefHeight="73.0" prefWidth="115.0" text="Venda">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnAgenda" alignment="CENTER" layoutX="243.0" layoutY="91.0" mnemonicParsing="false" onAction="#agendaBtnHandler" prefHeight="73.0" prefWidth="115.0" text="Agendamento de Serviços" textAlignment="CENTER" wrapText="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnCadastro" layoutX="358.0" layoutY="200.0" mnemonicParsing="false" onAction="#cadastroBtnHandler" prefHeight="73.0" prefWidth="115.0" text="Cadastro">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnAlterar" layoutX="473.0" layoutY="91.0" mnemonicParsing="false" onAction="#alterarBtnHandler" prefHeight="73.0" prefWidth="115.0" text="Alterar ">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnListar" layoutX="128.0" layoutY="200.0" mnemonicParsing="false" onAction="#listarBtnHandler" prefHeight="73.0" prefWidth="115.0" text="Consultas">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="btnSair" layoutX="247.0" layoutY="313.0" mnemonicParsing="false" onAction="#sairBtnHandler" prefHeight="73.0" prefWidth="115.0" text="Sair">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </Pane>

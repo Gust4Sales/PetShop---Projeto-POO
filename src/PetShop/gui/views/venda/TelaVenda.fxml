@@ -14,8 +14,8 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button fx:id="btnVendaPets" layoutX="16.0" layoutY="70.0" mnemonicParsing="false" onAction="#vendaPetsHandler" text="Venda de Pets" />
-      <Button fx:id="btnVendaProdutos" layoutX="16.0" layoutY="106.0" mnemonicParsing="false" onAction="#vendaProdutosHandler" text="Venda de Produtos" />
-      <Button fx:id="btnVoltar" layoutX="16.0" layoutY="139.0" mnemonicParsing="false" onAction="#voltarHandler" text="Voltar" />
+      <Button fx:id="btnVendaPets" layoutX="222.0" layoutY="82.0" mnemonicParsing="false" onAction="#vendaPetsHandler" prefHeight="70.0" prefWidth="157.0" text="Venda de Pets" />
+      <Button fx:id="btnVendaProdutos" layoutX="222.0" layoutY="186.0" mnemonicParsing="false" onAction="#vendaProdutosHandler" prefHeight="70.0" prefWidth="157.0" text="Venda de Produtos" />
+      <Button fx:id="btnVoltar" layoutX="222.0" layoutY="290.0" mnemonicParsing="false" onAction="#voltarHandler" prefHeight="70.0" prefWidth="157.0" text="Voltar" />
    </children>
 </Pane>

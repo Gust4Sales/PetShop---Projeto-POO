@@ -13,8 +13,6 @@ import java.util.logging.Logger;
 
 import PetShop.Main;
 import PetShop.gui.controllers.MenuInicialController;
-import PetShop.negocio.entidades.ServicoBanho;
-import PetShop.negocio.entidades.ServicoCompleto;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
